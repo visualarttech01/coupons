@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+
+<html lang="en">
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<meta charset="utf-8" />
+		
+		<title>Coupons Code</title>
+		<link rel="shortcut png" type="image/png" href="<?php echo Request::$BASE_PATH.'images/logo.png';?>">
+		<meta name="description" content="overview &amp; stats" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+		
+		<!-- bootstrap & fontawesome -->
+		<link rel="stylesheet" href="<?php echo Request::$BASE_PATH; ?>assets/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="<?php echo Request::$BASE_PATH; ?>assets/font-awesome/4.5.0/css/font-awesome.min.css" />
+		
+		<?php switch($parameters[0]){ 
+			case 'contact': ?>
+						<!-- page specific plugin styles -->
+						<link rel="stylesheet" href="<?php echo Request::$BASE_PATH; ?>assets/css/jquery-ui.custom.min.css" />
+						<link rel="stylesheet" href="<?php echo Request::$BASE_PATH; ?>assets/css/jquery.gritter.min.css" />
+						<link rel="stylesheet" href="<?php echo Request::$BASE_PATH; ?>assets/css/select2.min.css" />
+						<link rel="stylesheet" href="<?php echo Request::$BASE_PATH; ?>assets/css/bootstrap-datepicker3.min.css" />
+						<link rel="stylesheet" href="<?php echo Request::$BASE_PATH; ?>assets/css/bootstrap-editable.min.css" />
+				<?php
+			case 'reminders':
+					?>
+						<!-- page specific plugin styles -->
+						<link rel="stylesheet" href="<?php echo Request::$BASE_PATH; ?>assets/css/jquery-ui.custom.min.css" />
+						<link rel="stylesheet" href="<?php echo Request::$BASE_PATH; ?>assets/css/jquery.gritter.min.css" />
+						<link rel="stylesheet" href="<?php echo Request::$BASE_PATH; ?>assets/css/select2.min.css" />
+						<link rel="stylesheet" href="<?php echo Request::$BASE_PATH; ?>assets/css/bootstrap-datepicker3.min.css" />
+						<link rel="stylesheet" href="<?php echo Request::$BASE_PATH; ?>assets/css/bootstrap-editable.min.css" />
+					<?php
+					break;
+			 } ?>
+
+		<!-- text fonts -->
+		<link rel="stylesheet" href="<?php echo Request::$BASE_PATH; ?>assets/css/fonts.googleapis.com.css" />
+
+		<!-- ace styles -->
+		<link rel="stylesheet" href="<?php echo Request::$BASE_PATH; ?>assets/css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
+
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" href="<?php echo Request::$BASE_PATH; ?>assets/css/ace-part2.min.css" class="ace-main-stylesheet" />
+		<![endif]-->
+		<link rel="stylesheet" href="<?php echo Request::$BASE_PATH; ?>assets/css/ace-skins.min.css" />
+		<link rel="stylesheet" href="<?php echo Request::$BASE_PATH; ?>assets/css/ace-rtl.min.css" />
+
+		<!--[if lte IE 9]>
+		  <link rel="stylesheet" href="<?php echo Request::$BASE_PATH; ?>assets/css/ace-ie.min.css" />
+		<![endif]-->
+
+		<!-- inline styles related to this page -->
+
+		<!-- ace settings handler -->
+		<script src="<?php echo Request::$BASE_PATH; ?>assets/js/ace-extra.min.js"></script>
+
+		<!-- HTML5shiv and Respond.js for IE8 to support HTML5 elements and media queries -->
+
+		<!--[if lte IE 8]>
+		<script src="<?php echo Request::$BASE_PATH; ?>assets/js/html5shiv.min.js"></script>
+		<script src="<?php echo Request::$BASE_PATH; ?>assets/js/respond.min.js"></script>
+		
+		<![endif]-->
+		<script src="<?php echo Request::$BASE_PATH; ?>assets/js/jquery-2.1.4.min.js"></script>
+	</head>
+
+	<body class="no-skin">
+		<div id="navbar" class="navbar navbar-default          ace-save-state">
+			<div class="navbar-container ace-save-state" id="navbar-container">
+				<button type="button" class="navbar-toggle menu-toggler pull-left" id="menu-toggler" data-target="#sidebar">
+					<span class="sr-only">Toggle sidebar</span>
+
+					<span class="icon-bar"></span>
+
+					<span class="icon-bar"></span>
+
+					<span class="icon-bar"></span>
+				</button>
+
+				<div class="navbar-header pull-left">
+					<a href="<?php echo Request::$BASE_PATH; ?>" class="navbar-brand">
+						<small>
+							<i class="fa fa-home"></i>
+							Coupons Code
+						</small>
+					</a>
+				</div>
+
+				<div class="navbar-buttons navbar-header pull-right" role="navigation">
+					<ul class="nav ace-nav">
+						 <!-- 
+						<li class="grey dropdown-modal">
+							<a data-toggle="dropdown" class="dropdown-toggle" href="<?php echo Request::$BASE_PATH; ?>#">
+								<i class="ace-icon fa fa-tasks"></i>
+								<span class="badge badge-grey">4</span>
+							</a>
+
+							<ul class="dropdown-menu-right dropdown-navbar dropdown-menu dropdown-caret dropdown-close">
+								<li class="dropdown-header">
+									<i class="ace-icon fa fa-check"></i>
+									4 Tasks to complete
+								</li>
+
+								<li class="dropdown-content">
+									<ul class="dropdown-menu dropdown-navbar">
+										<li>
+											<a href="<?php echo Request::$BASE_PATH; ?>#">
+												<div class="clearfix">
+													<span class="pull-left">Software Update</span>
+													<span class="pull-right">65%</span>
+												</div>
+
+												<div class="progress progress-mini">
+													<div style="width:65%" class="progress-bar"></div>
+												</div>
+											</a>
+										</li>
+
+										<li>
+											<a href="<?php echo Request::$BASE_PATH; ?>#">
+												<div class="clearfix">
+													<span class="pull-left">Hardware Upgrade</span>
+													<span class="pull-right">35%</span>
+												</div>
+
+												<div class="progress progress-mini">
+													<div style="width:35%" class="progress-bar progress-bar-danger"></div>
+												</div>
+											</a>
+										</li>
+
+										<li>
+											<a href="<?php echo Request::$BASE_PATH; ?>#">
+												<div class="clearfix">
+													<span class="pull-left">Unit Testing</span>
+													<span class="pull-right">15%</span>
+												</div>
+
+												<div class="progress progress-mini">
+													<div style="width:15%" class="progress-bar progress-bar-warning"></div>
+												</div>
+											</a>
+										</li>
+
+										<li>
+											<a href="<?php echo Request::$BASE_PATH; ?>#">
+												<div class="clearfix">
+													<span class="pull-left">Bug Fixes</span>
+													<span class="pull-right">90%</span>
+												</div>
+
+												<div class="progress progress-mini progress-striped active">
+													<div style="width:90%" class="progress-bar progress-bar-success"></div>
+												</div>
+											</a>
+										</li>
+									</ul>
+								</li>
+
+								<li class="dropdown-footer">
+									<a href="<?php echo Request::$BASE_PATH; ?>#">
+										See tasks with details
+										<i class="ace-icon fa fa-arrow-right"></i>
+									</a>
+								</li>
+							</ul>
+						</li> -->
+
+
+
+
+						
+
+						<li class="light-blue dropdown-modal">
+							<a data-toggle="dropdown" href="<?php echo Request::$BASE_PATH; ?>#" class="dropdown-toggle">
+								<span class="user-info">
+									<small>Welcome,</small>
+									<?php echo Session::GetUser()->user_name; ?>
+								</span>
+
+								<i class="ace-icon fa fa-caret-down"></i>
+							</a>
+
+							<ul class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
+<!--								--><?php //if(Session::GetUser()->role == 'admin'){ ?>
+<!--								<li>-->
+<!--									<a href="--><?php //echo Request::$BASE_PATH.'users'; ?><!--">-->
+<!--										<i class="ace-icon fa fa-cog"></i>-->
+<!--										Settings-->
+<!--									</a>-->
+<!--								</li>-->
+<!--								--><?php //} ?>
+
+								<li>
+									<a href="<?php echo Request::$BASE_PATH; ?>profile">
+										<i class="ace-icon fa fa-user"></i>
+										Profile
+									</a>
+								</li>
+
+								<li class="divider"></li>
+
+								<li>
+									<a href="<?php echo Request::$BASE_PATH.'logout'; ?>">
+										<i class="ace-icon fa fa-power-off"></i>
+										Logout
+									</a>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+			</div><!-- /.navbar-container -->
+		</div>
+
+		<div class="main-container ace-save-state" id="main-container">
+			<script type="text/javascript">
+				try{ace.settings.loadState('main-container')}catch(e){}
+			</script>
+
+			<div id="sidebar" class="sidebar responsive ace-save-state">
+				<script type="text/javascript">
+					try{ace.settings.loadState('sidebar')}catch(e){}
+				</script>
+
+				<div class="sidebar-shortcuts" id="sidebar-shortcuts">
+					<div class="sidebar-shortcuts-large" id="sidebar-shortcuts-large">
+						<button class="btn btn-success">
+							<i class="ace-icon fa fa-signal"></i>
+						</button>
+
+						<button class="btn btn-info">
+							<i class="ace-icon fa fa-pencil"></i>
+						</button>
+						
+						
+						<button class="btn btn-warning">
+							<i class="ace-icon fa fa-users"></i>
+						</button>
+
+						<button class="btn btn-danger">
+							<i class="ace-icon fa fa-cogs"></i>
+						</button>
+					</div>
+
+					<div class="sidebar-shortcuts-mini" id="sidebar-shortcuts-mini">
+						<span class="btn btn-success"></span>
+
+						<span class="btn btn-info"></span>
+
+						<span class="btn btn-warning"></span>
+
+						<span class="btn btn-danger"></span>
+					</div>
+				</div><!-- /.sidebar-shortcuts -->
+
+				<ul class="nav nav-list">
+					<li  class="<?php if($parameters[0]=='Home'){ echo 'active'; } ?>">
+						<a href="<?php echo Request::$BASE_PATH; ?>">
+							<i class="menu-icon fa fa-tachometer"></i>
+							<span class="menu-text"> Dashboard </span>
+						</a>
+
+						<b class="arrow"></b>
+					</li>
+					<li class="<?php if($parameters[0]=='companies'){ echo 'active'; } ?>">
+						<a href="<?php echo Request::$BASE_PATH.'companies'; ?>">
+							<i class="menu-icon fa fa-group"></i>
+							<span class="menu-text"> Medicine Companies</span>
+						</a>
+
+						<b class="arrow"></b>
+					</li>
+					<li class="<?php if($parameters[0]=='types'){ echo 'active'; } ?>">
+						<a href="<?php echo Request::$BASE_PATH.'types'; ?>">
+							<i class="menu-icon fa fa-group"></i>
+							<span class="menu-text"> Medicine Types</span>
+						</a>
+
+						<b class="arrow"></b>
+					</li>
+					<li class="<?php if($parameters[0]=='powers'){ echo 'active'; } ?>">
+						<a href="<?php echo Request::$BASE_PATH.'powers'; ?>">
+							<i class="menu-icon fa fa-group"></i>
+							<span class="menu-text"> Medicine Powers</span>
+						</a>
+
+						<b class="arrow"></b>
+					</li>
+					<li class="<?php if($parameters[0]=='medicines'){ echo 'active'; } ?>">
+						<a href="<?php echo Request::$BASE_PATH.'medicines'; ?>">
+							<i class="menu-icon fa fa-pills"></i>
+							<span class="menu-text"> Medicines</span>
+						</a>
+
+						<b class="arrow"></b>
+					</li>
+					<li class="<?php if($parameters[0]=='reminders'){ echo 'active'; } ?>">
+						<a href="<?php echo Request::$BASE_PATH.'reminders'; ?>">
+							<i class="menu-icon fa fa-bell"></i>
+							<span class="menu-text">My Reminders </span>
+						</a>
+
+						<b class="arrow"></b>
+					</li>
+					<li class="<?php if($parameters[0]=='notifications'){ echo 'active'; } ?>">
+						<a href="<?php echo Request::$BASE_PATH.'notifications'; ?>">
+							<i class="menu-icon fa fa-envelope"></i>
+							<span class="menu-text">My Notifications </span>
+						</a>
+
+						<b class="arrow"></b>
+					</li>
+					
+
+									</ul><!-- /.nav-list -->
+
+				<div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
+					<i id="sidebar-toggle-icon" class="ace-icon fa fa-angle-double-left ace-save-state" data-icon1="ace-icon fa fa-angle-double-left" data-icon2="ace-icon fa fa-angle-double-right"></i>
+				</div>
+			</div>
