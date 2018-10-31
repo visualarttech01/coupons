@@ -1,6 +1,4 @@
-
-
-			<div class="main-content">
+    <div class="main-content">
 				<div class="main-content-inner">
 						<div class="page-content">
 						<!-- /.ace-settings-container -->
@@ -14,19 +12,19 @@
 
 								<div class="row">
 									<div class="col-xs-12">
-										<h3 class="header smaller lighter blue"><strong>Role's Permissions</strong></h3>
+										<h3 class="header smaller lighter blue"><strong>Sections</strong></h3>
 										
 											<?php if(isset($add_message) && $add_message!= '')
 												echo $add_message 
 												 ;?>
 										<div class="clearfix">
-											<a href="<?php echo Request::$BASE_PATH.'permissions/new_permission';?>">
-												<button class="btn btn-success"><i class="ace-icon fa fa-plus"></i> Add New Role's Permissions</button>
+											<a href="<?php echo Request::$BASE_PATH.'sections/new_section';?>">
+												<button class="btn btn-success"><i class="ace-icon fa fa-plus"></i> Add Section</button>
 											</a>
 											<div class="pull-right tableTools-container"> </div>
 										</div>
 										<div class="table-header">
-											All Role's Permission
+											All Sections
 										</div>
 
 										<!-- div.table-responsive -->
@@ -43,13 +41,8 @@
 																<span class="lbl"></span>
 															</label>
 														</th>
-														<th class="hidden-480">Roles</th>
-                                                        <th class="hidden-480">Sections</th>
-                                                        <th class="hidden-480">Add</th>
-                                                        <th class="hidden-480">Edit</th>
-                                                        <th class="hidden-480">View</th>
-                                                        <th class="hidden-480">Delete</th>
-														<th class="hidden-480">Is Active</th>
+														<th class="hidden-480">Names</th>
+
                                                         <th>Actions</th>
 													</tr>
 												</thead>
@@ -67,78 +60,18 @@
 															</label>
 														</td>
 														<td class="hidden-480">
-															<?php echo $key->user_role_id ;?>
+															<?php echo $key->name ;?>
 														</td>
-                                                        <td class="hidden-480">
-                                                            <?php echo $key->section ;?>
-                                                        </td>
-
-                                                        <td class="hidden-480">
-                                                            <?php if($key->p_add !='1'){echo '<span class="label label-sm label-warning">No';}else{echo '<span class="label label-sm label-success">Yes</span>';};?>
-                                                        </td>
-
-                                                        <td class="hidden-480">
-                                                          <?php if($key->p_edit !='1'){echo '<span class="label label-sm label-warning">No';}else{echo '<span class="label label-sm label-success">Yes</span>';};?>
-                                                        </td>
-
-                                                        <td class="hidden-480">
-                                                            <?php if($key->p_view !='1'){echo '<span class="label label-sm label-warning">No';}else{echo '<span class="label label-sm label-success">Yes</span>';};?>
-                                                        </td>
-
-                                                        <td class="hidden-480">
-                                                            <?php if($key->p_delete !='1'){echo '<span class="label label-sm label-warning">No';}else{echo '<span class="label label-sm label-success">Yes</span>';};?>
-                                                        </td>
-
-                                                        <td class="hidden-480">
-															<span class="label label-sm label-warning"><?php echo $key->is_active ;?></span>
-														</td>
-
-
-														<td>
+                                                        <td>
 															<div class="action-buttons">
 
 																<a class="red" href="#"></a>
 																	<i id="<?php echo $key->id; ?>"  class="ace-icon fa fa-trash-o bigger-130 bootbox-confirm"></i>
-																	<a href="<?php echo Request::$BASE_PATH.'permissions/edit_permission/'.$key->id ?>">
+																	<a href="<?php echo Request::$BASE_PATH.'sections/edit_section/'.$key->id ?>">
 																		<i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
 																	</a>
 															</div>
-															
-															
 
-															<!-- <div class="hidden-md hidden-lg">
-																<div class="inline pos-rel">
-																	<button class="btn btn-minier btn-yellow dropdown-toggle" data-toggle="dropdown" data-position="auto">
-																		<i class="ace-icon fa fa-caret-down icon-only bigger-120"></i>
-																	</button>
-
-																	<ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
-																		<li>
-																			<a href="#" class="tooltip-info" data-rel="tooltip" title="View">
-																				<span class="blue">
-																					<i class="ace-icon fa fa-search-plus bigger-120"></i>
-																				</span>
-																			</a>
-																		</li>
-
-																		<li>
-																			<a href="#" class="tooltip-success" data-rel="tooltip" title="Edit">
-																				<span class="green">
-																					<i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
-																				</span>
-																			</a>
-																		</li>
-
-																		<li>
-																			<a href="#" class="tooltip-error" data-rel="tooltip" title="Delete">
-																				<span class="red">
-																					<i class="ace-icon fa fa-trash-o bigger-120 delete_user"></i>
-																				</span>
-																			</a>
-																		</li>
-																	</ul>
-																</div>
-															</div> -->
 														</td>
 													</tr>
 														<?php } ?>
@@ -407,7 +340,7 @@
 						var Self = $(this);
 						bootbox.confirm("Are you sure! you wanted to delete this?", function(result) {
 							if(result) {
-								$.post("<?php echo Request::$BASE_PATH.'permissions/delete_permission/' ?>", {
+								$.post("<?php echo Request::$BASE_PATH.'sections/delete_section/' ?>", {
 				 					id: Self.attr('id'),
 				 					}).done(function(data,status){
 					 			      if(status=='success'){

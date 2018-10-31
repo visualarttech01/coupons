@@ -14,19 +14,19 @@
 
 								<div class="row">
 									<div class="col-xs-12">
-										<h3 class="header smaller lighter blue"><strong>Role's Permissions</strong></h3>
+										<h3 class="header smaller lighter blue"><strong>Networks</strong></h3>
 										
 											<?php if(isset($add_message) && $add_message!= '')
 												echo $add_message 
 												 ;?>
 										<div class="clearfix">
-											<a href="<?php echo Request::$BASE_PATH.'permissions/new_permission';?>">
-												<button class="btn btn-success"><i class="ace-icon fa fa-plus"></i> Add New Role's Permissions</button>
+											<a href="<?php echo Request::$BASE_PATH.'networks/new_network';?>">
+												<button class="btn btn-success"><i class="ace-icon fa fa-plus"></i> Add Network</button>
 											</a>
 											<div class="pull-right tableTools-container"> </div>
 										</div>
 										<div class="table-header">
-											All Role's Permission
+											All Networks
 										</div>
 
 										<!-- div.table-responsive -->
@@ -43,13 +43,9 @@
 																<span class="lbl"></span>
 															</label>
 														</th>
-														<th class="hidden-480">Roles</th>
-                                                        <th class="hidden-480">Sections</th>
-                                                        <th class="hidden-480">Add</th>
-                                                        <th class="hidden-480">Edit</th>
-                                                        <th class="hidden-480">View</th>
-                                                        <th class="hidden-480">Delete</th>
-														<th class="hidden-480">Is Active</th>
+														<th class="hidden-480">Names</th>
+                                                        <th class="hidden-480">Url</th>
+                                                        <th class="hidden-480">Is Active</th>
                                                         <th>Actions</th>
 													</tr>
 												</thead>
@@ -67,39 +63,21 @@
 															</label>
 														</td>
 														<td class="hidden-480">
-															<?php echo $key->user_role_id ;?>
+															<?php echo $key->name ;?>
 														</td>
                                                         <td class="hidden-480">
-                                                            <?php echo $key->section ;?>
+                                                            <?php echo $key->address;?>
                                                         </td>
-
-                                                        <td class="hidden-480">
-                                                            <?php if($key->p_add !='1'){echo '<span class="label label-sm label-warning">No';}else{echo '<span class="label label-sm label-success">Yes</span>';};?>
-                                                        </td>
-
-                                                        <td class="hidden-480">
-                                                          <?php if($key->p_edit !='1'){echo '<span class="label label-sm label-warning">No';}else{echo '<span class="label label-sm label-success">Yes</span>';};?>
-                                                        </td>
-
-                                                        <td class="hidden-480">
-                                                            <?php if($key->p_view !='1'){echo '<span class="label label-sm label-warning">No';}else{echo '<span class="label label-sm label-success">Yes</span>';};?>
-                                                        </td>
-
-                                                        <td class="hidden-480">
-                                                            <?php if($key->p_delete !='1'){echo '<span class="label label-sm label-warning">No';}else{echo '<span class="label label-sm label-success">Yes</span>';};?>
-                                                        </td>
-
-                                                        <td class="hidden-480">
+														<td class="center">
 															<span class="label label-sm label-warning"><?php echo $key->is_active ;?></span>
 														</td>
-
 
 														<td>
 															<div class="action-buttons">
 
 																<a class="red" href="#"></a>
 																	<i id="<?php echo $key->id; ?>"  class="ace-icon fa fa-trash-o bigger-130 bootbox-confirm"></i>
-																	<a href="<?php echo Request::$BASE_PATH.'permissions/edit_permission/'.$key->id ?>">
+																	<a href="<?php echo Request::$BASE_PATH.'networks/edit_network/'.$key->id ?>">
 																		<i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
 																	</a>
 															</div>
@@ -407,7 +385,7 @@
 						var Self = $(this);
 						bootbox.confirm("Are you sure! you wanted to delete this?", function(result) {
 							if(result) {
-								$.post("<?php echo Request::$BASE_PATH.'permissions/delete_permission/' ?>", {
+								$.post("<?php echo Request::$BASE_PATH.'networks/delete_network/' ?>", {
 				 					id: Self.attr('id'),
 				 					}).done(function(data,status){
 					 			      if(status=='success'){

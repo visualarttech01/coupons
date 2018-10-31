@@ -9,7 +9,7 @@
 
 						<div class="page-header">
 							<h1>
-								Add New User's Role
+								Add New Permission
 								<?php if(isset($message) && $message!= '')echo $message ;?>
 								<small>
 								</small>
@@ -21,32 +21,33 @@
 								<form class="form-horizontal" id="sample-form" method="post" action="<?php echo Request::$BASE_PATH.'permissions/new_permission/' ;?>" enctype="multipart/form-data">
 
                                         <div class="form-group has-info">
-                                        <label for="inputInfo" class="col-xs-12 col-sm-3 control-label no-padding-right">Role:</label>
+                                            <label for="inputInfo" class="col-xs-12 col-sm-3 control-label no-padding-right">Role:</label>
 
-                                        <div class="col-xs-12 col-sm-5">
-											<span class="block input-icon input-icon-right">
-                                                <select name="role" class="form-control" required>
-                                                    <option class="option" value="Admin">Admin</option>
-                                                    <option class="option" value="Manager">Manager</option>
+                                            <div class="col-xs-12 col-sm-5">
+                                                <span class="block input-icon input-icon-right">
+                                                    <select name="user_role_id" class="form-control" required>
+                                                        <?php if($objroles)
+                                                            foreach ($objroles as $key){?>
+                                                        <option class="option" value="<?php echo $key->role?>"><?php echo $key->role?></option>
+                                                        <?php  }?>
 
-                                                </select>
+                                                    </select>
 
-											</span>
+                                                </span>
+                                            </div>
+
                                         </div>
-
-                                    </div>
 
                                     <div class="form-group has-info">
                                         <label for="inputInfo" class="col-xs-12 col-sm-3 control-label no-padding-right">Section:</label>
 
                                         <div class="col-xs-12 col-sm-5">
 											<span class="block input-icon input-icon-right">
-                                                <select name="role" class="form-control" required>
-                                                    <option class="option" value="Admin">Users</option>
-                                                    <option class="option" value="Coupons">Coupons</option>
-                                                    <option class="option" value="Stores">Stores</option>
-                                                    <option class="option" value="Category">Category</option>
-
+                                                <select name="section" class="form-control" required>
+                                            <?php if($objsection)
+                                                foreach ($objsection as $key){?>
+                                                    <option class="option" value="<?php echo $key->name ;?>"><?php echo $key->name?></option>
+                                                <?php  }?>
                                                 </select>
 
 											</span>
@@ -59,7 +60,11 @@
 
                                         <div class="col-xs-12 col-sm-5">
 											<span class="block input-icon input-icon-right">
-                                                 <input name="p_add" type="checkbox" class="checkbox" value="0">
+                                                 <select name="p_add" class="form-control" required>
+                                                    <option class="option" value="1">Yes</option>
+                                                    <option class="option" value="0">No</option>
+
+                                                </select>
 											</span>
                                         </div>
 
@@ -70,7 +75,11 @@
 
                                         <div class="col-xs-12 col-sm-5">
 											<span class="block input-icon input-icon-right">
-                                                 <input name="p_edit" type="checkbox" class="checkbox" value="0">
+                                                 <select name="p_edit" class="form-control" required>
+                                                    <option class="option" value="1">Yes</option>
+                                                    <option class="option" value="0">No</option>
+
+                                                </select>
 											</span>
                                         </div>
 
@@ -81,7 +90,11 @@
 
                                         <div class="col-xs-12 col-sm-5">
 											<span class="block input-icon input-icon-right">
-                                                 <input name="p_view" type="checkbox" class="checkbox" value="0">
+                                                 <select name="p_view" class="form-control">
+                                                    <option class="option" value="1">Yes</option>
+                                                    <option class="option" value="0">No</option>
+
+                                                </select>
 											</span>
                                         </div>
 
@@ -92,7 +105,11 @@
 
                                         <div class="col-xs-12 col-sm-5">
 											<span class="block input-icon input-icon-right">
-                                                 <input name="p_delete" type="checkbox" class="checkbox" value="0">
+                                                 <select name="p_delete" class="form-control">
+                                                    <option class="option" value="1">Yes</option>
+                                                    <option class="option" value="0">No</option>
+
+                                                </select>
 											</span>
                                         </div>
 

@@ -16,21 +16,11 @@
 		
 		<?php switch($parameters[0]){ 
 			case 'contact': ?>
-						<!-- page specific plugin styles -->
-						<link rel="stylesheet" href="<?php echo Request::$BASE_PATH; ?>assets/css/jquery-ui.custom.min.css" />
-						<link rel="stylesheet" href="<?php echo Request::$BASE_PATH; ?>assets/css/jquery.gritter.min.css" />
-						<link rel="stylesheet" href="<?php echo Request::$BASE_PATH; ?>assets/css/select2.min.css" />
-						<link rel="stylesheet" href="<?php echo Request::$BASE_PATH; ?>assets/css/bootstrap-datepicker3.min.css" />
-						<link rel="stylesheet" href="<?php echo Request::$BASE_PATH; ?>assets/css/bootstrap-editable.min.css" />
+
 				<?php
 			case 'reminders':
 					?>
-						<!-- page specific plugin styles -->
-						<link rel="stylesheet" href="<?php echo Request::$BASE_PATH; ?>assets/css/jquery-ui.custom.min.css" />
-						<link rel="stylesheet" href="<?php echo Request::$BASE_PATH; ?>assets/css/jquery.gritter.min.css" />
-						<link rel="stylesheet" href="<?php echo Request::$BASE_PATH; ?>assets/css/select2.min.css" />
-						<link rel="stylesheet" href="<?php echo Request::$BASE_PATH; ?>assets/css/bootstrap-datepicker3.min.css" />
-						<link rel="stylesheet" href="<?php echo Request::$BASE_PATH; ?>assets/css/bootstrap-editable.min.css" />
+
 					<?php
 					break;
 			 } ?>
@@ -90,88 +80,6 @@
 
 				<div class="navbar-buttons navbar-header pull-right" role="navigation">
 					<ul class="nav ace-nav">
-						 <!-- 
-						<li class="grey dropdown-modal">
-							<a data-toggle="dropdown" class="dropdown-toggle" href="<?php echo Request::$BASE_PATH; ?>#">
-								<i class="ace-icon fa fa-tasks"></i>
-								<span class="badge badge-grey">4</span>
-							</a>
-
-							<ul class="dropdown-menu-right dropdown-navbar dropdown-menu dropdown-caret dropdown-close">
-								<li class="dropdown-header">
-									<i class="ace-icon fa fa-check"></i>
-									4 Tasks to complete
-								</li>
-
-								<li class="dropdown-content">
-									<ul class="dropdown-menu dropdown-navbar">
-										<li>
-											<a href="<?php echo Request::$BASE_PATH; ?>#">
-												<div class="clearfix">
-													<span class="pull-left">Software Update</span>
-													<span class="pull-right">65%</span>
-												</div>
-
-												<div class="progress progress-mini">
-													<div style="width:65%" class="progress-bar"></div>
-												</div>
-											</a>
-										</li>
-
-										<li>
-											<a href="<?php echo Request::$BASE_PATH; ?>#">
-												<div class="clearfix">
-													<span class="pull-left">Hardware Upgrade</span>
-													<span class="pull-right">35%</span>
-												</div>
-
-												<div class="progress progress-mini">
-													<div style="width:35%" class="progress-bar progress-bar-danger"></div>
-												</div>
-											</a>
-										</li>
-
-										<li>
-											<a href="<?php echo Request::$BASE_PATH; ?>#">
-												<div class="clearfix">
-													<span class="pull-left">Unit Testing</span>
-													<span class="pull-right">15%</span>
-												</div>
-
-												<div class="progress progress-mini">
-													<div style="width:15%" class="progress-bar progress-bar-warning"></div>
-												</div>
-											</a>
-										</li>
-
-										<li>
-											<a href="<?php echo Request::$BASE_PATH; ?>#">
-												<div class="clearfix">
-													<span class="pull-left">Bug Fixes</span>
-													<span class="pull-right">90%</span>
-												</div>
-
-												<div class="progress progress-mini progress-striped active">
-													<div style="width:90%" class="progress-bar progress-bar-success"></div>
-												</div>
-											</a>
-										</li>
-									</ul>
-								</li>
-
-								<li class="dropdown-footer">
-									<a href="<?php echo Request::$BASE_PATH; ?>#">
-										See tasks with details
-										<i class="ace-icon fa fa-arrow-right"></i>
-									</a>
-								</li>
-							</ul>
-						</li> -->
-
-
-
-
-						
 
 						<li class="light-blue dropdown-modal">
 							<a data-toggle="dropdown" href="<?php echo Request::$BASE_PATH; ?>#" class="dropdown-toggle">
@@ -184,23 +92,7 @@
 							</a>
 
 							<ul class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
-<!--								--><?php //if(Session::GetUser()->role == 'admin'){ ?>
-<!--								<li>-->
-<!--									<a href="--><?php //echo Request::$BASE_PATH.'users'; ?><!--">-->
-<!--										<i class="ace-icon fa fa-cog"></i>-->
-<!--										Settings-->
-<!--									</a>-->
-<!--								</li>-->
-<!--								--><?php //} ?>
-
-								<li>
-									<a href="<?php echo Request::$BASE_PATH; ?>profile">
-										<i class="ace-icon fa fa-user"></i>
-										Profile
-									</a>
-								</li>
-
-								<li class="divider"></li>
+                                <li class="divider"></li>
 
 								<li>
 									<a href="<?php echo Request::$BASE_PATH.'logout'; ?>">
@@ -257,65 +149,94 @@
 				</div><!-- /.sidebar-shortcuts -->
 
 				<ul class="nav nav-list">
-					<li  class="<?php if($parameters[0]=='Home'){ echo 'active'; } ?>">
-						<a href="<?php echo Request::$BASE_PATH; ?>">
+					<li  class="<?php if($parameters[0]=='categories'){ echo 'active'; } ?>">
+						<a href="<?php echo Request::$BASE_PATH.'categories'; ?>">
 							<i class="menu-icon fa fa-tachometer"></i>
-							<span class="menu-text"> Dashboard </span>
+							<span class="menu-text"> Categories </span>
 						</a>
 
 						<b class="arrow"></b>
 					</li>
-					<li class="<?php if($parameters[0]=='companies'){ echo 'active'; } ?>">
-						<a href="<?php echo Request::$BASE_PATH.'companies'; ?>">
-							<i class="menu-icon fa fa-group"></i>
-							<span class="menu-text"> Medicine Companies</span>
-						</a>
 
-						<b class="arrow"></b>
-					</li>
-					<li class="<?php if($parameters[0]=='types'){ echo 'active'; } ?>">
-						<a href="<?php echo Request::$BASE_PATH.'types'; ?>">
-							<i class="menu-icon fa fa-group"></i>
-							<span class="menu-text"> Medicine Types</span>
-						</a>
+                    <li  class="<?php if($parameters[0]=='networks'){ echo 'active'; } ?>">
+                        <a href="<?php echo Request::$BASE_PATH.'networks'; ?>">
+                            <i class="menu-icon fa fa-tachometer"></i>
+                            <span class="menu-text"> Networks </span>
+                        </a>
 
-						<b class="arrow"></b>
-					</li>
-					<li class="<?php if($parameters[0]=='powers'){ echo 'active'; } ?>">
-						<a href="<?php echo Request::$BASE_PATH.'powers'; ?>">
-							<i class="menu-icon fa fa-group"></i>
-							<span class="menu-text"> Medicine Powers</span>
-						</a>
+                        <b class="arrow"></b>
+                    </li>
 
-						<b class="arrow"></b>
-					</li>
-					<li class="<?php if($parameters[0]=='medicines'){ echo 'active'; } ?>">
-						<a href="<?php echo Request::$BASE_PATH.'medicines'; ?>">
-							<i class="menu-icon fa fa-pills"></i>
-							<span class="menu-text"> Medicines</span>
-						</a>
+                    <li  class="<?php if($parameters[0]=='stores'){ echo 'active'; } ?>">
+                        <a href="<?php echo Request::$BASE_PATH.'stores'; ?>">
+                            <i class="menu-icon fa fa-tachometer"></i>
+                            <span class="menu-text"> Stores </span>
+                        </a>
 
-						<b class="arrow"></b>
-					</li>
-					<li class="<?php if($parameters[0]=='reminders'){ echo 'active'; } ?>">
-						<a href="<?php echo Request::$BASE_PATH.'reminders'; ?>">
-							<i class="menu-icon fa fa-bell"></i>
-							<span class="menu-text">My Reminders </span>
-						</a>
+                        <b class="arrow"></b>
+                    </li>
+                    <li  class="<?php if($parameters[0]=='coupons'){ echo 'active'; } ?>">
+                        <a href="<?php echo Request::$BASE_PATH.'coupons'; ?>">
+                            <i class="menu-icon fa fa-tachometer"></i>
+                            <span class="menu-text"> Coupons </span>
+                        </a>
 
-						<b class="arrow"></b>
-					</li>
-					<li class="<?php if($parameters[0]=='notifications'){ echo 'active'; } ?>">
-						<a href="<?php echo Request::$BASE_PATH.'notifications'; ?>">
-							<i class="menu-icon fa fa-envelope"></i>
-							<span class="menu-text">My Notifications </span>
-						</a>
+                        <b class="arrow"></b>
+                    </li>
+                    <li  class="<?php if($parameters[0]=='setting'){ echo 'active'; } ?>">
+                        <a href="<?php echo Request::$BASE_PATH.'setting'; ?>">
+                            <i class="menu-icon fa fa-tachometer"></i>
+                            <span class="menu-text"> Global Setting </span>
+                        </a>
 
-						<b class="arrow"></b>
-					</li>
-					
+                        <b class="arrow"></b>
+                    </li>
 
-									</ul><!-- /.nav-list -->
+                    <li  class="<?php if($parameters[0]=='sections'){ echo 'active'; } ?>">
+                        <a href="<?php echo Request::$BASE_PATH.'sections'; ?>">
+                            <i class="menu-icon fa fa-tachometer"></i>
+                            <span class="menu-text"> Sections </span>
+                        </a>
+
+                        <b class="arrow"></b>
+                    </li>
+
+                    <li  class="<?php if($parameters[0]=='roles'){ echo 'active'; } ?>">
+                        <a href="<?php echo Request::$BASE_PATH.'roles'; ?>">
+                            <i class="menu-icon fa fa-tachometer"></i>
+                            <span class="menu-text"> Roles </span>
+                        </a>
+
+                        <b class="arrow"></b>
+                    </li>
+
+                    <li  class="<?php if($parameters[0]=='permissions'){ echo 'active'; } ?>">
+                        <a href="<?php echo Request::$BASE_PATH.'permissions'; ?>">
+                            <i class="menu-icon fa fa-tachometer"></i>
+                            <span class="menu-text"> Permissions </span>
+                        </a>
+
+                        <b class="arrow"></b>
+                    </li>
+
+                    <li  class="<?php if($parameters[0]=='users'){ echo 'active'; } ?>">
+                        <a href="<?php echo Request::$BASE_PATH.'users'; ?>">
+                            <i class="menu-icon fa fa-tachometer"></i>
+                            <span class="menu-text"> Users </span>
+                        </a>
+
+                        <b class="arrow"></b>
+                    </li>
+
+                    <li  class="<?php if($parameters[0]=='reports'){ echo 'active'; } ?>">
+                        <a href="<?php echo Request::$BASE_PATH.'reports'; ?>">
+                            <i class="menu-icon fa fa-tachometer"></i>
+                            <span class="menu-text"> Users Report </span>
+                        </a>
+
+                        <b class="arrow"></b>
+                    </li>
+                </ul><!-- /.nav-list -->
 
 				<div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
 					<i id="sidebar-toggle-icon" class="ace-icon fa fa-angle-double-left ace-save-state" data-icon1="ace-icon fa fa-angle-double-left" data-icon2="ace-icon fa fa-angle-double-right"></i>

@@ -36,8 +36,25 @@
 				return false;
 			}
 		}
+        //======================================================== COMPANY BY ID ============================================
+        static function select($field,$table){
+            global $DB;
 
-		//======================================================== All USERS ============================================
+            $sql="SELECT ".$field."
+					FROM ".$table."
+					WHERE is_active = 1
+					ORDER BY id DESC";
+
+            $objData=$DB->Select($sql);
+            if($objData){
+
+                return $objData;
+            }else{
+                return false;
+            }
+        }
+
+        //======================================================== All USERS ============================================
 		static function all_users(){
 			global $DB;
 			

@@ -98,6 +98,10 @@
                         switch ($parameters[1]){
                             case 'new_permission':
                                 if(Session::GetUser()->user_role_id == '1'){
+                                    $objroles=Content::select('role','user_roles');
+                                    $objPresenter->AddParameter('objroles',$objroles);
+                                    $objsection=Content::select('name','sections');
+                                    $objPresenter->AddParameter('objsection',$objsection);
                                     if(Request::hasPostVariables()){
                                         $objData = Request::getPostVariables();
                                         $objData->created = date ( 'Y-m-d H:i:s' );
@@ -128,6 +132,10 @@
                                             $objPresenter->AddParameter('objData',$objData);
                                         }
                                     }
+                                    $objroles=Content::select('role','user_roles');
+                                    $objPresenter->AddParameter('objroles',$objroles);
+                                    $objsection=Content::select('name','sections');
+                                    $objPresenter->AddParameter('objsection',$objsection);
                                     $objPresenter->AddTemplate('edit_permission');
                                 }else{
                                     header ( "Location: " . Request::$BASE_PATH );
@@ -141,7 +149,7 @@
                                         $objData = Request::getPostVariables();
                                         if(Session::GetUser()->user_role_id == '1'){
                                             global $DB;
-                                            if($DB->Delete("DELETE FROM user_roles WHERE id = ".$objData->id)){
+                                            if($DB->Delete("DELETE FROM role_permissions WHERE id = ".$objData->id)){
                                                 echo 'Success';
                                             }else{
                                                 echo 'Fail';
@@ -166,6 +174,240 @@
 
                     break;
 
+                case 'categories':
+                    $objall =Content::All('categories');
+                    $objPresenter->AddParameter('objall', $objall);
+                    if (!isset($parameters[1]) && $parameters[1]= ' '){
+                        $objPresenter->AddTemplate('categories');
+                    }else {
+                        switch ($parameters[1]){
+                            case 'new_category':
+                                if(Session::GetUser()->user_role_id == '1'){
+
+                                    if(Request::hasPostVariables()){
+                                        $objData = Request::getPostVariables();
+                                        $objData->created = date ( 'Y-m-d H:i:s' );
+                                        $objData->is_active = '1';
+                                        global $DB;
+                                        $DB->Save ( 'categories', $objData );
+                                        $objPresenter->AddParameter ( 'add_message', '<div class="alert alert-success"><strong>Success</strong> Company Added</div>' );
+                                        header ( "Location: " . Request::$BASE_PATH.'categories/' );
+                                    }
+                                }else{
+                                    header ( "Location: " . Request::$BASE_PATH );
+                                }
+                                $objPresenter->AddTemplate('add_category');
+                                break;
+                            case 'edit_category':
+
+                                if(Session::GetUser()->user_role_id == '1' && Session::isUserOnline()){
+                                    if($parameters[2] !='' && isset($parameters[2])){
+                                        if(Request::hasPostVariables()){
+                                            $objData = Request::getPostVariables();
+                                            global $DB;
+                                            $DB->Save ( 'categories', $objData );
+                                            $objPresenter->AddParameter ( 'add_message', '<div class="alert alert-success"><strong>Success</strong> Updated Record </div>' );
+                                            header ( "Location: " . Request::$BASE_PATH.'categories/' );
+                                        }else{
+                                            $id=intval($parameters[2]);
+                                            $objData =Content::find_by_id($id,'categories');
+                                            $objPresenter->AddParameter('objData',$objData);
+                                        }
+                                    }
+                                    $objPresenter->AddTemplate('edit_category');
+                                }else{
+                                    header ( "Location: " . Request::$BASE_PATH );
+                                }
+
+
+                                break;
+                            case 'delete_category':
+                                if(Session::isUserOnline()){
+                                    if(Request::hasPostVariables()){
+                                        $objData = Request::getPostVariables();
+                                        if(Session::GetUser()->user_role_id == '1'){
+                                            global $DB;
+                                            if($DB->Delete("DELETE FROM categories WHERE id = ".$objData->id)){
+                                                echo 'Success';
+                                            }else{
+                                                echo 'Fail';
+                                            }
+                                        }else{
+                                            echo "You are not Admin.";
+
+                                        }
+                                        exit;
+                                    }
+                                }else{
+                                    header ( "Location: " . Request::$BASE_PATH );
+                                }
+
+                                exit;
+                                break;
+                            default:
+                                $objPresenter->AddTemplate('new_category');
+                                break;
+                        }
+                    }
+
+                    break;
+
+                case 'networks':
+                    $objall =Content::All('networks');
+                    $objPresenter->AddParameter('objall', $objall);
+                    if (!isset($parameters[1]) && $parameters[1]= ' '){
+                        $objPresenter->AddTemplate('networks');
+                    }else {
+                        switch ($parameters[1]){
+                            case 'new_network':
+                                if(Session::GetUser()->user_role_id == '1'){
+
+                                    if(Request::hasPostVariables()){
+                                        $objData = Request::getPostVariables();
+                                        $objData->created = date ( 'Y-m-d H:i:s' );
+                                        $objData->is_active = '1';
+                                        global $DB;
+                                        $DB->Save ( 'networks', $objData );
+                                        $objPresenter->AddParameter ( 'add_message', '<div class="alert alert-success"><strong>Success</strong> Company Added</div>' );
+                                        header ( "Location: " . Request::$BASE_PATH.'networks/' );
+                                    }
+                                }else{
+                                    header ( "Location: " . Request::$BASE_PATH );
+                                }
+                                $objPresenter->AddTemplate('add_network');
+                                break;
+                            case 'edit_network':
+
+                                if(Session::GetUser()->user_role_id == '1' && Session::isUserOnline()){
+                                    if($parameters[2] !='' && isset($parameters[2])){
+                                        if(Request::hasPostVariables()){
+                                            $objData = Request::getPostVariables();
+                                            global $DB;
+                                            $DB->Save ( 'networks', $objData );
+                                            $objPresenter->AddParameter ( 'add_message', '<div class="alert alert-success"><strong>Success</strong> Updated Record </div>' );
+                                            header ( "Location: " . Request::$BASE_PATH.'networks/' );
+                                        }else{
+                                            $id=intval($parameters[2]);
+                                            $objData =Content::find_by_id($id,'networks');
+                                            $objPresenter->AddParameter('objData',$objData);
+                                        }
+                                    }
+                                    $objPresenter->AddTemplate('edit_network');
+                                }else{
+                                    header ( "Location: " . Request::$BASE_PATH );
+                                }
+
+
+                                break;
+                            case 'delete_network':
+                                if(Session::isUserOnline()){
+                                    if(Request::hasPostVariables()){
+                                        $objData = Request::getPostVariables();
+                                        if(Session::GetUser()->user_role_id == '1'){
+                                            global $DB;
+                                            if($DB->Delete("DELETE FROM networks WHERE id = ".$objData->id)){
+                                                echo 'Success';
+                                            }else{
+                                                echo 'Fail';
+                                            }
+                                        }else{
+                                            echo "You are not Admin.";
+
+                                        }
+                                        exit;
+                                    }
+                                }else{
+                                    header ( "Location: " . Request::$BASE_PATH );
+                                }
+
+                                exit;
+                                break;
+                            default:
+                                $objPresenter->AddTemplate('new_network');
+                                break;
+                        }
+                    }
+
+                    break;
+
+                case 'sections':
+                    $objall =Content::All('sections');
+                    $objPresenter->AddParameter('objall', $objall);
+                    if (!isset($parameters[1]) && $parameters[1]= ' '){
+                        $objPresenter->AddTemplate('sections');
+                    }else {
+                        switch ($parameters[1]){
+                            case 'new_section':
+                                if(Session::GetUser()->user_role_id == '1'){
+
+                                    if(Request::hasPostVariables()){
+                                        $objData = Request::getPostVariables();
+                                        $objData->created = date ( 'Y-m-d H:i:s' );
+                                        $objData->is_active = '1';
+                                        global $DB;
+                                        $DB->Save ( 'sections', $objData );
+                                        $objPresenter->AddParameter ( 'add_message', '<div class="alert alert-success"><strong>Success</strong> Company Added</div>' );
+                                        header ( "Location: " . Request::$BASE_PATH.'sections/' );
+                                    }
+                                }else{
+                                    header ( "Location: " . Request::$BASE_PATH );
+                                }
+                                $objPresenter->AddTemplate('add_section');
+                                break;
+                            case 'edit_section':
+
+                                if(Session::GetUser()->user_role_id == '1' && Session::isUserOnline()){
+                                    if($parameters[2] !='' && isset($parameters[2])){
+                                        if(Request::hasPostVariables()){
+                                            $objData = Request::getPostVariables();
+                                            global $DB;
+                                            $DB->Save ( 'sections', $objData );
+                                            $objPresenter->AddParameter ( 'add_message', '<div class="alert alert-success"><strong>Success</strong> Updated Record </div>' );
+                                            header ( "Location: " . Request::$BASE_PATH.'sections/' );
+                                        }else{
+                                            $id=intval($parameters[2]);
+                                            $objData =Content::find_by_id($id,'sections');
+                                            $objPresenter->AddParameter('objData',$objData);
+                                        }
+                                    }
+                                    $objPresenter->AddTemplate('edit_section');
+                                }else{
+                                    header ( "Location: " . Request::$BASE_PATH );
+                                }
+
+
+                                break;
+                            case 'delete_section':
+                                if(Session::isUserOnline()){
+                                    if(Request::hasPostVariables()){
+                                        $objData = Request::getPostVariables();
+                                        if(Session::GetUser()->user_role_id == '1'){
+                                            global $DB;
+                                            if($DB->Delete("DELETE FROM sections WHERE id = ".$objData->id)){
+                                                echo 'Success';
+                                            }else{
+                                                echo 'Fail';
+                                            }
+                                        }else{
+                                            echo "You are not Admin.";
+
+                                        }
+                                        exit;
+                                    }
+                                }else{
+                                    header ( "Location: " . Request::$BASE_PATH );
+                                }
+
+                                exit;
+                                break;
+                            default:
+                                $objPresenter->AddTemplate('new_section');
+                                break;
+                        }
+                    }
+
+                    break;
+
 				case 'login':
 							if(!Session::isUserOnline()){
 								if(Request::hasPostVariables()){
@@ -181,6 +423,7 @@
 								header ( "Location: " . Request::$BASE_PATH );
 							}
 							break;
+
 				case 'logout':
 							if (Session::isUserOnline()){
 								Session::Destroy();
@@ -189,6 +432,7 @@
 								header ( "Location: " . Request::$BASE_PATH );
 							}
 							break;
+
                 case 'users':
                     $objall_users =Content::all_users();
                     $objPresenter->AddParameter('objall_users', $objall_users);
@@ -247,18 +491,15 @@
 
                     break;
 
-
-
-
                 default:
-						if(Session::isUserOnline()){
+                    if(Session::isUserOnline()){
 
 
-			            }else {
-		            		$objPresenter->AddTemplate('login');
-			            }
-						break;
-            						
+                    }else {
+                        $objPresenter->AddTemplate('login');
+                    }
+                    break;
+
             }
             
 	        if(Session::isUserOnline()){

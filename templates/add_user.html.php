@@ -24,7 +24,7 @@
 
 										<div class="col-xs-12 col-sm-5">
 											<span class="block input-icon input-icon-right">
-												<input type="text" name="name" id="inputInfo" class="width-100" required/>
+												<input type="text" name="user_name" id="inputInfo" class="width-100" required/>
 												
 											</span>
 										</div>
