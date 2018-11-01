@@ -1,21 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3e7448eb-a683-48c6-9ada-f0cd8899f474" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/Content.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/classes/Content.class.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/Gateway.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/classes/Gateway.class.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/add_category.html.php" beforeDir="false" afterPath="$PROJECT_DIR$/templates/add_category.html.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/add_permission.html.php" beforeDir="false" afterPath="$PROJECT_DIR$/templates/add_permission.html.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/add_user.html.php" beforeDir="false" afterPath="$PROJECT_DIR$/templates/add_user.html.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/categories.html.php" beforeDir="false" afterPath="$PROJECT_DIR$/templates/categories.html.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/edit_category.html.php" beforeDir="false" afterPath="$PROJECT_DIR$/templates/edit_category.html.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/edit_permission.html.php" beforeDir="false" afterPath="$PROJECT_DIR$/templates/edit_permission.html.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/header.html.php" beforeDir="false" afterPath="$PROJECT_DIR$/templates/header.html.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/permissions.html.php" beforeDir="false" afterPath="$PROJECT_DIR$/templates/permissions.html.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/roles.html.php" beforeDir="false" afterPath="$PROJECT_DIR$/templates/roles.html.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/users.html.php" beforeDir="false" afterPath="$PROJECT_DIR$/templates/users.html.php" afterDir="false" />
-    </list>
+    <list default="true" id="3e7448eb-a683-48c6-9ada-f0cd8899f474" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,7 +64,7 @@
         <entry file="file://$PROJECT_DIR$/classes/Gateway.class.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="478">
-              <caret line="110" column="47" selection-start-line="110" selection-start-column="47" selection-end-line="110" selection-end-column="47" />
+              <caret line="110" selection-start-line="110" selection-end-line="110" />
               <folding>
                 <element signature="e#439#4815#0#PHP" />
                 <element signature="e#4833#9979#0#PHP" />
@@ -263,18 +249,17 @@
       <workItem from="1540963818556" duration="16012000" />
       <workItem from="1540992264296" duration="1853000" />
       <workItem from="1541051101669" duration="4042000" />
-      <workItem from="1541055843756" duration="20112000" />
+      <workItem from="1541055843756" duration="20359000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="66832000" />
+    <option name="totallyTimeSpent" value="67079000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1296" height="1000" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16181229" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16181229" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -287,7 +272,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="9" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Terminal" order="10" weight="0.3290993" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.3290993" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -585,7 +570,7 @@
     <entry file="file://$PROJECT_DIR$/classes/Gateway.class.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="478">
-          <caret line="110" column="47" selection-start-line="110" selection-start-column="47" selection-end-line="110" selection-end-column="47" />
+          <caret line="110" selection-start-line="110" selection-end-line="110" />
           <folding>
             <element signature="e#439#4815#0#PHP" />
             <element signature="e#4833#9979#0#PHP" />
