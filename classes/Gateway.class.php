@@ -12,6 +12,154 @@
             }
             
 			switch ($parameters[0]){
+
+                case 'stores':
+                    $objall =Content::All('stores');
+                    $objPresenter->AddParameter('objall', $objall);
+                    if (!isset($parameters[1]) && $parameters[1]= ' '){
+                        $objPresenter->AddTemplate('stores');
+                    }else {
+                        switch ($parameters[1]){
+                            case 'new_store':
+                                if(Session::GetUser()->user_role_id == '1'){
+                                    $objcategories=Content::select('name','categories');
+                                    $objPresenter->AddParameter('objcategories',$objcategories);
+                                    $objnetworks=Content::select('name','networks');
+                                    $objPresenter->AddParameter('objnetworks',$objnetworks);
+                                    if(Request::hasPostVariables()){
+                                        $objData = Request::getPostVariables();
+                                        if (isset ( $_FILES ['image'] ['name'] ) && $_FILES ['image'] ['name'] != '') {
+                                            // ===========================Get file information=======================
+                                            $filename = pathinfo ( $_FILES ['image'] ['name'], PATHINFO_FILENAME );
+                                            $file_ext = pathinfo ( $_FILES ['image'] ['name'], PATHINFO_EXTENSION );
+                                            $file_size = $_FILES ['image'] ['size'];
+                                            // ==========================update file path name ======================
+                                            $filename = $filename . '_' . uniqid ();
+                                            // echo $filename;
+                                            $filename = $filename . '.' . $file_ext;
+                                            // ============================= validations ============================
+                                            if ($file_ext == 'jpeg' || $file_ext == 'jpg' || $file_ext == 'png' || $file_ext == 'gif') {
+                                                $target_path = 'images/stores/';
+                                                $target_path = $target_path . $filename;
+                                                if (move_uploaded_file ( $_FILES ['image'] ['tmp_name'], $target_path )) {
+                                                    $objData->logo = $filename;
+                                                    $objData->created = date ( 'Y-m-d H:i:s' );
+                                                    $objData->is_active = '1';
+                                                    global $DB;
+                                                    $DB->Save ( 'stores', $objData );
+                                                    $objPresenter->AddParameter ( 'add_message', '<div class="alert alert-success"><strong>Success</strong></div>' );
+                                                    header ( "Location: " . Request::$BASE_PATH.'stores/' );
+
+                                                } else {
+                                                    $objPresenter->AddParameter ( 'add_message', '<div class="alert alert-danger"><strong>Pleas upload Image png/jpg/jpeg/gif</strong></div>' );
+
+                                                }
+                                            }
+                                        }else{
+                                            $objPresenter->AddParameter ( 'add_message', '<div class="alert alert-danger"><strong>Please upload Store Logo</strong></div>' );
+                                        }
+
+                                    }
+                                }else{
+                                    header ( "Location: " . Request::$BASE_PATH );
+                                }
+                                $objPresenter->AddTemplate('add_store');
+                                break;
+                            case 'edit_store':
+
+                                if(Session::GetUser()->user_role_id == '1' && Session::isUserOnline()){
+                                    $objcategories=Content::select('name','categories');
+                                    $objPresenter->AddParameter('objcategories',$objcategories);
+                                    $objnetworks=Content::select('name','networks');
+                                    $objPresenter->AddParameter('objnetworks',$objnetworks);
+                                    if($parameters[2] !='' && isset($parameters[2])){
+                                        if(Request::hasPostVariables()){
+                                            $objData = Request::getPostVariables();
+
+
+                                            if (isset ( $_FILES ['image'] ['name'] ) && $_FILES ['image'] ['name'] != '') {
+                                                // ===========================Get file information=======================
+                                                $filename = pathinfo ( $_FILES ['image'] ['name'], PATHINFO_FILENAME );
+                                                $file_ext = pathinfo ( $_FILES ['image'] ['name'], PATHINFO_EXTENSION );
+                                                $file_size = $_FILES ['image'] ['size'];
+                                                // ==========================update file path name ======================
+                                                $filename = $filename . '_' . uniqid ();
+                                                // echo $filename;
+                                                $filename = $filename . '.' . $file_ext;
+                                                // ============================= validations ============================
+                                                if ($file_ext == 'jpeg' || $file_ext == 'jpg' || $file_ext == 'png' || $file_ext == 'gif') {
+                                                    $target_path = 'images/stores/';
+                                                    $target_path = $target_path . $filename;
+                                                    if (move_uploaded_file ( $_FILES ['image'] ['tmp_name'], $target_path )) {
+                                                        $olddata = $objData->logo;
+                                                        $objData->logo = $filename;
+                                                        global $DB;
+                                                        $DB->Save ( 'stores', $objData );
+                                                        unlink ( 'images/stores/'.$olddata );
+                                                        $objPresenter->AddParameter ( 'add_message', '<div class="alert alert-success"><strong>Success</strong></div>' );
+                                                        header ( "Location: " . Request::$BASE_PATH.'stores/' );
+
+                                                    } else {
+                                                        $objPresenter->AddParameter ( 'Message', '<div class="alert alert-danger"><strong>Error</strong> Uploading Image Try Again Later!</div>' );
+
+                                                    }
+                                                } else {
+                                                    $objPresenter->AddParameter ( 'Message', '<div class="alert alert-danger"><strong>Error</strong>Please upload Image png/jpg/jpeg/gif!</div>' );
+
+                                                }
+                                            }else{
+
+                                                global $DB;
+                                                if($DB->Save ( 'stores', $objData )){
+                                                    $objPresenter->AddParameter ( 'add_message', '<div class="alert alert-success"><strong>Success</strong> Updated Record </div>' );
+                                                    header ( "Location: " . Request::$BASE_PATH.'stores/' );
+                                                }
+                                            }
+
+                                        }else{
+                                            $id=intval($parameters[2]);
+                                            $objData =Content::find_by_id($id,'stores');
+                                            $objPresenter->AddParameter('objData',$objData);
+                                        }
+                                    }
+                                    $objPresenter->AddTemplate('edit_store');
+                                }else{
+                                    header ( "Location: " . Request::$BASE_PATH );
+                                }
+
+
+                                break;
+                            case 'delete_store':
+                                if(Session::isUserOnline()){
+                                    if(Request::hasPostVariables()){
+                                        $objData = Request::getPostVariables();
+                                        if(Session::GetUser()->user_role_id == '1'){
+                                            global $DB;
+                                            if($DB->Delete("DELETE FROM stores WHERE id = ".$objData->id)){
+                                                echo 'Success';
+                                            }else{
+                                                echo 'Fail';
+                                            }
+                                        }else{
+                                            echo "You are not Admin.";
+
+                                        }
+                                        exit;
+                                    }
+                                }else{
+                                    header ( "Location: " . Request::$BASE_PATH );
+                                }
+
+                                exit;
+                                break;
+                            default:
+                                $objPresenter->AddTemplate('new_role');
+                                break;
+                        }
+                    }
+
+                    break;
+
                 case 'roles':
                     $objroles =Content::All('user_roles');
                     $objPresenter->AddParameter('objroles', $objroles);
@@ -90,7 +238,7 @@
                     break;
 
                 case 'permissions':
-                    $objall =Content::All('role_permissions');
+                    $objall=Content::relation('*','role_permissions','user_roles','role','user_role_id');
                     $objPresenter->AddParameter('objall', $objall);
                     if (!isset($parameters[1]) && $parameters[1]= ' '){
                         $objPresenter->AddTemplate('permissions');
@@ -98,7 +246,7 @@
                         switch ($parameters[1]){
                             case 'new_permission':
                                 if(Session::GetUser()->user_role_id == '1'){
-                                    $objroles=Content::select('role','user_roles');
+                                    $objroles=Content::select('*','user_roles');
                                     $objPresenter->AddParameter('objroles',$objroles);
                                     $objsection=Content::select('name','sections');
                                     $objPresenter->AddParameter('objsection',$objsection);
@@ -132,7 +280,7 @@
                                             $objPresenter->AddParameter('objData',$objData);
                                         }
                                     }
-                                    $objroles=Content::select('role','user_roles');
+                                    $objroles=Content::select('*','user_roles');
                                     $objPresenter->AddParameter('objroles',$objroles);
                                     $objsection=Content::select('name','sections');
                                     $objPresenter->AddParameter('objsection',$objsection);
@@ -173,6 +321,45 @@
                     }
 
                     break;
+
+                case 'global_settings':
+                $objall =Content::All('global_settings');
+                $objPresenter->AddParameter('objall', $objall);
+                if (!isset($parameters[1]) && $parameters[1]= ' '){
+                    $objPresenter->AddTemplate('settings');
+                }else {
+                    switch ($parameters[1]){
+                        case 'edit_settings':
+
+                            if(Session::GetUser()->user_role_id == '1' && Session::isUserOnline()){
+                                if($parameters[2] !='' && isset($parameters[2])){
+                                    if(Request::hasPostVariables()){
+                                        $objData = Request::getPostVariables();
+                                        global $DB;
+                                        $DB->Save ( 'global_settings', $objData );
+                                        $objPresenter->AddParameter ( 'add_message', '<div class="alert alert-success"><strong>Success</strong> Updated Record </div>' );
+                                        header ( "Location: " . Request::$BASE_PATH.'global_settings/' );
+                                    }else{
+                                        $id=intval($parameters[2]);
+                                        $objData =Content::find_by_id($id,'global_settings');
+                                        $objPresenter->AddParameter('objData',$objData);
+                                    }
+                                }
+                                $objPresenter->AddTemplate('edit_settings');
+                            }else{
+                                header ( "Location: " . Request::$BASE_PATH );
+                            }
+
+
+                            break;
+
+                        default:
+                            header ( "Location: " . Request::$BASE_PATH.'global_settings' );
+                            break;
+                    }
+                }
+
+                break;
 
                 case 'categories':
                     $objall =Content::All('categories');
@@ -434,7 +621,7 @@
 							break;
 
                 case 'users':
-                    $objall_users =Content::all_users();
+                    $objall_users =Content::relation('*','users','user_roles','role','user_role_id');
                     $objPresenter->AddParameter('objall_users', $objall_users);
                     if (!isset($parameters[1]) && $parameters[1]=''){
                         $objPresenter->AddTemplate('users');
@@ -442,8 +629,11 @@
                         switch ($parameters[1]){
                             case 'new_user':
                                 if(Session::GetUser()->user_role_id == '1'){
+                                    $objroles=Content::select('*','user_roles');
+                                    $objPresenter->AddParameter('objroles',$objroles);
                                     if(Request::hasPostVariables()){
                                         $objData = Request::getPostVariables();
+
                                         if(User::CheckEmail($objData->email)){
                                             $objData->created = date ( 'Y-m-d H:i:s' );
                                             $objData->is_active = '1';
@@ -461,7 +651,7 @@
                                 }
                                 $objPresenter->AddTemplate('add_user');
                                 break;
-                            case 'delete':
+                            case 'delete_user':
                                 if(Session::isUserOnline()){
                                     if(Request::hasPostVariables()){
                                         $objData = Request::getPostVariables();
@@ -480,8 +670,33 @@
                                 }else{
                                     header ( "Location: " . Request::$BASE_PATH );
                                 }
+                                break;
+                            case 'edit_user':
 
-                                exit;
+                                if(Session::GetUser()->user_role_id == '1' && Session::isUserOnline()){
+
+                                    if($parameters[2] !='' && isset($parameters[2])){
+                                        $objroles=Content::select('*','user_roles');
+                                        $objPresenter->AddParameter('objroles',$objroles);
+
+                                        if(Request::hasPostVariables()){
+                                            $objData = Request::getPostVariables();
+                                            global $DB;
+                                            $DB->Save ( 'users', $objData );
+                                            $objPresenter->AddParameter ( 'add_message', '<div class="alert alert-success"><strong>Success</strong> Updated Record </div>' );
+                                            header ( "Location: " . Request::$BASE_PATH.'users/' );
+                                        }else{
+                                            $id=intval($parameters[2]);
+                                            $objData =Content::find_by_id($id,'users');
+                                            $objPresenter->AddParameter('objData',$objData);
+                                        }
+                                    }
+
+                                    $objPresenter->AddTemplate('edit_user');
+                                }else{
+                                    header ( "Location: " . Request::$BASE_PATH );
+                                }
+
                                 break;
                             default:
                                 $objPresenter->AddTemplate('users');

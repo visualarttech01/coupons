@@ -24,16 +24,16 @@
                             <label for="inputInfo" class="col-xs-12 col-sm-3 control-label no-padding-right">Role:</label>
 
                             <div class="col-xs-12 col-sm-5">
-                                                <span class="block input-icon input-icon-right">
-                                                    <select name="user_role_id" class="form-control" required>
-                                                        <?php if($objroles)
-                                                            foreach ($objroles as $key){?>
-                                                                <option class="option" value="<?php echo $key->role?>"<?php if($key->role==$objData->user_role_id)echo 'selected' ;?>><?php echo $key->role?></option>
-                                                            <?php  }?>
+                                <span class="block input-icon input-icon-right">
+                                    <select name="user_role_id" class="form-control" required>
+                                        <?php if($objroles)
+                                            foreach ($objroles as $key){?>
+                                                <option class="option" value="<?php echo $key->id?>"<?php if($key->id==$objData->user_role_id)echo 'selected' ;?>><?php echo $key->role?></option>
+                                            <?php  }?>
 
-                                                    </select>
+                                    </select>
 
-                                                </span>
+                                </span>
                             </div>
 
                         </div>

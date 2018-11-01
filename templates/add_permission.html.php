@@ -28,7 +28,7 @@
                                                     <select name="user_role_id" class="form-control" required>
                                                         <?php if($objroles)
                                                             foreach ($objroles as $key){?>
-                                                        <option class="option" value="<?php echo $key->role?>"><?php echo $key->role?></option>
+                                                        <option class="option" value="<?php echo $key->id?>"><?php echo $key->role?></option>
                                                         <?php  }?>
 
                                                     </select>

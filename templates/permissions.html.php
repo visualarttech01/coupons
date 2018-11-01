@@ -67,7 +67,7 @@
 															</label>
 														</td>
 														<td class="hidden-480">
-															<?php echo $key->user_role_id ;?>
+															<?php echo $key->role ;?>
 														</td>
                                                         <td class="hidden-480">
                                                             <?php echo $key->section ;?>

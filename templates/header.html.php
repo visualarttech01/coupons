@@ -183,8 +183,8 @@
 
                         <b class="arrow"></b>
                     </li>
-                    <li  class="<?php if($parameters[0]=='setting'){ echo 'active'; } ?>">
-                        <a href="<?php echo Request::$BASE_PATH.'setting'; ?>">
+                    <li  class="<?php if($parameters[0]=='global_settings'){ echo 'active'; } ?>">
+                        <a href="<?php echo Request::$BASE_PATH.'global_settings'; ?>">
                             <i class="menu-icon fa fa-tachometer"></i>
                             <span class="menu-text"> Global Setting </span>
                         </a>

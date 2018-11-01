@@ -46,7 +46,7 @@
 <!--														<th class="hidden-480">Profile</th>-->
 														<th>Name</th>
 														<th>Email</th>
-														
+                                                        <th>Role</th>
 
 														<th>
 															<i class="ace-icon bigger-110 hidden-480"></i>
@@ -55,7 +55,7 @@
 														
 														<th class="hidden-480">Is Active</th>
 
-														<th>Delete</th>
+														<th>Action</th>
 													</tr>
 												</thead>
 
@@ -71,19 +71,15 @@
 																<span class="lbl"></span>
 															</label>
 														</td>
-<!--														<td class="hidden-480">-->
-<!--															--><?php //if(isset($key->image) && $key->image != ''){
-//															?>
-<!--																<img src="--><?php //echo Request::$BASE_PATH.'images/users/profiles/'.$key->image; ?><!--" alt="No Image" style="width:100px;">-->
-<!--															--><?php //}else{
-//																echo 'No Image';
-//															}
-//															 ?>
-<!--														</td>-->
+
 														<td>
 															<?php echo $key->user_name ;?>
 														</td>
+
 														<td><?php echo $key->email ;?></td>
+                                                        <td>
+                                                            <?php  echo $key->role;?>
+                                                        </td>
 														
 														<td><?php if($key->is_online !='1'){echo '<span class="label label-sm label-warning">No';}else{echo '<span class="label label-sm label-success">Yes</span>';};?></td>
 
@@ -91,48 +87,17 @@
 															<span class="label label-sm label-warning"><?php echo $key->is_active ;?></span>
 														</td>
 
-														<td>
-															<div class="hidden-sm hidden-xs action-buttons">
+                                                        <td>
+                                                            <div class="action-buttons">
 
-																<a class="red" href="<?php echo Request::$BASE_PATH.'users/delete_user/'.$key->id;?>"></a>
-																	<i id="<?php echo $key->id; ?>"  class="ace-icon fa fa-trash-o bigger-130 bootbox-confirm"></i>
-																
-															</div>
+                                                                <a class="red" href="#"></a>
+                                                                <i id="<?php echo $key->id; ?>"  class="ace-icon fa fa-trash-o bigger-130 bootbox-confirm"></i>
+                                                                <a href="<?php echo Request::$BASE_PATH.'users/edit_user/'.$key->id ?>">
+                                                                    <i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
+                                                                </a>
+                                                            </div>
 
-															<div class="hidden-md hidden-lg">
-																<div class="inline pos-rel">
-																	<button class="btn btn-minier btn-yellow dropdown-toggle" data-toggle="dropdown" data-position="auto">
-																		<i class="ace-icon fa fa-caret-down icon-only bigger-120"></i>
-																	</button>
-
-																	<ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
-																		<li>
-																			<a href="#" class="tooltip-info" data-rel="tooltip" title="View">
-																				<span class="blue">
-																					<i class="ace-icon fa fa-search-plus bigger-120"></i>
-																				</span>
-																			</a>
-																		</li>
-
-																		<li>
-																			<a href="#" class="tooltip-success" data-rel="tooltip" title="Edit">
-																				<span class="green">
-																					<i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
-																				</span>
-																			</a>
-																		</li>
-
-																		<li>
-																			<a href="#" class="tooltip-error" data-rel="tooltip" title="Delete">
-																				<span class="red">
-																					<i class="ace-icon fa fa-trash-o bigger-120 delete_user"></i>
-																				</span>
-																			</a>
-																		</li>
-																	</ul>
-																</div>
-															</div>
-														</td>
+                                                        </td>
 													</tr>
 														<?php } ?>
 												</tbody>
@@ -405,7 +370,7 @@
 						var Self = $(this);
 						bootbox.confirm("Are you sure! you wanted to delete this user?", function(result) {
 							if(result) {
-								$.post("<?php echo Request::$BASE_PATH.'users/delete/' ?>", {
+								$.post("<?php echo Request::$BASE_PATH.'users/delete_user/' ?>", {
 				 					id: Self.attr('id')
 						 			}).done(function(data,status){
 					 			      if(status=='success'){

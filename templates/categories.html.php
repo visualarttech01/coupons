@@ -45,6 +45,8 @@
 														</th>
 														<th class="hidden-480">Names</th>
                                                         <th class="hidden-480">Detail</th>
+                                                        <th class="hidden-480">Meta Title</th>
+                                                        <th class="hidden-480">Meta Detail</th>
                                                         <th class="hidden-480">Is Active</th>
                                                         <th>Actions</th>
 													</tr>
@@ -66,7 +68,13 @@
 															<?php echo $key->name ;?>
 														</td>
                                                         <td class="hidden-480">
-                                                            <?php echo substr($key->detail,0,130).'..' ;?>
+                                                            <?php echo substr($key->detail,0,60).'..' ;?>
+                                                        </td>
+                                                        <td class="hidden-480">
+                                                            <?php echo substr($key->meta_title,0,60).'..' ;?>
+                                                        </td>
+                                                        <td class="hidden-480">
+                                                            <?php echo substr($key->meta_detail,0,60).'..' ;?>
                                                         </td>
 														<td class="center">
 															<span class="label label-sm label-warning"><?php echo $key->is_active ;?></span>

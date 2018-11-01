@@ -34,13 +34,35 @@
 
                                         <div class="col-xs-12 col-sm-5">
 											<span class="block input-icon input-icon-right">
-                                                <textarea rows="5" cols="20" name="detail" id="inputInfo" class="width-100" required/></textarea
+                                                <textarea rows="5" cols="20" name="detail" id="inputInfo" class="width-100" required/></textarea>
 
 											</span>
                                         </div>
 
                                     </div>
 
+                                    <div class="form-group has-info">
+                                        <label for="inputInfo" class="col-xs-12 col-sm-3 control-label no-padding-right">Meta Title:</label>
+
+                                        <div class="col-xs-12 col-sm-5">
+											<span class="block input-icon input-icon-right">
+												<input type="text" name="meta_title" id="inputInfo" class="width-100" required/>
+
+											</span>
+                                        </div>
+
+                                    </div>
+                                    <div class="form-group has-info">
+                                        <label for="inputInfo" class="col-xs-12 col-sm-3 control-label no-padding-right">Meta Detail:</label>
+
+                                        <div class="col-xs-12 col-sm-5">
+											<span class="block input-icon input-icon-right">
+                                                <textarea rows="5" cols="20" name="meta_detail" id="inputInfo" class="width-100" required/></textarea>
+
+											</span>
+                                        </div>
+
+                                    </div>
 									
 									<div class="form-group">
 										<label class="control-label col-xs-12 col-sm-3 no-padding-right" for="state"></label>

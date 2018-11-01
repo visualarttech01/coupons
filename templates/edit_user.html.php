@@ -1,6 +1,4 @@
-
-
-			<div class="main-content">
+<div class="main-content">
 				<div class="main-content-inner">
 					
 
@@ -18,14 +16,15 @@
 
 						<div class="row">
 							<div class="col-xs-12">
-								<form class="form-horizontal" id="sample-form" method="post" action="<?php echo Request::$BASE_PATH.'users/new_user/' ;?>" enctype="multipart/form-data">
+								<form class="form-horizontal" id="sample-form" method="post" action="<?php echo Request::$BASE_PATH.'users/edit_user/'.$objData->id ;?>" enctype="multipart/form-data">
 									<div class="form-group has-info">
 										<label for="inputInfo" class="col-xs-12 col-sm-3 control-label no-padding-right">Name:</label>
 
 										<div class="col-xs-12 col-sm-5">
 											<span class="block input-icon input-icon-right">
-												<input type="text" name="user_name" id="inputInfo" class="width-100" required/>
-												
+												<input type="text" name="user_name" value="<?php echo $objData->user_name ;?>" id="inputInfo" class="width-100" required/>
+												<input type="hidden" name="id" value="<?php echo $objData->id ;?>" id="inputInfo" class="width-100" required/>
+
 											</span>
 										</div>
 										
@@ -35,7 +34,7 @@
 
 										<div class="col-xs-12 col-sm-5">
 											<span class="block input-icon input-icon-right">
-												<input type="email" name="email" id="inputInfo" class="width-100" required/>
+												<input type="email" name="email" value="<?php echo $objData->email ;?>" id="inputInfo" class="width-100" required/>
 												
 											</span>
 										</div>
@@ -46,7 +45,7 @@
 
 										<div class="col-xs-12 col-sm-5">
 											<span class="block input-icon input-icon-right">
-												<input type="password" name="password" id="inputInfo" class="width-100" required/>
+												<input type="password" name="password" value="<?php echo $objData->password ;?>" id="inputInfo" class="width-100" required/>
 												
 											</span>
 										</div>
@@ -57,16 +56,16 @@
                                         <label for="inputInfo" class="col-xs-12 col-sm-3 control-label no-padding-right">Role:</label>
 
                                         <div class="col-xs-12 col-sm-5">
-                                                <span class="block input-icon input-icon-right">
-                                                    <select name="user_role_id" class="form-control" required>
-                                                        <?php if($objroles)
-                                                            foreach ($objroles as $key){?>
-                                                                <option class="option" value="<?php echo $key->id ;?>"><?php echo $key->role ;?></option>
-                                                            <?php  }?>
+                                            <span class="block input-icon input-icon-right">
+                                                <select name="user_role_id" class="form-control" required>
+                                                    <?php if($objroles)
+                                                        foreach ($objroles as $key){?>
+                                                            <option class="option" value="<?php echo $key->id?>"<?php if($key->id==$objData->user_role_id)echo 'selected' ;?>><?php echo $key->role?></option>
+                                                        <?php  }?>
 
-                                                    </select>
+                                                </select>
 
-                                                </span>
+                                            </span>
                                         </div>
 
                                     </div>
