@@ -43,7 +43,7 @@
                                                 $target_path = $target_path . $filename;
                                                 if (move_uploaded_file ( $_FILES ['image'] ['tmp_name'], $target_path )) {
                                                     $objData->logo = $filename;
-                                                    $objData->created = date ( 'Y-m-d H:i:s' );
+                                                    $objData->created = date ( 'Y-m-d' );
                                                     $objData->is_active = '1';
                                                     global $DB;
                                                     $DB->Save ( 'stores', $objData );
@@ -154,6 +154,96 @@
                                 break;
                             default:
                                 $objPresenter->AddTemplate('new_role');
+                                break;
+                        }
+                    }
+
+                    break;
+
+                case 'codes':
+                    $objall =Content::coupons();
+                    $objPresenter->AddParameter('objall', $objall);
+                    if (!isset($parameters[1]) && $parameters[1]= ' '){
+                        $objPresenter->AddTemplate('codes');
+                    }else {
+                        switch ($parameters[1]){
+                            case 'new_code':
+                                if(Session::GetUser()->user_role_id == '1'){
+                                    if(Request::hasPostVariables()){
+                                        $objData = Request::getPostVariables();
+                                        $objData->created = date ( 'Y-m-d' );
+                                        $objData->is_active = '1';
+                                        $objData->publisher = Session::GetUser()->id;
+                                        global $DB;
+                                        $DB->Save ( 'coupons', $objData );
+                                        $objPresenter->AddParameter ( 'add_message', '<div class="alert alert-success"><strong>Success</strong></div>' );
+                                        header ( "Location: " . Request::$BASE_PATH.'codes/' );
+                                    }
+                                }else{
+                                    header ( "Location: " . Request::$BASE_PATH );
+                                }
+                                $objcategories=Content::select('*','categories');
+                                $objPresenter->AddParameter('objcategories',$objcategories);
+                                $objstores=Content::select('*','stores');
+                                $objPresenter->AddParameter('objstores',$objstores);
+                                $objPresenter->AddTemplate('add_code');
+                                break;
+                            case 'edit_code':
+
+                                if(Session::GetUser()->user_role_id == '1' && Session::isUserOnline()){
+                                    if($parameters[2] !='' && isset($parameters[2])){
+                                        if(Request::hasPostVariables()){
+                                            $objold=Content::select('publisher','coupons');
+                                            $objData = Request::getPostVariables();
+                                            $objData->publisher=$objold[0]->publisher;
+                                            $objData->edited_by = Session::GetUser()->id;
+                                            $objData->updated = date ( 'Y-m-d' );
+                                            global $DB;
+                                            $DB->Save ( 'coupons', $objData );
+                                            $objPresenter->AddParameter ( 'add_message', '<div class="alert alert-success"><strong>Success</strong> Updated Record </div>' );
+                                            header ( "Location: " . Request::$BASE_PATH.'codes/' );
+                                        }else{
+                                            $id=intval($parameters[2]);
+                                            $objData =Content::find_by_id($id,'coupons');
+                                            $objPresenter->AddParameter('objData',$objData);
+                                            $objcategories=Content::select('*','categories');
+                                            $objPresenter->AddParameter('objcategories',$objcategories);
+                                            $objstores=Content::select('*','stores');
+                                            $objPresenter->AddParameter('objstores',$objstores);
+                                        }
+                                    }
+                                    $objPresenter->AddTemplate('edit_code');
+                                }else{
+                                    header ( "Location: " . Request::$BASE_PATH );
+                                }
+
+
+                                break;
+                            case 'delete_code':
+                                if(Session::isUserOnline()){
+                                    if(Request::hasPostVariables()){
+                                        $objData = Request::getPostVariables();
+                                        if(Session::GetUser()->user_role_id == '1'){
+                                            global $DB;
+                                            if($DB->Delete("DELETE FROM coupons WHERE id = ".$objData->id)){
+                                                echo 'Success';
+                                            }else{
+                                                echo 'Fail';
+                                            }
+                                        }else{
+                                            echo "You are not Admin.";
+
+                                        }
+                                        exit;
+                                    }
+                                }else{
+                                    header ( "Location: " . Request::$BASE_PATH );
+                                }
+
+                                exit;
+                                break;
+                            default:
+                                $objPresenter->AddTemplate('new_code');
                                 break;
                         }
                     }
@@ -610,6 +700,22 @@
 								header ( "Location: " . Request::$BASE_PATH );
 							}
 							break;
+
+                case 'reports':
+                    if(Session::isUserOnline()){
+                        if($parameters[1] !='' && isset($parameters[1])){
+                            $id=intval($parameters[1]);
+                            $objData=Content::selectCount('coupons','publisher',$id);
+                            print_r($objData->total);
+                            exit;
+                        }else{
+                            header ( "Location: " . Request::$BASE_PATH.'' );
+                        }
+                        $objPresenter->AddTemplate('reports');
+                    }else{
+                        header ( "Location: " . Request::$BASE_PATH );
+                    }
+                    break;
 
 				case 'logout':
 							if (Session::isUserOnline()){

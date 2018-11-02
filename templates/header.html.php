@@ -175,8 +175,8 @@
 
                         <b class="arrow"></b>
                     </li>
-                    <li  class="<?php if($parameters[0]=='coupons'){ echo 'active'; } ?>">
-                        <a href="<?php echo Request::$BASE_PATH.'coupons'; ?>">
+                    <li  class="<?php if($parameters[0]=='codes'){ echo 'active'; } ?>">
+                        <a href="<?php echo Request::$BASE_PATH.'codes'; ?>">
                             <i class="menu-icon fa fa-tachometer"></i>
                             <span class="menu-text"> Coupons </span>
                         </a>

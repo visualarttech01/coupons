@@ -14,19 +14,19 @@
 
 								<div class="row">
 									<div class="col-xs-12">
-										<h3 class="header smaller lighter blue"><strong>Users</strong></h3>
+										<h3 class="header smaller lighter blue"><strong>Coupons</strong></h3>
 										
 											<?php if(isset($add_message) && $add_message!= '')
 												echo $add_message 
 												 ;?>
 										<div class="clearfix">
-											<a href="<?php echo Request::$BASE_PATH.'users/new_user';?>">
-												<button class="btn btn-success"><i class="ace-icon fa fa-plus"></i> Add New User</button>
+											<a href="<?php echo Request::$BASE_PATH.'codes/new_code';?>">
+												<button class="btn btn-success"><i class="ace-icon fa fa-plus"></i> Add Coupon</button>
 											</a>
 											<div class="pull-right tableTools-container"> </div>
 										</div>
 										<div class="table-header">
-											All Users
+											All Coupons
 										</div>
 
 										<!-- div.table-responsive -->
@@ -43,27 +43,23 @@
 																<span class="lbl"></span>
 															</label>
 														</th>
-<!--														<th class="hidden-480">Profile</th>-->
-														<th>Name</th>
-														<th>Email</th>
-                                                        <th>Role</th>
-
-														<th>
-															<i class="ace-icon bigger-110 hidden-480"></i>
-															Online
-														</th>
-														
-														<th class="hidden-480">Is Active</th>
-
-														<th>Action</th>
+														<th class="hidden-480">Name</th>
+                                                        <th class="hidden-480">Detail</th>
+                                                        <th class="hidden-480">Code</th>
+                                                        <th class="hidden-480">Coupon Types</th>
+                                                        <th class="hidden-480">Stores</th>
+                                                        <th class="hidden-480">Categories</th>
+                                                        <th class="hidden-480">Active Dates</th>
+                                                        <th class="hidden-480">Expire Dates</th>
+                                                        <th>Actions</th>
 													</tr>
 												</thead>
 
 												<tbody>
 													
 													<?php 
-													if($objall_users)
-														foreach($objall_users as $key){ ?>
+													if($objall)
+														foreach($objall as $key){ ?>
 													<tr>
 														<td class="center" hidden>
 															<label class="pos-rel">
@@ -71,36 +67,46 @@
 																<span class="lbl"></span>
 															</label>
 														</td>
+														<td class="hidden-480">
+															<?php echo $key->name ;?>
+														</td>
+                                                        <td class="hidden-480">
+                                                            <?php echo substr($key->detail,0,60).'..' ;?>
+                                                        </td>
+                                                        <td class="hidden-480">
+                                                            <?php echo $key->code ;?>
+                                                        </td>
+                                                        <td class="hidden-480">
+                                                            <?php echo $key->type ;?>
+                                                        </td>
+                                                        <td class="hidden-480">
+                                                            <?php echo $key->store ;?>
+                                                        </td>
+
+                                                        <td class="hidden-480">
+                                                            <?php echo $key->category ;?>
+                                                        </td>
+                                                        <td class="hidden-480">
+                                                            <?php echo $key->active_date ;?>
+                                                        </td>
+                                                        <td class="hidden-480">
+                                                            <?php echo $key->expire_date ;?>
+                                                        </td>
+
 
 														<td>
-															<?php echo $key->user_name ;?>
+															<div class="action-buttons">
+
+																<a class="red" href="#"></a>
+																	<i id="<?php echo $key->id; ?>"  class="ace-icon fa fa-trash-o bigger-130 bootbox-confirm"></i>
+																	<a href="<?php echo Request::$BASE_PATH.'codes/edit_code/'.$key->id ?>">
+																		<i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
+																	</a>
+															</div>
+															
+															
+
 														</td>
-
-														<td><?php echo $key->email ;?></td>
-                                                        <td>
-                                                            <?php  echo $key->role;?>
-                                                        </td>
-														
-														<td><?php if($key->is_online !='1'){echo '<span class="label label-sm label-warning">No';}else{echo '<span class="label label-sm label-success">Yes</span>';};?></td>
-
-														<td class="hidden-480">
-															<span class="label label-sm label-warning"><?php echo $key->is_active ;?></span>
-														</td>
-
-                                                        <td>
-                                                            <div class="action-buttons">
-
-                                                                <a class="red" href="#"></a>
-                                                                <i id="<?php echo $key->id; ?>"  class="ace-icon fa fa-trash-o bigger-130 bootbox-confirm"></i>
-                                                                <a href="<?php echo Request::$BASE_PATH.'users/edit_user/'.$key->id ?>">
-                                                                    <i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
-                                                                </a>
-                                                                <a  class="blue" href="<?php echo Request::$BASE_PATH.'reports/'.$key->id ?>">
-                                                                    <i class="ace-icon fa fa-search-plus bigger-130"></i>
-                                                                </a>
-                                                            </div>
-
-                                                        </td>
 													</tr>
 														<?php } ?>
 												</tbody>
@@ -139,11 +145,6 @@
 				//.wrap("<div class='dataTables_borderWrap' />")   //if you are applying horizontal scrolling (sScrollX)
 				.DataTable( {
 					bAutoWidth: false,
-					"aoColumns": [
-					  { "bSortable": false },
-					  null, null,null, null, null,
-					  { "bSortable": false }
-					],
 					"aaSorting": [],
 					
 					
@@ -155,7 +156,7 @@
 					//"sScrollY": "200px",
 					//"bPaginate": false,
 			
-					//"sScrollX": "100%",
+					"sScrollX": "100%",
 					//"sScrollXInner": "120%",
 					//"bScrollCollapse": true,
 					//Note: if you are applying horizontal scrolling (sScrollX) on a ".table-bordered"
@@ -165,7 +166,7 @@
 			
 			
 					select: {
-						style: 'multi'
+						style: 'single'
 					}
 			    } );
 			
@@ -371,12 +372,13 @@
 			<script>
 					$(".bootbox-confirm").click(function() {
 						var Self = $(this);
-						bootbox.confirm("Are you sure! you wanted to delete this user?", function(result) {
+						bootbox.confirm("Are you sure! you wanted to delete this ?", function(result) {
 							if(result) {
-								$.post("<?php echo Request::$BASE_PATH.'users/delete_user/' ?>", {
-				 					id: Self.attr('id')
-						 			}).done(function(data,status){
+								$.post("<?php echo Request::$BASE_PATH.'codes/delete_code/' ?>", {
+				 					id: Self.attr('id'),
+				 					}).done(function(data,status){
 					 			      if(status=='success'){
+					 			      	
 					 			    	 Self.closest("tr").remove();
 					 			      }else{
 					 			    	 alert('Error in remove User');
