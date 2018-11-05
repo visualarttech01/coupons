@@ -43,7 +43,7 @@
 																<span class="lbl"></span>
 															</label>
 														</th>
-<!--														<th class="hidden-480">Profile</th>-->
+
 														<th>Name</th>
 														<th>Email</th>
                                                         <th>Role</th>

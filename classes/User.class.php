@@ -134,7 +134,6 @@
 		static function Load($ID){
 			global $DB;
 			
-// 			$loginTime = date("Y-m-d H:i:s",strtotime("-30 Minutes"));
 
 			$sql = "SELECT *
 						FROM users
@@ -142,9 +141,8 @@
 						AND id = '".$ID."' ";
 			$objData = $DB->Select($sql);
 			if($objData){
-				$objUser = $objData[0];
-				return $objUser;
-			}
+                 return $objUser = $objData[0];
+            }
 			else{
 				return false;
 			}
@@ -249,6 +247,7 @@
 				return false;
 			}
 		}
+
 		
 		static function Address($UserID, $ID = '') {
 			global $DB;

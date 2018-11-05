@@ -114,21 +114,7 @@
 					"aaSorting": [],
 					
 					
-					//"bProcessing": true,
-			        //"bServerSide": true,
-			        //"sAjaxSource": "http://127.0.0.1/table.php"	,
-			
-					//,
-					//"sScrollY": "200px",
-					//"bPaginate": false,
-			
-					"sScrollX": "100%",
-					//"sScrollXInner": "120%",
-					//"bScrollCollapse": true,
-					//Note: if you are applying horizontal scrolling (sScrollX) on a ".table-bordered"
-					//you may want to wrap the table inside a "div.dataTables_borderWrap" element
-			
-					//"iDisplayLength": 50
+
 			
 			
 					select: {
@@ -311,23 +297,7 @@
 					$(this).closest('tr').next().toggleClass('open');
 					$(this).find(ace.vars['.icon']).toggleClass('fa-angle-double-down').toggleClass('fa-angle-double-up');
 				});
-				/***************/
-				
-				
-				
-				
-				
-				/**
-				//add horizontal scrollbars to a simple table
-				$('#simple-table').css({'width':'2000px', 'max-width': 'none'}).wrap('<div style="width: 1000px;" />').parent().ace_scroll(
-				  {
-					horizontal: true,
-					styleClass: 'scroll-top scroll-dark scroll-visible',//show the scrollbars on top(default is bottom)
-					size: 2000,
-					mouseWheelLock: true
-				  }
-				).css('padding-top', '12px');
-				*/
+
 			
 			
 			})
@@ -353,27 +323,6 @@
 							}
 						});
 					});
-					
-				/**
-					$("#bootbox-confirm").on(ace.click_event, function() {
-						bootbox.confirm({
-							message: "Are you sure?",
-							buttons: {
-							  confirm: {
-								 label: "OK",
-								 className: "btn-primary btn-sm",
-							  },
-							  cancel: {
-								 label: "Cancel",
-								 className: "btn-sm",
-							  }
-							},
-							callback: function(result) {
-								if(result) alert(1)
-							}
-						  }
-						);
-					});
-				**/
+
 			</script>
 			

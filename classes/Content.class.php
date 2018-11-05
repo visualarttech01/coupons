@@ -37,19 +37,40 @@
 			}
 		}
         //======================================================== COMPANY BY ID ============================================
-        static function selectCount($table,$where,$id){
+        static function selectCount($table,$where,$id,$date,$name){
             global $DB;
 
-            $sql="SELECT count(*) as total
+            $sql="SELECT count(*) as ".$name."
 					FROM ".$table."
 					WHERE ".$where." = '".$id."'
-					AND is_active = 1
-					ORDER BY id DESC";
+					AND created='".$date."'";
 
             $objData=$DB->Select($sql);
             if($objData){
 
                 return $objData[0];
+            }else{
+                return false;
+            }
+        }
+
+        //======================================================== COMPANY BY ID ============================================
+        static function reports($from,$to,$id){
+            global $DB;
+
+            $sql="SELECT count(*) as total
+					FROM  coupons
+					WHERE publisher = '".$id."'
+					AND created between '".$from."' AND '".$to."'";
+
+            $objData=$DB->Select($sql);
+            if($objData){
+                    if($objData[0]->total==0){
+                        return $objData[0]->total='0';
+                    }else{
+                       return $objData[0]->total;
+                    }
+
             }else{
                 return false;
             }
@@ -71,7 +92,32 @@
                 return false;
             }
         }
+        //======================================================== COMPANY BY ID ============================================
+        static function validate($section,$control){
+            if (Session::isUserOnline()){
+                $role= Session::GetUser()->user_role_id;
+                global $DB;
 
+                $sql="SELECT *
+					FROM role_permissions
+					WHERE user_role_id= '".$role."' 
+					And section ='".$section."'
+					AND is_active = 1";
+
+                $objData=$DB->Select($sql);
+                if($objData){
+                    if($objData[0]->$control=='1'){
+                        return '1';
+                    }else{
+                        return '0';
+                    }
+
+                }else{
+                    return false;
+                }
+            }
+
+        }
         //======================================================== All USERS ============================================
 		static function all_users(){
 			global $DB;
@@ -182,7 +228,27 @@
 			else{
 				return false;
 			}
-		}		
+		}
+
+
+//========================================================GLOBAL_SETTING============================================
+
+    static function user($id){
+            global $DB;
+
+            $sql="SELECT *
+					FROM users
+					WHERE id='".$id."'
+					AND is_active = 1
+					ORDER BY id DESC";
+
+            $objData=$DB->Select($sql);
+            if($objData){
+                return $objData[0];
+            }else{
+                return false;
+            }
+        }
 		
 	}
 
