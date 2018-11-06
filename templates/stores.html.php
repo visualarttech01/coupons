@@ -381,9 +381,9 @@
 <script>
     $(".bootbox-confirm").click(function() {
         var Self = $(this);
-        bootbox.confirm("Are you sure! you wanted to delete this user?", function(result) {
+        bootbox.confirm("Are you sure! you wanted to delete this?", function(result) {
             if(result) {
-                $.post("<?php echo Request::$BASE_PATH.'categories/delete_category/' ?>", {
+                $.post("<?php echo Request::$BASE_PATH.'stores/delete_store/' ?>", {
                     id: Self.attr('id'),
                 }).done(function(data,status){
                     if(status=='success'){

@@ -7,7 +7,7 @@
 
 						<div class="page-header">
 							<h1>
-								Add New User's Role
+								Edit Category
 								<?php if(isset($message) && $message!= '')echo $message ;?>
 								<small>
 								</small>

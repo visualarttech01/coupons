@@ -7,7 +7,7 @@
 
             <div class="page-header">
                 <h1>
-                    Add New Store
+                    Edit Store
                     <?php if(isset($message) && $message!= '')echo $message ;?>
                     <small>
                     </small>
@@ -95,6 +95,25 @@
                                 </span>
                             </div>
 
+                        </div>
+                        <div class="form-group has-info">
+                            <label for="inputInfo" class="col-xs-12 col-sm-3 control-label no-padding-right">Perma Link:</label>
+
+                            <div class="col-xs-12 col-sm-5">
+                                <span class="block input-icon input-icon-right">
+                                    <select name="permalink" class="form-control">
+                                        <option class="option" value="coupon-code" <?php if($objData->permalink=='coupon-code')echo 'selected' ;?>>coupon-code</option>
+                                        <option class="option" value="promo-code" <?php if($objData->permalink=='promo-code')echo 'selected' ;?>>promo-code</option>
+                                        <option class="option" value="discount-code" <?php if($objData->permalink=='discount-code')echo 'selected' ;?>>discount-code</option>
+                                        <option class="option" value="coupons" <?php if($objData->permalink=='coupons')echo 'selected' ;?>>coupons</option>
+                                        <option class="option" value="coupon-codes" <?php if($objData->permalink=='coupon-codes')echo 'selected' ;?>>coupon-codes</option>
+                                        <option class="option" value="promo-codes" <?php if($objData->permalink=='promo-codes')echo 'selected' ;?>>promo-codes</option>
+                                        <option class="option" value="discount-codes" <?php if($objData->permalink=='discount-codes')echo 'selected' ;?>>discount-codes</option>
+
+                                    </select>
+
+                                </span>
+                            </div>
                         </div>
 
                         <div class="form-group has-info">

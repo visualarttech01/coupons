@@ -234,14 +234,7 @@
                         <b class="arrow"></b>
                     </li>
 
-                    <li  class="<?php if($parameters[0]=='reports'){ echo 'active'; } ?>">
-                        <a href="<?php echo Request::$BASE_PATH.'reports'; ?>">
-                            <i class="menu-icon fa fa-tachometer"></i>
-                            <span class="menu-text"> Users Report </span>
-                        </a>
-
-                        <b class="arrow"></b>
-                    </li>
+                    
                 </ul><!-- /.nav-list -->
 
 				<div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">

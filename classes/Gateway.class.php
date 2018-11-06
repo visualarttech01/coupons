@@ -443,7 +443,7 @@
                                 case 'edit_settings':
 
                                     if(Content::validate('global settings','p_edit')){
-                                        if($parameters[2] !='' && isset($parameters[2])){
+                                        if($parameters[2] !=' ' && isset($parameters[2])){
                                             if(Request::hasPostVariables()){
                                                 $objData = Request::getPostVariables();
                                                 global $DB;
@@ -780,12 +780,16 @@
 							break;
 
                 case 'users':
+
                     if(Content::validate('users','p_view')){
+
                     $objall_users =Content::relation('*','users','user_roles','role','user_role_id');
                     $objPresenter->AddParameter('objall_users', $objall_users);
-                    if (!isset($parameters[1]) && $parameters[1]=''){
+                    if (!isset($parameters[1]) && $parameters[1]=' '){
+
                         $objPresenter->AddTemplate('users');
                     }else {
+
                         switch ($parameters[1]){
                             case 'new_user':
                                 if(Content::validate('users','p_add')){
@@ -859,12 +863,12 @@
 
                                 break;
                             default:
-                                header ( "Location: " . Request::$BASE_PATH );
+
                                 break;
                         }
                     }
                     }else{
-                        header ( "Location: " . Request::$BASE_PATH );
+                        header ( "Location: " . Request::$BASE_PATH.'access' );
                     }
 
                     break;

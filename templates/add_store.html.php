@@ -155,7 +155,7 @@
                                     </div>
 
                                     <div class="form-group has-info">
-                                        <label for="inputInfo" class="col-xs-12 col-sm-3 control-label no-padding-right">Network:</label>
+                                        <label for="inputInfo" class="col-xs-12 col-sm-3 control-label no-padding-right">Featured:</label>
 
                                         <div class="col-xs-12 col-sm-5">
 											<span class="block input-icon input-icon-right">
@@ -169,6 +169,26 @@
                                         </div>
 
                                     </div>
+
+                                    <div class="form-group has-info">
+                                        <label for="inputInfo" class="col-xs-12 col-sm-3 control-label no-padding-right">PermaLink:</label>
+
+                                        <div class="col-xs-12 col-sm-5">
+											<span class="block input-icon input-icon-right">
+												<select name="permalink" class="form-control">
+                                                    <option class="option" value="coupon-code">coupon-code</option>
+                                                    <option class="option" value="coupon-code">promo-code</option>
+                                                    <option class="option" value="coupon-code">discount-code</option>
+                                                    <option class="option" value="coupon-code">coupons</option>
+                                                    <option class="option" value="coupon-codes">coupon-codes</option>
+                                                    <option class="option" value="coupon-codes">promo-codes</option>
+                                                    <option class="option" value="coupon-codes">discount-codes</option>
+
+                                                </select>
+
+											</span>
+                                        </div>
+                                     </div>
 									
 									<div class="form-group">
 										<label class="control-label col-xs-12 col-sm-3 no-padding-right" for="state"></label>

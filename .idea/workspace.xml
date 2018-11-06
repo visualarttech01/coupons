@@ -3,13 +3,13 @@
   <component name="ChangeListManager">
     <list default="true" id="3e7448eb-a683-48c6-9ada-f0cd8899f474" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/Content.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/classes/Content.class.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/classes/Gateway.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/classes/Gateway.class.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/User.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/classes/User.class.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/add_store.html.php" beforeDir="false" afterPath="$PROJECT_DIR$/templates/add_store.html.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/edit_category.html.php" beforeDir="false" afterPath="$PROJECT_DIR$/templates/edit_category.html.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/edit_settings.html.php" beforeDir="false" afterPath="$PROJECT_DIR$/templates/edit_settings.html.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/edit_store.html.php" beforeDir="false" afterPath="$PROJECT_DIR$/templates/edit_store.html.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/header.html.php" beforeDir="false" afterPath="$PROJECT_DIR$/templates/header.html.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/reports.html.php" beforeDir="false" afterPath="$PROJECT_DIR$/templates/reports.html.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/sections.html.php" beforeDir="false" afterPath="$PROJECT_DIR$/templates/sections.html.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/users.html.php" beforeDir="false" afterPath="$PROJECT_DIR$/templates/users.html.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/stores.html.php" beforeDir="false" afterPath="$PROJECT_DIR$/templates/stores.html.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -71,21 +71,22 @@
     <session id="-436506365">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="1" />
+          <entry key="project.closed" value="2" />
+          <entry key="project.open.time.21" value="1" />
           <entry key="project.open.time.36" value="1" />
           <entry key="project.open.time.8" value="1" />
-          <entry key="project.opened" value="2" />
+          <entry key="project.opened" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="data" value="11" />
-          <entry key="php" value="4189" />
+          <entry key="php" value="4615" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="PHP" value="4187" />
+          <entry key="PHP" value="4613" />
           <entry key="PLAIN_TEXT" value="11" />
           <entry key="SQL" value="2" />
         </counts>
@@ -93,19 +94,19 @@
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="data" value="1" />
-          <entry key="php" value="26" />
+          <entry key="php" value="35" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="PHP" value="26" />
+          <entry key="PHP" value="35" />
           <entry key="PLAIN_TEXT" value="1" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf />
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
@@ -145,11 +146,6 @@
         <option value="$PROJECT_DIR$/templates/add_permission.html.php" />
         <option value="$PROJECT_DIR$/templates/permissions.html.php" />
         <option value="$PROJECT_DIR$/templates/add_category.html.php" />
-        <option value="$PROJECT_DIR$/templates/edit_category.html.php" />
-        <option value="$PROJECT_DIR$/templates/edit_settings.html.php" />
-        <option value="$PROJECT_DIR$/templates/add_store.html.php" />
-        <option value="$PROJECT_DIR$/templates/stores.html.php" />
-        <option value="$PROJECT_DIR$/templates/edit_store.html.php" />
         <option value="$PROJECT_DIR$/templates/add_code.html.php" />
         <option value="$PROJECT_DIR$/templates/codes.html.php" />
         <option value="$PROJECT_DIR$/templates/edit_code.html.php" />
@@ -160,10 +156,15 @@
         <option value="$PROJECT_DIR$/templates/reports.html.php" />
         <option value="$PROJECT_DIR$/classes/User.class.php" />
         <option value="$PROJECT_DIR$/classes/Content.class.php" />
-        <option value="$PROJECT_DIR$/templates/header.html.php" />
-        <option value="$PROJECT_DIR$/classes/Gateway.class.php" />
         <option value="$PROJECT_DIR$/templates/login.html.php" />
         <option value="$PROJECT_DIR$/templates/access.html.php" />
+        <option value="$PROJECT_DIR$/templates/header.html.php" />
+        <option value="$PROJECT_DIR$/templates/stores.html.php" />
+        <option value="$PROJECT_DIR$/templates/edit_category.html.php" />
+        <option value="$PROJECT_DIR$/templates/add_store.html.php" />
+        <option value="$PROJECT_DIR$/templates/edit_store.html.php" />
+        <option value="$PROJECT_DIR$/templates/edit_settings.html.php" />
+        <option value="$PROJECT_DIR$/classes/Gateway.class.php" />
       </list>
     </option>
   </component>
@@ -196,11 +197,6 @@
               <item name="couponscode" type="b2602c69:ProjectViewProjectNode" />
               <item name="couponscode" type="462c0819:PsiDirectoryNode" />
               <item name="classes" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="couponscode" type="b2602c69:ProjectViewProjectNode" />
-              <item name="couponscode" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -251,7 +247,8 @@
       <workItem from="1541055843756" duration="20837000" />
       <workItem from="1541138559630" duration="1567000" />
       <workItem from="1541144743675" duration="15012000" />
-      <workItem from="1541397075535" duration="26151000" />
+      <workItem from="1541397075535" duration="26446000" />
+      <workItem from="1541484994152" duration="6561000" />
     </task>
     <task id="LOCAL-00001" summary="stores and seo">
       <created>1541081983906</created>
@@ -264,12 +261,12 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="110287000" />
+    <option name="totallyTimeSpent" value="117143000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1296" height="1000" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16909385" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17152104" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -307,6 +304,11 @@
           <url>file://$PROJECT_DIR$/classes/Gateway.class.php</url>
           <line>16</line>
           <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/classes/Gateway.class.php</url>
+          <line>477</line>
+          <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -464,38 +466,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/edit_category.html.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="623">
-          <caret line="59" column="186" selection-start-line="59" selection-start-column="186" selection-end-line="59" selection-end-column="186" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/categories.html.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="459">
           <caret line="102" column="52" lean-forward="true" selection-end-line="431" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/edit_settings.html.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1360">
-          <caret line="80" column="28" selection-start-line="80" selection-start-column="28" selection-end-line="83" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/stores.html.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="22" column="90" selection-start-line="22" selection-start-column="90" selection-end-line="22" selection-end-column="90" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/edit_store.html.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="18" column="132" selection-start-line="18" selection-start-column="132" selection-end-line="18" selection-end-column="132" />
         </state>
       </provider>
     </entry>
@@ -518,13 +492,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="442">
           <caret line="374" column="81" selection-start-line="374" selection-start-column="81" selection-end-line="374" selection-end-column="81" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/add_store.html.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="156" column="36" selection-start-line="156" selection-start-column="36" selection-end-line="170" selection-end-column="42" />
         </state>
       </provider>
     </entry>
@@ -613,16 +580,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/header.html.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="141">
-          <caret line="110" column="8" lean-forward="true" selection-start-line="110" selection-start-column="8" selection-end-line="114" selection-end-column="17" />
-          <folding>
-            <element signature="n#STYLE#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/access.html.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
@@ -630,14 +587,65 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/templates/header.html.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="563">
+          <caret line="236" column="20" selection-start-line="236" selection-start-column="20" selection-end-line="236" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/edit_category.html.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="38" selection-start-line="9" selection-start-column="38" selection-end-line="9" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/stores.html.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1904">
+          <caret line="385" column="75" selection-start-line="385" selection-start-column="75" selection-end-line="385" selection-end-column="75" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/add_store.html.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="93">
+          <caret line="157" column="129" selection-start-line="157" selection-start-column="129" selection-end-line="157" selection-end-column="129" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/edit_store.html.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="99" column="119" selection-start-line="99" selection-start-column="119" selection-end-line="99" selection-end-column="119" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/classes/Gateway.class.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="415">
-          <caret line="872" column="58" selection-start-line="872" selection-start-column="58" selection-end-line="872" selection-end-column="58" />
+        <state relative-caret-position="303">
+          <caret line="448" column="48" selection-start-line="448" selection-start-column="48" selection-end-line="448" selection-end-column="48" />
           <folding>
-            <element signature="e#41108#41656#0#PHP" />
-            <element signature="e#42422#42613#0#PHP" />
+            <element signature="e#34658#39406#0#PHP" />
+            <element signature="e#39424#44173#0#PHP" />
+            <element signature="e#44179#44762#0#PHP" />
+            <element signature="e#44780#45914#0#PHP" />
+            <element signature="e#45931#46493#0#PHP" />
+            <element signature="e#46498#46725#0#PHP" />
+            <element signature="e#46743#52182#0#PHP" />
+            <element signature="e#52199#52459#0#PHP" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/edit_settings.html.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="27" column="97" selection-start-line="27" selection-start-column="97" selection-end-line="27" selection-end-column="97" />
         </state>
       </provider>
     </entry>
