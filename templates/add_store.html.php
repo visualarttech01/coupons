@@ -62,7 +62,7 @@
 
                                     </div>
                                     <div class="form-group has-info">
-                                        <label for="inputInfo" class="col-xs-12 col-sm-3 control-label no-padding-right">Url:</label>
+                                        <label for="inputInfo" class="col-xs-12 col-sm-3 control-label no-padding-right">Logo:</label>
 
                                         <div class="col-xs-12 col-sm-5">
 											<span class="block input-icon input-icon-right">
@@ -89,7 +89,7 @@
 
                                         <div class="col-xs-12 col-sm-5">
 											<span class="block input-icon input-icon-right">
-												<input type="text" name="net_store_id" id="inputInfo" class="width-100" required/>
+												<input type="text" name="net_store_id" id="inputInfo" class="width-100" />
 
 											</span>
                                         </div>
@@ -100,7 +100,7 @@
 
                                         <div class="col-xs-12 col-sm-5">
 											<span class="block input-icon input-icon-right">
-												<input type="text" name="net_store_name" id="inputInfo" class="width-100" required/>
+												<input type="text" name="net_store_name" id="inputInfo" class="width-100" />
 
 											</span>
                                         </div>
@@ -112,7 +112,7 @@
 
                                         <div class="col-xs-12 col-sm-5">
 											<span class="block input-icon input-icon-right">
-												<input type="text" name="net_store_link" id="inputInfo" class="width-100" required/>
+												<input type="text" name="net_store_link" id="inputInfo" class="width-100" />
 
 											</span>
                                         </div>
@@ -124,7 +124,7 @@
 
                                         <div class="col-xs-12 col-sm-5">
 											<span class="block input-icon input-icon-right">
-                                                <textarea rows="5" cols="20" name="detail" id="inputInfo" class="width-100" required/></textarea>
+                                                <textarea rows="5" cols="20" name="detail" id="inputInfo" class="width-100" /></textarea>
 
 											</span>
                                         </div>

@@ -17,28 +17,42 @@
                     <div class="row">
                         <div class="space-6"></div>
                         <div class="vspace-12-sm"></div>
-                        <div class="center">
-                            <span class="btn btn-app btn-sm btn-success no-hover">
-                                <span class="line-height-1 bigger-170"> <?php echo $objUser->today ;?> </span>
-                                <br>
-                                <span class="line-height-1 smaller-90">Today</span>
-                            </span>
-
-                            <span class="btn btn-app btn-sm btn-grey no-hover">
-                                <span class="line-height-1 bigger-170"> <?php echo $objUser->yesterday ;?> </span>
-
-                                <br>
-                                <span class="line-height-1 smaller-90"> Yesterday </span>
-                            </span>
+                        <div class="left">
+                            <a href="<?php echo Request::$BASE_PATH.'reporting/networks/'.$objUser->id ;?>" class="btn btn-round btn-lg btn-yellow no-hover">
+                                <span class="line-height-1 smaller-90">Networks</span>
+                            </a>
+                            <a href="<?php echo Request::$BASE_PATH.'reporting/categories/'.$objUser->id ;?>" class="btn btn-round btn-lg btn-inverse no-hover">
+                                <span class="line-height-1 smaller-90">Categories</span>
+                            </a>
+                            <a href="<?php echo Request::$BASE_PATH.'reporting/stores/'.$objUser->id ;?>" class="btn btn-round btn-lg btn-grey no-hover">
+                                <span class="line-height-1 smaller-90">Stores</span>
+                            </a>
+                            <a href="<?php echo Request::$BASE_PATH.'reporting/stores/'.$objUser->id ;?>" class="btn btn-round btn-lg btn-success no-hover">
+                                <span class="line-height-1 smaller-90">Coupons</span>
+                            </a>
+<!--                            <span class="btn btn-app btn-sm btn-success no-hover">-->
+<!--                                <span class="line-height-1 bigger-170"> --><?php //echo $objUser->today ;?><!-- </span>-->
+<!--                                <br>-->
+<!--                                <span class="line-height-1 smaller-90">Today</span>-->
+<!--                            </span>-->
+<!--                            <span class="btn btn-app btn-sm btn-success no-hover">-->
+<!--                                <span class="line-height-1 bigger-170"> --><?php //echo $objUser->today ;?><!-- </span>-->
+<!--                                <br>-->
+<!--                                <span class="line-height-1 smaller-90">Today</span>-->
+<!--                            </span>-->
+<!---->
+<!--                            <span class="btn btn-app btn-sm btn-grey no-hover">-->
+<!--                                <span class="line-height-1 bigger-170"> --><?php //echo $objUser->yesterday ;?><!-- </span>-->
+<!---->
+<!--                                <br>-->
+<!--                                <span class="line-height-1 smaller-90"> Yesterday </span>-->
+<!--                            </span>-->
                         </div>
 
                         <div class="space-6"></div>
-                        <div class="width-95 label label-info label-xlg arrowed-in arrowed-in-right" style="margin-left:2.5%">
+                        <div class="width-35 label label-info label-xlg arrowed-in arrowed-in-right" style="margin-left:2.5%">
                             <div class="inline position-relative">
                                 <a href="#" class="user-title-label dropdown-toggle" data-toggle="dropdown">
-
-
-                                    &nbsp;
                                     <span class="white"><?php echo $objUser->user_name ;?> </span>
                                 </a>
 
@@ -102,6 +116,8 @@
 
 
                    </div>
+
+
                </div>
            </div>
 

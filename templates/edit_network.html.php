@@ -16,7 +16,7 @@
 
             <div class="row">
                 <div class="col-xs-12">
-                    <form class="form-horizontal" id="sample-form" method="post" action="<?php echo Request::$BASE_PATH.'networks/new_network/'.$objData->id ;?>" enctype="multipart/form-data">
+                    <form class="form-horizontal" id="sample-form" method="post" action="<?php echo Request::$BASE_PATH.'networks/edit_network/'.$objData->id ;?>" enctype="multipart/form-data">
                         <div class="form-group has-info">
                             <label for="inputInfo" class="col-xs-12 col-sm-3 control-label no-padding-right">Name:</label>
 

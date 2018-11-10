@@ -46,7 +46,7 @@
 
                                         <div class="col-xs-12 col-sm-5">
 											<span class="block input-icon input-icon-right">
-                                                <input type="text" name="code" id="inputInfo" value="<?php echo $objData->code ;?>" class="width-100" required/>
+                                                <input type="text" name="code" id="inputInfo" value="<?php echo $objData->code ;?>" class="width-100" />
                                                 <input type="hidden" name="id" id="inputInfo" value="<?php echo $objData->id ;?>" required/>
 
 											</span>
@@ -69,13 +69,25 @@
                                         </div>
 
                                     </div>
+                                    <div class="form-group has-info">
+                                        <label for="inputInfo" class="col-xs-12 col-sm-3 control-label no-padding-right">URL:</label>
+
+                                        <div class="col-xs-12 col-sm-5">
+											<span class="block input-icon input-icon-right">
+												<input type="text" name="address" id="inputInfo" value="<?php echo $objData->address ;?>" class="width-100" />
+
+											</span>
+                                        </div>
+
+                                    </div>
 
                                     <div class="form-group has-info">
                                         <label for="inputInfo" class="col-xs-12 col-sm-3 control-label no-padding-right">Category:</label>
 
                                         <div class="col-xs-12 col-sm-5">
 											<span class="block input-icon input-icon-right">
-												<select name="category_id" class="form-control" required>
+												<select name="category_id" class="form-control">
+                                                 <option class="option" value="0"> </option>
                                             <?php if($objcategories)
                                                 foreach ($objcategories as $key){?>
                                                     <option class="option" value="<?php echo $key->id ;?>" <?php if($objData->category_id==$key->id)echo 'selected'?>><?php echo $key->name?></option>

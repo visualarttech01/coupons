@@ -46,7 +46,7 @@
 
                                         <div class="col-xs-12 col-sm-5">
 											<span class="block input-icon input-icon-right">
-												<input type="text" name="code" id="inputInfo" class="width-100" required/>
+												<input type="text" name="code" id="inputInfo" class="width-100" />
 
 											</span>
                                         </div>
@@ -70,12 +70,25 @@
                                     </div>
 
                                     <div class="form-group has-info">
+                                        <label for="inputInfo" class="col-xs-12 col-sm-3 control-label no-padding-right">URL:</label>
+
+                                        <div class="col-xs-12 col-sm-5">
+											<span class="block input-icon input-icon-right">
+												<input type="text" name="address" id="inputInfo" class="width-100" />
+
+											</span>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="form-group has-info">
                                         <label for="inputInfo" class="col-xs-12 col-sm-3 control-label no-padding-right">Category:</label>
 
                                         <div class="col-xs-12 col-sm-5">
 											<span class="block input-icon input-icon-right">
 												<select name="category_id" class="form-control" required>
-                                            <?php if($objcategories)
+                                                <option class="option" value="0" selected> </option>
+                                                    <?php if($objcategories)
                                                 foreach ($objcategories as $key){?>
                                                     <option class="option" value="<?php echo $key->id ;?>"><?php echo $key->name?></option>
                                                 <?php  }?>
@@ -110,7 +123,7 @@
 
                                         <div class="col-xs-12 col-sm-5">
 											<span class="block input-icon input-icon-right">
-												<input type="date" name="active_date" id="inputInfo" class="width-100" required/>
+												<input type="date" name="active_date" id="inputInfo" value="<?php echo date("Y-m-d")?>" class="width-100" required/>
 
 											</span>
                                         </div>
@@ -139,7 +152,7 @@
 
                                         <div class="col-xs-12 col-sm-5">
 											<span class="block input-icon input-icon-right">
-												<input type="date" name="expire_date" id="inputInfo" class="width-100" required/>
+												<input type="date" name="expire_date" id="inputInfo" class="width-100" />
 
 											</span>
                                         </div>

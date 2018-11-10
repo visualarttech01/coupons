@@ -249,6 +249,73 @@
                 return false;
             }
         }
-		
-	}
+
+    //======================================================== COMPANY BY ID ============================================
+    static function reporting($table,$id){
+        global $DB;
+
+        $sql="SELECT *
+					FROM ".$table."
+					WHERE is_active = 1
+					AND publisher='".$id."'
+					OR  edited_by='".$id."'
+					ORDER BY id DESC";
+
+        $objData=$DB->Select($sql);
+        if($objData){
+
+            foreach ($objData as $key){
+
+                if ($key->edited_by==$id && $key->publisher==$id){
+                    $key->status='Posted & Edited';
+               }elseif($key->publisher==$id && $key->edited_by!=$id){
+                  
+                   $sql="SELECT user_name from users where id='".$key->edited_by."'";
+                   $editor=$DB->Select($sql);
+                   if($editor){
+                       $key->status='Posted';
+                       $key->editor='Edited by '.$editor[0]->user_name;
+                   }
+                    
+               }elseif($key->publisher!=$id && $key->edited_by==$id ){
+                  
+                   $sql="SELECT user_name from users where id='".$key->publisher."'";
+                    
+                    $editor=$DB->Select($sql);
+
+                    if($editor){
+                        $key->status='Edited';
+                        $key->editor='Posted by '.$editor[0]->user_name;
+                    }
+                    
+
+                }
+
+            }
+
+          return $objData;
+        }else{
+            return false;
+        }
+    }
+
+    static function publisher($table,$id){
+        global $DB;
+        $sql="SELECT publisher
+					FROM ".$table."
+					WHERE is_active = 1
+					AND id= '".$id."'
+					ORDER BY id DESC";
+
+        $objData=$DB->Select($sql);
+        if($objData){
+
+            return $objData[0];
+        }else{
+            return false;
+        }
+    }
+
+
+}
 

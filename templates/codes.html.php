@@ -48,6 +48,7 @@
                                                         <th class="hidden-480">Code</th>
                                                         <th class="hidden-480">Coupon Types</th>
                                                         <th class="hidden-480">Stores</th>
+                                                        <th class="hidden-480">URL'S</th>
                                                         <th class="hidden-480">Categories</th>
                                                         <th class="hidden-480">Active Dates</th>
                                                         <th class="hidden-480">Expire Dates</th>
@@ -82,7 +83,9 @@
                                                         <td class="hidden-480">
                                                             <?php echo $key->store ;?>
                                                         </td>
-
+                                                        <td class="hidden-480">
+                                                            <?php echo $key->address ;?>
+                                                        </td>
                                                         <td class="hidden-480">
                                                             <?php echo $key->category ;?>
                                                         </td>

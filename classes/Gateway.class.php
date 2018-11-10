@@ -14,6 +14,74 @@
 
 			switch ($parameters[0]){
 
+                case 'reporting':
+                    if (Content::validate('stores','p_view')){
+
+                        if (!isset($parameters[1]) && $parameters[1]= ''){
+                            header('Location:'.Request::$BASE_PATH);
+                        }else {
+                            switch ($parameters[1]){
+                                case 'networks':
+                                    if(Content::validate('stores','p_add')) {
+                                        if (isset($parameters[1]) && $parameters[1] != '') {
+                                            $id=intval($parameters[2]);
+                                            $objUser=Content::user($id);
+                                            $objPresenter->AddParameter('objUser',$objUser);
+                                            $objall=Content::reporting('networks',$id);
+                                            $objPresenter->AddParameter('objall',$objall);
+                                            $objPresenter->AddTemplate('network-report');
+                                        }
+                                    }
+                                    break;
+                                case 'categories':
+                                    if(Content::validate('stores','p_add')) {
+                                        if (isset($parameters[1]) && $parameters[1] != '') {
+                                            $id=intval($parameters[2]);
+                                            $objUser=Content::user($id);
+                                            $objPresenter->AddParameter('objUser',$objUser);
+                                            $objall=Content::reporting('categories',$id);
+                                            $objPresenter->AddParameter('objall',$objall);
+                                            $objPresenter->AddTemplate('categories-report');
+                                        }
+                                    }
+                                    break;
+                                case 'stores':
+                                    if(Content::validate('stores','p_add')) {
+                                        if (isset($parameters[1]) && $parameters[1] != '') {
+                                            $id=intval($parameters[2]);
+                                            $objUser=Content::user($id);
+                                            $objPresenter->AddParameter('objUser',$objUser);
+                                            $objall=Content::reporting('stores',$id);
+                                            $objPresenter->AddParameter('objall',$objall);
+                                            $objPresenter->AddTemplate('stores-report');
+                                        }
+                                    }
+                                    break;
+                                case 'coupons':
+                                    if(Content::validate('stores','p_add')) {
+                                        if (isset($parameters[1]) && $parameters[1] != '') {
+                                            $id=intval($parameters[2]);
+                                            $objUser=Content::user($id);
+                                            $objPresenter->AddParameter('objUser',$objUser);
+                                            $objall=Content::reporting('coupons',$id);
+                                            $objPresenter->AddParameter('objall',$objall);
+                                            $objPresenter->AddTemplate('coupons-report');
+                                        }
+                                    }
+                                    break;
+
+                                default:
+                                    header ( "Location: " . Request::$BASE_PATH.'reporting' );
+                                    break;
+                            }
+                        }
+                    }else{
+                        header ( "Location: " . Request::$BASE_PATH );
+                    }
+
+
+                    break;
+
                 case 'stores':
                     if (Content::validate('stores','p_view')){
                         $objall =Content::All('stores');
@@ -45,7 +113,8 @@
                                                     $target_path = $target_path . $filename;
                                                     if (move_uploaded_file ( $_FILES ['image'] ['tmp_name'], $target_path )) {
                                                         $objData->logo = $filename;
-                                                        $objData->created = date ( 'Y-m-d' );
+                                                        $objData->publisher = Session::GetUser()->id;
+                                                        $objData->created = date ( 'Y-m-d H:i:s' );
                                                         $objData->is_active = '1';
                                                         global $DB;
                                                         $DB->Save ( 'stores', $objData );
@@ -95,6 +164,11 @@
                                                         if (move_uploaded_file ( $_FILES ['image'] ['tmp_name'], $target_path )) {
                                                             $olddata = $objData->logo;
                                                             $objData->logo = $filename;
+                                                            $id=intval($parameters[2]);
+                                                            $objold=Content::publisher('stores',$id);
+                                                            $objData->publisher=$objold->publisher;
+                                                            $objData->edited_by=Session::GetUser()->id;
+                                                            $objData->updated = date('Y-m-d H:i:s');
                                                             global $DB;
                                                             $DB->Save ( 'stores', $objData );
                                                             unlink ( 'images/stores/'.$olddata );
@@ -110,7 +184,11 @@
 
                                                     }
                                                 }else{
-
+                                                    $id=intval($parameters[2]);
+                                                    $objold=Content::publisher('stores',$id);
+                                                    $objData->publisher= $objold->publisher;
+                                                    $objData->edited_by=Session::GetUser()->id;
+                                                    $objData->updated = date('Y-m-d H:i:s');
                                                     global $DB;
                                                     if($DB->Save ( 'stores', $objData )){
                                                         $objPresenter->AddParameter ( 'add_message', '<strong>Success</strong> Updated' );
@@ -178,6 +256,21 @@
                                     if(Content::validate('coupons','p_add')){
                                         if(Request::hasPostVariables()){
                                             $objData = Request::getPostVariables();
+
+                                            if ($objData->address==''){
+                                                $objDstore =Content::find_by_id($objData->store_id,'stores');
+
+                                                if ($objDstore->net_store_link!=''){
+                                                    $objData->address=$objDstore->net_store_link;
+                                                }else{
+                                                    $objData->address=$objDstore->address;
+                                                }
+                                            }
+                                            if ($objData->code!=''){
+                                                $objData->type='coupon';
+                                            }else{
+                                                $objData->type='deal';
+                                            }
                                             $objData->created = date ( 'Y-m-d' );
                                             $objData->is_active = '1';
                                             $objData->publisher = Session::GetUser()->id;
@@ -201,9 +294,15 @@
                                     if(Content::validate('coupons','p_edit')){
                                         if($parameters[2] !='' && isset($parameters[2])){
                                             if(Request::hasPostVariables()){
-                                                $objold=Content::select('publisher','coupons');
                                                 $objData = Request::getPostVariables();
-                                                $objData->publisher=$objold[0]->publisher;
+                                                if ($objData->code!=' '){
+                                                    $objData->type='coupon';
+                                                }else{
+                                                    $objData->type='deal';
+                                                }
+                                                $id=intval($parameters[2]);
+                                                $objold=Content::publisher('coupons',$id);
+                                                $objData->publisher=$objold->publisher;
                                                 $objData->edited_by = Session::GetUser()->id;
                                                 $objData->updated = date ( 'Y-m-d' );
                                                 global $DB;
@@ -488,6 +587,7 @@
 
                                         if(Request::hasPostVariables()){
                                             $objData = Request::getPostVariables();
+                                            $objData->publisher = Session::GetUser()->id;
                                             $objData->created = date ( 'Y-m-d H:i:s' );
                                             $objData->is_active = '1';
                                             global $DB;
@@ -505,7 +605,13 @@
                                     if(Content::validate('categories','p_edit')){
                                         if($parameters[2] !='' && isset($parameters[2])){
                                             if(Request::hasPostVariables()){
-                                                $objData = Request::getPostVariables();
+
+                                                $objData =Request::getPostVariables();
+                                                $id=intval($parameters[2]);
+                                                $objold=Content::publisher('categories',$id);
+                                                $objData->publisher=$objold->publisher;
+                                                $objData->edited_by=Session::GetUser()->id;
+                                                $objData->updated = date('Y-m-d H:i:s');
                                                 global $DB;
                                                 $DB->Save ( 'categories', $objData );
                                                 $objPresenter->AddParameter ( 'add_message', '<strong>Success</strong> Updated' );
@@ -569,6 +675,7 @@
 
                                         if(Request::hasPostVariables()){
                                             $objData = Request::getPostVariables();
+                                            $objData->publisher = Session::GetUser()->id;
                                             $objData->created = date ( 'Y-m-d H:i:s' );
                                             $objData->is_active = '1';
                                             global $DB;
@@ -584,9 +691,14 @@
                                 case 'edit_network':
 
                                     if(Content::validate('networks','p_edit')){
-                                        if($parameters[2] !='' && isset($parameters[2])){
+                                        if($parameters[2]!=' ' && isset($parameters[2])){
                                             if(Request::hasPostVariables()){
-                                                $objData = Request::getPostVariables();
+                                                $objData =Request::getPostVariables();
+                                                $id=intval($parameters[2]);
+                                                $objold=Content::publisher('networks',$id);
+                                                $objData->publisher=$objold->publisher;
+                                                $objData->edited_by=Session::GetUser()->id;
+                                                $objData->updated = date('Y-m-d H:i:s');
                                                 global $DB;
                                                 $DB->Save ( 'networks', $objData );
                                                 $objPresenter->AddParameter ( 'add_message', '<strong>Success</strong>Updated' );
@@ -756,6 +868,7 @@
                         header ( "Location: " . Request::$BASE_PATH );
                     }
                     break;
+
                 case 'report-range':
                     if(Content::validate('report range','p_view')){
                         if(Request::hasPostVariables()){
@@ -770,6 +883,7 @@
                         header ( "Location: " . Request::$BASE_PATH );
                     }
                     break;
+
 				case 'logout':
 							if (Session::isUserOnline()){
 								Session::Destroy();
@@ -872,6 +986,7 @@
                     }
 
                     break;
+
                 case 'access':
                     if(Session::isUserOnline()){
                     $objPresenter->AddParameter('access');

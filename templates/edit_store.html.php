@@ -73,7 +73,7 @@
 
                             <div class="col-xs-12 col-sm-5">
                                 <span class="block input-icon input-icon-right">
-                                    <select name="network" class="form-control" required>
+                                    <select name="network" class="form-control">
                                 <?php if($objnetworks)
                                     foreach ($objnetworks as $key){?>
                                         <option class="option" value="<?php echo $key->name ;?>" <?php if($key->name==$objData->network)echo 'selected';?>><?php echo $key->name?></option>
@@ -121,7 +121,7 @@
 
                             <div class="col-xs-12 col-sm-5">
                                 <span class="block input-icon input-icon-right">
-                                    <input type="text" name="net_store_id" id="inputInfo" value="<?php echo $objData->net_store_id ;?>" class="width-100" required/>
+                                    <input type="text" name="net_store_id" id="inputInfo" value="<?php echo $objData->net_store_id ;?>" class="width-100" />
 
                                 </span>
                             </div>
@@ -132,7 +132,7 @@
 
                             <div class="col-xs-12 col-sm-5">
                                 <span class="block input-icon input-icon-right">
-                                    <input type="text" name="net_store_name" id="inputInfo" value="<?php echo $objData->net_store_name ;?>" class="width-100" required/>
+                                    <input type="text" name="net_store_name" id="inputInfo" value="<?php echo $objData->net_store_name ;?>" class="width-100" />
 
                                 </span>
                             </div>
@@ -144,7 +144,7 @@
 
                             <div class="col-xs-12 col-sm-5">
                                 <span class="block input-icon input-icon-right">
-                                    <input type="text" name="net_store_link" id="inputInfo" value="<?php echo $objData->net_store_link ;?>" class="width-100" required/>
+                                    <input type="text" name="net_store_link" id="inputInfo" value="<?php echo $objData->net_store_link ;?>" class="width-100" />
 
                                 </span>
                             </div>
@@ -156,7 +156,7 @@
 
                             <div class="col-xs-12 col-sm-5">
                                 <span class="block input-icon input-icon-right">
-                                    <textarea rows="5" cols="20" name="detail" id="inputInfo" class="width-100" required/><?php echo $objData->detail ;?></textarea>
+                                    <textarea rows="5" cols="20" name="detail" id="inputInfo" class="width-100" /><?php echo $objData->detail ;?></textarea>
 
                                 </span>
                             </div>

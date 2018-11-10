@@ -188,3 +188,93 @@ if (isset ( $_FILES ['image'] ['name'] ) && $_FILES ['image'] ['name'] != '') {
         </div>
     </div>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table id="dynamic-table" class="table table-striped table-bordered table-hover">
+    <thead>
+        <tr>
+            <th class="center" hidden>
+                <label class="pos-rel">
+                    <input type="checkbox" class="ace" />
+                    <span class="lbl"></span>
+                </label>
+            </th>
+            <th class="hidden-480">Names</th>
+            <th class="hidden-480">Url</th>
+            <th class="hidden-480">Status</th>
+            <th>Created</th>
+            <th>Edited</th>
+
+        </tr>
+    </thead>
+
+    <tbody>
+
+        <?php
+        if($objall)
+            foreach($objall as $key){ ?>
+        <tr>
+            <td class="center" hidden>
+                <label class="pos-rel">
+                    <input type="checkbox" class="ace" />
+                    <span class="lbl"></span>
+                </label>
+            </td>
+            <td class="hidden-480">
+                <?php echo $key->name ;?>
+            </td>
+            <td class="hidden-480">
+                <?php echo $key->address;?>
+            </td>
+            <td class="center hidden-480">
+                <span class="label label-sm label-<?php if($key->status=='Posted & Eidted'){echo 'warning';}elseif ($key->status=='Posted'){echo 'danger';}else{echo 'gray';}?>"><?php echo $key->status ;?></span>
+            </td>
+            <td class="hidden-480">
+                <?php echo $key->created;?>
+            </td>
+            <td class="hidden-480">
+                <?php echo $key->updated;?>
+            </td>
+
+            <td>
+<!--															<div class="action-buttons">-->
+<!---->
+<!--																<a class="red" href="#"></a>-->
+<!--																	<i id="--><?php //echo $key->id; ?><!--"  class="ace-icon fa fa-trash-o bigger-130 bootbox-confirm"></i>-->
+<!--																	<a href="--><?php //echo Request::$BASE_PATH.'networks/edit_network/'.$key->id ?><!--">-->
+<!--																		<i class="ace-icon fa fa-pencil-square-o bigger-120"></i>-->
+<!--																	</a>-->
+<!--															</div>-->
+
+            </td>
+        </tr>
+            <?php } ?>
+    </tbody>
+</table>
