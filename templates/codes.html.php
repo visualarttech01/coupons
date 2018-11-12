@@ -37,7 +37,7 @@
 											<table id="dynamic-table" class="table table-striped table-bordered table-hover">
 												<thead>
 													<tr>
-														<th class="center" hidden>
+														<th class="center">
 															<label class="pos-rel">
 																<input type="checkbox" class="ace" />
 																<span class="lbl"></span>
@@ -50,6 +50,7 @@
                                                         <th class="hidden-480">Stores</th>
                                                         <th class="hidden-480">URL'S</th>
                                                         <th class="hidden-480">Categories</th>
+                                                        <th class="hidden-480">Rank</th>
                                                         <th class="hidden-480">Active Dates</th>
                                                         <th class="hidden-480">Expire Dates</th>
                                                         <th>Actions</th>
@@ -62,7 +63,7 @@
 													if($objall)
 														foreach($objall as $key){ ?>
 													<tr>
-														<td class="center" hidden>
+														<td class="center">
 															<label class="pos-rel">
 																<input type="checkbox" class="ace" />
 																<span class="lbl"></span>
@@ -72,7 +73,7 @@
 															<?php echo $key->name ;?>
 														</td>
                                                         <td class="hidden-480">
-                                                            <?php echo substr($key->detail,0,60).'..' ;?>
+                                                            <?php echo substr($key->detail,0,30).'..' ;?>
                                                         </td>
                                                         <td class="hidden-480">
                                                             <?php echo $key->code ;?>
@@ -88,6 +89,10 @@
                                                         </td>
                                                         <td class="hidden-480">
                                                             <?php echo $key->category ;?>
+                                                        </td>
+
+														<td class="hidden-480">
+                                                            <?php echo $key->rank ;?>
                                                         </td>
                                                         <td class="hidden-480">
                                                             <?php echo $key->active_date ;?>
@@ -105,6 +110,9 @@
 																	<a href="<?php echo Request::$BASE_PATH.'codes/edit_code/'.$key->id ?>">
 																		<i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
 																	</a>
+																	 <a href="<?php echo Request::$BASE_PATH.'ranking/'.$key->store_id ?>">
+                                                                        <i class="ace-icon fa fa-eye bigger-120"></i>
+                                                                    </a>
 															</div>
 															
 															
@@ -139,6 +147,19 @@
 			<script src="<?php echo Request::$BASE_PATH; ?>assets/js/buttons.print.min.js"></script>
 			<script src="<?php echo Request::$BASE_PATH; ?>assets/js/buttons.colVis.min.js"></script>
 			<script src="<?php echo Request::$BASE_PATH; ?>assets/js/dataTables.select.min.js"></script>
+			<script src="<?php echo Request::$BASE_PATH; ?>assets/js/jquery-ui.custom.min.js"></script>
+    		<script src="<?php echo Request::$BASE_PATH; ?>assets/js/jquery.ui.touch-punch.min.js"></script>
+    		<script src="<?php echo Request::$BASE_PATH; ?>assets/js/jquery.gritter.min.js"></script>
+    		<script src="<?php echo Request::$BASE_PATH; ?>assets/js/bootbox.js"></script>
+    		<script src="<?php echo Request::$BASE_PATH; ?>assets/js/jquery.easypiechart.min.js"></script>
+    		<script src="<?php echo Request::$BASE_PATH; ?>assets/js/bootstrap-datepicker.min.js"></script>
+    		<script src="<?php echo Request::$BASE_PATH; ?>assets/js/jquery.hotkeys.index.min.js"></script>
+    		<script src="<?php echo Request::$BASE_PATH; ?>assets/js/bootstrap-wysiwyg.min.js"></script>
+    		<script src="<?php echo Request::$BASE_PATH; ?>assets/js/select2.min.js"></script>
+    		<script src="<?php echo Request::$BASE_PATH; ?>assets/js/spinbox.min.js"></script>
+    		<script src="<?php echo Request::$BASE_PATH; ?>assets/js/bootstrap-editable.min.js"></script>
+    		<script src="<?php echo Request::$BASE_PATH; ?>assets/js/ace-editable.min.js"></script>
+    		<script src="<?php echo Request::$BASE_PATH; ?>assets/js/jquery.maskedinput.min.js"></script>
 			
 			<script type="text/javascript">
 			jQuery(function($) {
@@ -352,6 +373,8 @@
 				
 				
 				
+			
+
 				
 				
 				/**
@@ -411,6 +434,10 @@
 						  }
 						);
 					});
+					
+					
 				**/
+
+				
 			</script>
 			

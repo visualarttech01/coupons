@@ -118,24 +118,8 @@
             }
 
         }
-        //======================================================== All USERS ============================================
-		static function all_users(){
-			global $DB;
-			
-			$sql="SELECT *
-					FROM users
-					WHERE is_active = 1
-					ORDER BY id DESC";
-			
-			$objData=$DB->Select($sql);
-			if($objData){
-			
-				return $objData;
-			}else{
-				return false;
-			}
-		}
-        //======================================================== COMPANY BY ID ============================================
+
+        //======================================================== relation ============================================
         static function relation($field,$table,$otable,$ofield,$id){
             global $DB;
 
@@ -168,7 +152,7 @@
         }
 
 
-        //======================================================== COMPANY BY ID ============================================
+        //======================================================== coupons ============================================
         static function coupons(){
             global $DB;
 
@@ -231,7 +215,7 @@
 		}
 
 
-//========================================================GLOBAL_SETTING============================================
+		//======================================================== user ============================================
 
     static function user($id){
             global $DB;
@@ -250,7 +234,7 @@
             }
         }
 
-    //======================================================== COMPANY BY ID ============================================
+        //======================================================== reporting ============================================
     static function reporting($table,$id){
         global $DB;
 
@@ -298,7 +282,7 @@
             return false;
         }
     }
-
+    //======================================================== reporting ============================================
     static function publisher($table,$id){
         global $DB;
         $sql="SELECT publisher
@@ -311,6 +295,24 @@
         if($objData){
 
             return $objData[0];
+        }else{
+            return false;
+        }
+    }
+    
+    //======================================================== reporting ============================================
+    static function ranks($store_id){
+        global $DB;
+        $sql="SELECT name,id,rank
+					FROM coupons
+					WHERE is_active = 1
+					AND store_id= '".$store_id."'
+					ORDER BY rank ASC";
+        
+        $objData=$DB->Select($sql);
+        if($objData){
+            
+            return $objData;
         }else{
             return false;
         }

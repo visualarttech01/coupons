@@ -81,17 +81,7 @@
                                                     <?php echo $key->updated;?>
                                                 </td>
 
-<!--                                                <td>-->
-                                                    <!--															<div class="action-buttons">-->
-                                                    <!---->
-                                                    <!--																<a class="red" href="#"></a>-->
-                                                    <!--																	<i id="--><?php //echo $key->id; ?><!--"  class="ace-icon fa fa-trash-o bigger-130 bootbox-confirm"></i>-->
-                                                    <!--																	<a href="--><?php //echo Request::$BASE_PATH.'networks/edit_network/'.$key->id ?><!--">-->
-                                                    <!--																		<i class="ace-icon fa fa-pencil-square-o bigger-120"></i>-->
-                                                    <!--																	</a>-->
-                                                    <!--															</div>-->
 
-<!--                                                </td>-->
                                             </tr>
                                         <?php } ?>
                                     </tbody>

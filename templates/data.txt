@@ -1,0 +1,122 @@
+
+<div class="main-content">
+    <div class="main-content-inner">
+        <div class="page-content">
+            <div class="page-header">
+                <h1>
+                   Error
+                    <small>
+
+
+                    </small>
+                </h1>
+            </div><!-- /.page-header -->
+            <div class="row">
+                <div class="col-xs-12">
+                    <!-- PAGE CONTENT BEGINS -->
+                    <div class="row">
+                        <div class="space-6"></div>
+                        <div class="vspace-12-sm"></div>
+                        <div class="center">
+
+                        </div>
+
+                        <div class="space-6"></div>
+                       <div class="profile-user-info profile-user-info-striped">
+							<?php if($objData)
+							    foreach ($objData as $key){
+							    ?>					
+    						<div class="profile-info-row">
+    							<div class="profile-info-name" id="<?php echo $key->name?>"> <?php echo $key->name?> </div>
+    							<div class="profile-info-value">
+    								<span class="block input-icon input-icon-right rankdiv">
+										<input type="text" name="rank" value="<?php echo $key->rank ;?>" id="inputInfo" class="width-100" required/>
+										<button id="<?php echo $key->id; ?>" class="btn btn-success btn-sm pull-right bootbox-editrank"><i class="glyphicon glyphicon-pencil"></i></button>
+									
+									</span>
+    							</div>
+    						</div>
+    						<?php }?>
+    						
+    
+    					</div>
+
+
+                        <div class="space-6"></div>
+                    </div>
+                    <!-- PAGE CONTENT ENDS -->
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+
+
+
+
+
+        </div><!-- /.page-content -->
+    </div>
+</div><!-- /.main-content -->
+
+
+			
+			
+		<script src="<?php echo Request::$BASE_PATH; ?>assets/js/jquery-ui.custom.min.js"></script>
+		<script src="<?php echo Request::$BASE_PATH; ?>assets/js/jquery.ui.touch-punch.min.js"></script>
+		<script src="<?php echo Request::$BASE_PATH; ?>assets/js/jquery.gritter.min.js"></script>
+		<script src="<?php echo Request::$BASE_PATH; ?>assets/js/bootbox.js"></script>
+		<script src="<?php echo Request::$BASE_PATH; ?>assets/js/jquery.easypiechart.min.js"></script>
+		<script src="<?php echo Request::$BASE_PATH; ?>assets/js/bootstrap-datepicker.min.js"></script>
+		<script src="<?php echo Request::$BASE_PATH; ?>assets/js/jquery.hotkeys.index.min.js"></script>
+		<script src="<?php echo Request::$BASE_PATH; ?>assets/js/bootstrap-wysiwyg.min.js"></script>
+		<script src="<?php echo Request::$BASE_PATH; ?>assets/js/select2.min.js"></script>
+		<script src="<?php echo Request::$BASE_PATH; ?>assets/js/spinbox.min.js"></script>
+		<script src="<?php echo Request::$BASE_PATH; ?>assets/js/bootstrap-editable.min.js"></script>
+		<script src="<?php echo Request::$BASE_PATH; ?>assets/js/ace-editable.min.js"></script>
+		<script src="<?php echo Request::$BASE_PATH; ?>assets/js/jquery.maskedinput.min.js"></script>
+
+<script src="<?php echo Request::$BASE_PATH.'assets/js/bootbox.js'; ?>"></script>
+			<script>
+					$(".bootbox-confirm").click(function() {
+						var Self = $(this);
+						bootbox.confirm("Are you sure! you wanted to delete this user?", function(result) {
+							if(result) {
+								$.post("<?php echo Request::$BASE_PATH.'members/delete/' ?>", {
+				 					id: Self.attr('id')
+						 			}).done(function(data,status){
+					 			      if(status=='success'){
+										//    alert(data);
+					 			    	 Self.closest("tr").remove();
+					 			      }else{
+					 			    	 alert('Error in remove User');
+					 			      }
+						 		});
+							}
+						});
+					});
+					
+
+
+
+				$(".bootbox-editrank").click( function() {
+					var Self = $(this);
+					var rank = $(this).closest('.profile-info-value').find("input[name='rank']").val();
+					
+						
+    					$.post("<?php echo Request::$BASE_PATH.'rank-update/' ?>", {
+		 					id: Self.attr('id'),
+		 					rank:rank
+				 			}).done(function(data,status){
+			 			      if(status=='success'){
+			 			    	 $('.center').empty();
+			 			    	 $('.center').html('<div class="alert alert-success" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><strong>Success! </strong> Updated</div>')
+			 			    	  $( ".alert-success" ).slideUp( 2000 ).delay( 1000 );
+			 			      }else{
+			 			    	 alert('Error');
+			 			      }
+				 		}); 
+					
+				});
+
+
+
+
+			</script>

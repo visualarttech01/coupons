@@ -14,7 +14,36 @@
 
 			switch ($parameters[0]){
 
-                case 'reporting':
+			    case 'ranking':
+			        if (Content::validate('stores','p_view')){
+			            if (!isset($parameters[1]) && $parameters[1]= ''){
+			                header('Location:'.Request::$BASE_PATH);
+			            }else {
+			                if(Request::hasPostVariables()){
+			                    $objData=Request::getPostVariables();
+			                    foreach($objData as $key => $value){
+			                        $sql="UPDATE coupons SET rank='".$value."' where id='".$key."'";
+			                        global $DB;
+			                        if($DB->Execute($sql)){
+			                           
+			                        }
+			                    }
+			                   
+			                }
+			                $store_id=intval($parameters[1]);
+			                $objStore=Content::find_by_id($store_id, 'stores');
+			                $objPresenter->AddParameter('objStore', $objStore);
+			                $objData=Content::ranks($store_id);
+			                $objPresenter->AddParameter('objData', $objData);
+			                $objPresenter->AddTemplate('ranking');
+			                
+			            }
+			        }
+			       
+			        
+			        break;
+			   
+			    case 'reporting':
                     if (Content::validate('stores','p_view')){
 
                         if (!isset($parameters[1]) && $parameters[1]= ''){

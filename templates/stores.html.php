@@ -107,11 +107,12 @@
 
                                                 <td>
                                                     <div class="action-buttons">
-
-                                                        <a class="red" href="#"></a>
-                                                        <i id="<?php echo $key->id; ?>"  class="ace-icon fa fa-trash-o bigger-130 bootbox-confirm"></i>
+														<i id="<?php echo $key->id; ?>"  class="ace-icon fa fa-trash-o bigger-130 bootbox-confirm"></i>
                                                         <a href="<?php echo Request::$BASE_PATH.'stores/edit_store/'.$key->id ?>">
                                                             <i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
+                                                        </a>
+                                                        <a href="<?php echo Request::$BASE_PATH.'ranking/'.$key->id ?>">
+                                                            <i class="ace-icon fa fa-eye bigger-120"></i>
                                                         </a>
                                                     </div>
 
