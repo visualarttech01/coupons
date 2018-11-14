@@ -37,12 +37,8 @@
 											<table id="dynamic-table" class="table table-striped table-bordered table-hover">
 												<thead>
 													<tr>
-														<th class="center" hidden>
-															<label class="pos-rel">
-																<input type="checkbox" class="ace" />
-																<span class="lbl"></span>
-															</label>
-														</th>
+														
+														<th class="hidden-480">ID's</th>
 														<th class="hidden-480">Names</th>
                                                         <th class="hidden-480">Detail</th>
                                                         <th class="hidden-480">Meta Title</th>
@@ -58,11 +54,9 @@
 													if($objall)
 														foreach($objall as $key){ ?>
 													<tr>
-														<td class="center" hidden>
-															<label class="pos-rel">
-																<input type="checkbox" class="ace" />
-																<span class="lbl"></span>
-															</label>
+
+														<td class="center">
+															<?php echo $key->id ;?>
 														</td>
 														<td class="hidden-480">
 															<?php echo $key->name ;?>
@@ -83,48 +77,13 @@
 														<td>
 															<div class="action-buttons">
 
-																<a class="red" href="#"></a>
+																
 																	<i id="<?php echo $key->id; ?>"  class="ace-icon fa fa-trash-o bigger-130 bootbox-confirm"></i>
 																	<a href="<?php echo Request::$BASE_PATH.'categories/edit_category/'.$key->id ?>">
 																		<i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
 																	</a>
 															</div>
 															
-															
-
-															<!-- <div class="hidden-md hidden-lg">
-																<div class="inline pos-rel">
-																	<button class="btn btn-minier btn-yellow dropdown-toggle" data-toggle="dropdown" data-position="auto">
-																		<i class="ace-icon fa fa-caret-down icon-only bigger-120"></i>
-																	</button>
-
-																	<ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
-																		<li>
-																			<a href="#" class="tooltip-info" data-rel="tooltip" title="View">
-																				<span class="blue">
-																					<i class="ace-icon fa fa-search-plus bigger-120"></i>
-																				</span>
-																			</a>
-																		</li>
-
-																		<li>
-																			<a href="#" class="tooltip-success" data-rel="tooltip" title="Edit">
-																				<span class="green">
-																					<i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
-																				</span>
-																			</a>
-																		</li>
-
-																		<li>
-																			<a href="#" class="tooltip-error" data-rel="tooltip" title="Delete">
-																				<span class="red">
-																					<i class="ace-icon fa fa-trash-o bigger-120 delete_user"></i>
-																				</span>
-																			</a>
-																		</li>
-																	</ul>
-																</div>
-															</div> -->
 														</td>
 													</tr>
 														<?php } ?>

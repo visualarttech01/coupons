@@ -28,6 +28,17 @@
 										</div>
 										
 									</div>
+									<div class="form-group has-info">
+                                        <label for="inputInfo" class="col-xs-12 col-sm-3 control-label no-padding-right">Old Name:</label>
+
+                                        <div class="col-xs-12 col-sm-5">
+											<span class="block input-icon input-icon-right">
+                                                <input type="text" name="old_name" id="inputInfo" value="<?php echo $objData->old_name ;?>" class="width-100" />
+
+											</span>
+                                        </div>
+
+                                    </div>
 
                                     <div class="form-group has-info">
                                         <label for="inputInfo" class="col-xs-12 col-sm-3 control-label no-padding-right">Detail:</label>

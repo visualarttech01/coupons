@@ -317,7 +317,118 @@
             return false;
         }
     }
-
+    //======================================================== COMPANY BY ID ============================================
+    static function validateStore($name){
+        global $DB;
+        
+        $sql="SELECT id
+					FROM stores
+					WHERE name = '".$name."'
+					AND is_active = 1
+					ORDER BY id DESC";
+        
+        $objData=$DB->Select($sql);
+        if($objData){
+            
+            return false;
+        }else{
+            return true;
+        }
+    }
+    //======================================================== COMPANY BY ID ============================================
+    static function validateStoreEdit($name,$id){
+        global $DB;
+        
+        $sql="SELECT id
+					FROM stores
+					WHERE name = '".$name."'
+					AND is_active = 1
+					ORDER BY id DESC";
+        
+        $objData=$DB->Select($sql);
+        if($objData){
+            if($objData[0]->id==$id){
+                return true;
+            }else{
+                return false;
+            }
+            
+        }else{
+            return true;
+        }
+    }
+    //======================================================== COMPANY BY ID ============================================
+    static function validateCoupon($name,$store_id){
+        global $DB;
+        
+        $sql="SELECT id
+					FROM coupons
+					WHERE name = '".$name."'
+					AND store_id ='".$store_id."'
+                    AND is_active = 1
+					ORDER BY id DESC";
+        
+        $objData=$DB->Select($sql);
+        
+        if($objData){
+            return false;
+            
+        }else{
+            return true;
+        }
+    }
+    
+    //======================================================== COMPANY BY ID ============================================
+    static function validateCouponedit($name,$store_id,$id){
+        global $DB;
+        
+        $sql="SELECT id
+					FROM coupons
+					WHERE name = '".$name."'
+					AND store_id ='".$store_id."'
+                    AND is_active = 1
+					ORDER BY id DESC";
+        
+        $objData=$DB->Select($sql);
+        if($objData){
+            if($objData[0]->id==$id){
+                return true;
+            }else{
+                return false;
+            }
+            
+        }else{
+            return true;
+        }
+    }
+    //======================================================== COMPANY BY ID ============================================
+    static function clean($string) {
+        $string = str_replace(' ', '-', $string); // Replaces all spaces with hyphens.
+        $string = preg_replace('/[^A-Za-z0-9\-]/', '', $string); // Removes special chars.
+        
+        $string=preg_replace('/-+/', '-', $string); // Replaces multiple hyphens with single one.
+        return $string=str_replace('-', ' ', $string);
+    }
+    
+    //======================================================== COMPANY BY ID ============================================
+    static function getId($name,$table){
+        global $DB;
+        
+        $sql="SELECT id
+					FROM $table
+					WHERE name = '".$name."'
+					AND is_active = 1
+					ORDER BY id DESC";
+        
+        $objData=$DB->Select($sql);
+        if($objData){
+            return $objData[0]->id;
+            
+            
+        }else{
+            return false;
+        }
+    }
 
 }
 

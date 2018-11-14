@@ -44,6 +44,7 @@
                                                 <span class="lbl"></span>
                                             </label>
                                         </th>
+                                        <th class="hidden-480">ID's</th>
                                         <th class="hidden-480">Names</th>
                                         <th class="hidden-480">Detail</th>
                                         <th class="hidden-480">Category</th>
@@ -71,6 +72,9 @@
                                                         <span class="lbl"></span>
                                                     </label>
                                                 </td>
+                                                <td class="center">
+    												<?php echo $key->id ;?>
+    											</td>
                                                 <td class="hidden-480">
                                                     <?php echo $key->name ;?>
                                                 </td>

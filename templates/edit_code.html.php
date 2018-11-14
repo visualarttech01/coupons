@@ -28,6 +28,7 @@
 										</div>
 										
 									</div>
+									
 
                                     <div class="form-group has-info">
                                         <label for="inputInfo" class="col-xs-12 col-sm-3 control-label no-padding-right">Detail:</label>
@@ -36,6 +37,17 @@
 											<span class="block input-icon input-icon-right">
                                                 <textarea rows="5" cols="20" name="detail" id="inputInfo" class="width-100" required/><?php echo $objData->detail ;?></textarea>
 
+											</span>
+                                        </div>
+
+                                    </div>
+                                    <div class="form-group has-info">
+                                        <label for="inputInfo" class="col-xs-12 col-sm-3 control-label no-padding-right">Discount Value:</label>
+
+                                        <div class="col-xs-12 col-sm-5">
+											<span class="block input-icon input-icon-right">
+                                                <input type="text" name="discount" id="inputInfo" value="<?php echo $objData->discount ;?>" class="width-100" required/>
+                                              
 											</span>
                                         </div>
 
@@ -152,7 +164,7 @@
 
                                         <div class="col-xs-12 col-sm-5">
 											<span class="block input-icon input-icon-right">
-												<input type="date" name="expire_date" value="<?php echo $objData->expire_date ;?>" id="inputInfo" class="width-100" required/>
+												<input type="date" name="expire_date" value="<?php echo $objData->expire_date ;?>" id="inputInfo" class="width-100" />
 
 											</span>
                                         </div>

@@ -37,12 +37,13 @@
 											<table id="dynamic-table" class="table table-striped table-bordered table-hover">
 												<thead>
 													<tr>
-														<th class="center">
-															<label class="pos-rel">
-																<input type="checkbox" class="ace" />
-																<span class="lbl"></span>
-															</label>
-														</th>
+<!-- 														<th class="center"> -->
+<!-- 															<label class="pos-rel"> -->
+<!-- 																<input type="checkbox" class="ace" /> -->
+<!-- 																<span class="lbl"></span> -->
+<!-- 															</label> -->
+<!-- 														</th> -->
+														<th class="hidden-480">ID's</th>
 														<th class="hidden-480">Name</th>
                                                         <th class="hidden-480">Detail</th>
                                                         <th class="hidden-480">Code</th>
@@ -63,11 +64,14 @@
 													if($objall)
 														foreach($objall as $key){ ?>
 													<tr>
+<!-- 														<td class="center"> -->
+<!-- 															<label class="pos-rel"> -->
+<!-- 																<input type="checkbox" class="ace" /> -->
+<!-- 																<span class="lbl"></span> -->
+<!-- 															</label> -->
+<!-- 														</td> -->
 														<td class="center">
-															<label class="pos-rel">
-																<input type="checkbox" class="ace" />
-																<span class="lbl"></span>
-															</label>
+															<?php echo $key->id ;?>
 														</td>
 														<td class="hidden-480">
 															<?php echo $key->name ;?>

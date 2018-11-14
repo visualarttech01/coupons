@@ -15,6 +15,7 @@
 			switch ($parameters[0]){
 
 			    case 'ranking':
+			        
 			        if (Content::validate('stores','p_view')){
 			            if (!isset($parameters[1]) && $parameters[1]= ''){
 			                header('Location:'.Request::$BASE_PATH);
@@ -127,37 +128,43 @@
                                         $objPresenter->AddParameter('objnetworks',$objnetworks);
                                         if(Request::hasPostVariables()){
                                             $objData = Request::getPostVariables();
-                                            if (isset ( $_FILES ['image'] ['name'] ) && $_FILES ['image'] ['name'] != '') {
-                                                // ===========================Get file information=======================
-                                                $filename = pathinfo ( $_FILES ['image'] ['name'], PATHINFO_FILENAME );
-                                                $file_ext = pathinfo ( $_FILES ['image'] ['name'], PATHINFO_EXTENSION );
-                                                $file_size = $_FILES ['image'] ['size'];
-                                                // ==========================update file path name ======================
-                                                $filename = $filename . '_' . uniqid ();
-                                                // echo $filename;
-                                                $filename = $filename . '.' . $file_ext;
-                                                // ============================= validations ============================
-                                                if ($file_ext == 'jpeg' || $file_ext == 'jpg' || $file_ext == 'png' || $file_ext == 'gif') {
-                                                    $target_path = 'images/stores/';
-                                                    $target_path = $target_path . $filename;
-                                                    if (move_uploaded_file ( $_FILES ['image'] ['tmp_name'], $target_path )) {
-                                                        $objData->logo = $filename;
-                                                        $objData->publisher = Session::GetUser()->id;
-                                                        $objData->created = date ( 'Y-m-d H:i:s' );
-                                                        $objData->is_active = '1';
-                                                        global $DB;
-                                                        $DB->Save ( 'stores', $objData );
-                                                        $objPresenter->AddParameter ( 'add_message', '<strong>Success</strong>Added' );
-                                                        header ( "Location: " . Request::$BASE_PATH.'stores/' );
-
-                                                    } else {
-                                                        $objPresenter->AddParameter ( 'add_message', '<strong>Pleas upload Image png/jpg/jpeg/gif</strong>');
-
+                                            if(Content::validateStore($objData->name)){
+                                                if (isset ( $_FILES ['image'] ['name'] ) && $_FILES ['image'] ['name'] != '') {
+                                                    // ===========================Get file information=======================
+                                                    $filename = pathinfo ( $_FILES ['image'] ['name'], PATHINFO_FILENAME );
+                                                    $file_ext = pathinfo ( $_FILES ['image'] ['name'], PATHINFO_EXTENSION );
+                                                    $file_size = $_FILES ['image'] ['size'];
+                                                    // ==========================update file path name ======================
+                                                    $filename = $filename . '_' . uniqid ();
+                                                    // echo $filename;
+                                                    $filename = $filename . '.' . $file_ext;
+                                                    // ============================= validations ============================
+                                                    if ($file_ext == 'jpeg' || $file_ext == 'jpg' || $file_ext == 'png' || $file_ext == 'gif') {
+                                                        $target_path = 'images/stores/';
+                                                        $target_path = $target_path . $filename;
+                                                        if (move_uploaded_file ( $_FILES ['image'] ['tmp_name'], $target_path )) {
+                                                            $objData->name=Content::clean($objData->name);
+                                                            $objData->logo = $filename;
+                                                            $objData->publisher = Session::GetUser()->id;
+                                                            $objData->created = date ( 'Y-m-d H:i:s' );
+                                                            $objData->is_active = '1';
+                                                            global $DB;
+                                                            $DB->Save ( 'stores', $objData );
+                                                            $objPresenter->AddParameter ( 'add_message', '<strong>Success</strong>Added' );
+                                                            header ( "Location: " . Request::$BASE_PATH.'stores/' );
+                                                            
+                                                        } else {
+                                                            $objPresenter->AddParameter ( 'add_message', '<strong>Please upload Image png/jpg/jpeg/gif</strong>');
+                                                            
+                                                        }
                                                     }
+                                                }else{
+                                                    $objPresenter->AddParameter ( 'add_message', '<strong>Please upload Store Logo</strong>' );
                                                 }
                                             }else{
-                                                $objPresenter->AddParameter ( 'add_message', '<strong>Please upload Store Logo</strong>' );
+                                                $objPresenter->AddParameter ( 'add_message', '<strong>Store Already Exsist</strong>');
                                             }
+                                            
 
                                         }
                                     }else{
@@ -175,55 +182,69 @@
                                         if($parameters[2] !='' && isset($parameters[2])){
                                             if(Request::hasPostVariables()){
                                                 $objData = Request::getPostVariables();
-
-
-                                                if (isset ( $_FILES ['image'] ['name'] ) && $_FILES ['image'] ['name'] != '') {
-                                                    // ===========================Get file information=======================
-                                                    $filename = pathinfo ( $_FILES ['image'] ['name'], PATHINFO_FILENAME );
-                                                    $file_ext = pathinfo ( $_FILES ['image'] ['name'], PATHINFO_EXTENSION );
-                                                    $file_size = $_FILES ['image'] ['size'];
-                                                    // ==========================update file path name ======================
-                                                    $filename = $filename . '_' . uniqid ();
-                                                    // echo $filename;
-                                                    $filename = $filename . '.' . $file_ext;
-                                                    // ============================= validations ============================
-                                                    if ($file_ext == 'jpeg' || $file_ext == 'jpg' || $file_ext == 'png' || $file_ext == 'gif') {
-                                                        $target_path = 'images/stores/';
-                                                        $target_path = $target_path . $filename;
-                                                        if (move_uploaded_file ( $_FILES ['image'] ['tmp_name'], $target_path )) {
-                                                            $olddata = $objData->logo;
-                                                            $objData->logo = $filename;
-                                                            $id=intval($parameters[2]);
-                                                            $objold=Content::publisher('stores',$id);
-                                                            $objData->publisher=$objold->publisher;
-                                                            $objData->edited_by=Session::GetUser()->id;
-                                                            $objData->updated = date('Y-m-d H:i:s');
-                                                            global $DB;
-                                                            $DB->Save ( 'stores', $objData );
-                                                            unlink ( 'images/stores/'.$olddata );
+                                                if(Content::validateStoreEdit($objData->name,$objData->id)){
+                                                    if (isset ( $_FILES ['image'] ['name'] ) && $_FILES ['image'] ['name'] != '') {
+                                                        // ===========================Get file information=======================
+                                                        $filename = pathinfo ( $_FILES ['image'] ['name'], PATHINFO_FILENAME );
+                                                        $file_ext = pathinfo ( $_FILES ['image'] ['name'], PATHINFO_EXTENSION );
+                                                        $file_size = $_FILES ['image'] ['size'];
+                                                        // ==========================update file path name ======================
+                                                        $filename = $filename . '_' . uniqid ();
+                                                        // echo $filename;
+                                                        $filename = $filename . '.' . $file_ext;
+                                                        // ============================= validations ============================
+                                                        if ($file_ext == 'jpeg' || $file_ext == 'jpg' || $file_ext == 'png' || $file_ext == 'gif') {
+                                                            $target_path = 'images/stores/';
+                                                            $target_path = $target_path . $filename;
+                                                            if (move_uploaded_file ( $_FILES ['image'] ['tmp_name'], $target_path )) {
+                                                                $olddata = $objData->logo;
+                                                                $objData->name=Content::clean($objData->name);
+                                                                $objData->logo = $filename;
+                                                                $id=intval($parameters[2]);
+                                                                $objold=Content::publisher('stores',$id);
+                                                                $objData->publisher=$objold->publisher;
+                                                                $objData->edited_by=Session::GetUser()->id;
+                                                                $objData->updated = date('Y-m-d H:i:s');
+                                                                global $DB;
+                                                                $DB->Save ( 'stores', $objData );
+                                                                unlink ( 'images/stores/'.$olddata );
+                                                                $objPresenter->AddParameter ( 'add_message', '<strong>Success</strong> Updated' );
+                                                                header ( "Location: " . Request::$BASE_PATH.'stores/' );
+                                                                
+                                                            } else {
+                                                                $objPresenter->AddParameter ( 'Message', '<strong>Error</strong> Uploading Image Try Again Later!' );
+                                                                
+                                                            }
+                                                        } else {
+                                                            $objPresenter->AddParameter ( 'Message', '<strong>Error</strong>Please upload Image png/jpg/jpeg/gif!' );
+                                                            
+                                                        }
+                                                    }else{
+                                                        $id=intval($parameters[2]);
+                                                        $objold=Content::publisher('stores',$id);
+                                                        $objData->name=Content::clean($objData->name);
+                                                        $objData->publisher= $objold->publisher;
+                                                        $objData->edited_by=Session::GetUser()->id;
+                                                        $objData->updated = date('Y-m-d H:i:s');
+                                                        global $DB;
+                                                        if($DB->Save ( 'stores', $objData )){
                                                             $objPresenter->AddParameter ( 'add_message', '<strong>Success</strong> Updated' );
                                                             header ( "Location: " . Request::$BASE_PATH.'stores/' );
-
-                                                        } else {
-                                                            $objPresenter->AddParameter ( 'Message', '<strong>Error</strong> Uploading Image Try Again Later!' );
-
                                                         }
-                                                    } else {
-                                                        $objPresenter->AddParameter ( 'Message', '<strong>Error</strong>Please upload Image png/jpg/jpeg/gif!' );
-
                                                     }
+                                                
                                                 }else{
-                                                    $id=intval($parameters[2]);
-                                                    $objold=Content::publisher('stores',$id);
-                                                    $objData->publisher= $objold->publisher;
-                                                    $objData->edited_by=Session::GetUser()->id;
-                                                    $objData->updated = date('Y-m-d H:i:s');
-                                                    global $DB;
-                                                    if($DB->Save ( 'stores', $objData )){
-                                                        $objPresenter->AddParameter ( 'add_message', '<strong>Success</strong> Updated' );
-                                                        header ( "Location: " . Request::$BASE_PATH.'stores/' );
-                                                    }
+                                                    ?>
+                                                    <script type="text/javascript">
+                                                        window.alert('Error! Store Already Exsist');
+                                                        window.location.href='<?php echo  Request::$BASE_PATH.'stores/edit_store/'.$objData->id ;?>';
+                                                    </script>
+                                                    <?php 
+                                                   
                                                 }
+                                                
+                                                
+                                                
 
                                             }else{
                                                 $id=intval($parameters[2]);
@@ -285,28 +306,32 @@
                                     if(Content::validate('coupons','p_add')){
                                         if(Request::hasPostVariables()){
                                             $objData = Request::getPostVariables();
-
-                                            if ($objData->address==''){
-                                                $objDstore =Content::find_by_id($objData->store_id,'stores');
-
-                                                if ($objDstore->net_store_link!=''){
-                                                    $objData->address=$objDstore->net_store_link;
-                                                }else{
-                                                    $objData->address=$objDstore->address;
+                                            if(Content::validateCoupon($objData->name, $objData->store_id)){
+                                                if ($objData->address==''){
+                                                    $objDstore =Content::find_by_id($objData->store_id,'stores');
+                                                    
+                                                    if ($objDstore->net_store_link!=''){
+                                                        $objData->address=$objDstore->net_store_link;
+                                                    }else{
+                                                        $objData->address=$objDstore->address;
+                                                    }
                                                 }
-                                            }
-                                            if ($objData->code!=''){
-                                                $objData->type='coupon';
+                                                if ($objData->code!=''){
+                                                    $objData->type='coupon';
+                                                }else{
+                                                    $objData->type='deal';
+                                                }
+                                                $objData->created = date ( 'Y-m-d' );
+                                                $objData->is_active = '1';
+                                                $objData->publisher = Session::GetUser()->id;
+                                                global $DB;
+                                                $DB->Save ( 'coupons', $objData );
+                                                $objPresenter->AddParameter ( 'add_message', '<strong>Success</strong> Added' );
+                                                header ( "Location: " . Request::$BASE_PATH.'codes/' );
                                             }else{
-                                                $objData->type='deal';
+                                                $objPresenter->AddParameter ( 'add_message', '<strong>Coupon Already Exsist</strong>');
                                             }
-                                            $objData->created = date ( 'Y-m-d' );
-                                            $objData->is_active = '1';
-                                            $objData->publisher = Session::GetUser()->id;
-                                            global $DB;
-                                            $DB->Save ( 'coupons', $objData );
-                                            $objPresenter->AddParameter ( 'add_message', '<strong>Success</strong> Added' );
-                                            header ( "Location: " . Request::$BASE_PATH.'codes/' );
+                                            
                                         }
                                         $objcategories=Content::select('*','categories');
                                         $objPresenter->AddParameter('objcategories',$objcategories);
@@ -324,20 +349,30 @@
                                         if($parameters[2] !='' && isset($parameters[2])){
                                             if(Request::hasPostVariables()){
                                                 $objData = Request::getPostVariables();
-                                                if ($objData->code!=' '){
-                                                    $objData->type='coupon';
+                                                if(Content::validateCouponedit($objData->name,$objData->store_id,$objData->id)){
+                                                    if ($objData->code!=''){
+                                                        $objData->type='coupon';
+                                                    }else{
+                                                        $objData->type='deal';
+                                                    }
+                                                    $id=intval($parameters[2]);
+                                                    $objold=Content::publisher('coupons',$id);
+                                                    $objData->publisher=$objold->publisher;
+                                                    $objData->edited_by = Session::GetUser()->id;
+                                                    $objData->updated = date ( 'Y-m-d' );
+                                                    global $DB;
+                                                    $DB->Save ( 'coupons', $objData );
+                                                    $objPresenter->AddParameter ( 'add_message', '<strong>Success</strong> Updated' );
+                                                    header ( "Location: " . Request::$BASE_PATH.'codes/' );
                                                 }else{
-                                                    $objData->type='deal';
+                                                    ?>
+                                                    <script type="text/javascript">
+                                                        window.alert('Error! Store Already Exsist');
+                                                        window.location.href='<?php echo  Request::$BASE_PATH.'codes/edit_code/'.$objData->id ;?>';
+                                                    </script>
+                                                    <?php 
                                                 }
-                                                $id=intval($parameters[2]);
-                                                $objold=Content::publisher('coupons',$id);
-                                                $objData->publisher=$objold->publisher;
-                                                $objData->edited_by = Session::GetUser()->id;
-                                                $objData->updated = date ( 'Y-m-d' );
-                                                global $DB;
-                                                $DB->Save ( 'coupons', $objData );
-                                                $objPresenter->AddParameter ( 'add_message', '<strong>Success</strong> Updated' );
-                                                header ( "Location: " . Request::$BASE_PATH.'codes/' );
+                                                
                                             }else{
                                                 $id=intval($parameters[2]);
                                                 $objData =Content::find_by_id($id,'coupons');
@@ -616,6 +651,7 @@
 
                                         if(Request::hasPostVariables()){
                                             $objData = Request::getPostVariables();
+                                            $objData->name=Content::clean($objData->name);
                                             $objData->publisher = Session::GetUser()->id;
                                             $objData->created = date ( 'Y-m-d H:i:s' );
                                             $objData->is_active = '1';
@@ -637,6 +673,7 @@
 
                                                 $objData =Request::getPostVariables();
                                                 $id=intval($parameters[2]);
+                                                $objData->name=Content::clean($objData->name);
                                                 $objold=Content::publisher('categories',$id);
                                                 $objData->publisher=$objold->publisher;
                                                 $objData->edited_by=Session::GetUser()->id;
@@ -950,7 +987,7 @@
                                             $objPresenter->AddParameter ( 'add_message', '<div class="alert alert-success"><strong>Success</strong> User Added</div>' );
                                             header ( "Location: " . Request::$BASE_PATH.'users/' );
                                         }else {
-                                            $objPresenter->AddParameter ( 'message', '<div class="alert alert-danger"><strong>Error</strong> Email Already exsist!</div>' );
+                                            $objPresenter->AddParameter ( 'add_message', '<div class="alert alert-danger"><strong>Error</strong> Email Already exsist!</div>' );
                                         }
                                     }
                                 }else{
@@ -1023,7 +1060,90 @@
                         $objPresenter->AddTemplate('login');
                     }
                     break;
-
+                case 'import':
+                    if (Content::validate('coupons','p_add')) {
+                        if(isset($_FILES ['file']['name']) && $_FILES ['file']['name']!=''){
+                            $file=$_FILES ['file']['name'];
+                            $file_ext = pathinfo ( $_FILES ['file'] ['name'], PATHINFO_EXTENSION );
+                            if($file_ext=='csv'){
+                                $target_path = 'uploads/cvs/';
+                                $target_path = $target_path.$file;
+                                if (move_uploaded_file ( $_FILES ['file'] ['tmp_name'], $target_path )) {
+                                    $handle = fopen($target_path, "r");
+                                    $data = fgetcsv($handle, 1000, ",");
+                                    $row = 1;
+                                    if ( $handle !== FALSE) {
+                                        while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
+                                            global $DB;
+                                            $objData = new stdClass();
+                                            if(isset($data[0]) && $data[0] !=''){
+                                                $objData->name=$data[0];
+                                            }else {
+                                                exit();
+                                            }
+                                            if(isset($data[1]) && $data[1] !=''){
+                                                $objData->detail=$data[1];
+                                            }
+                                            if(isset($data[2]) && $data[2] !=''){
+                                                $objData->discount=$data[2];
+                                            }else{
+                                                exit();
+                                            }
+                                            if(isset($data[3]) && $data[3] !=''){
+                                                $objData->code=$data[3];
+                                            }
+                                            if(isset($data[4]) && $data[4] !=''){
+                                                $objData->type=$data[4];
+                                            }else {
+                                                exit();
+                                            }
+                                            if(isset($data[5]) && $data[5] !=''){
+                                                $objData->store_id=Content::getId($data[5], 'stores');
+                                            }
+                                            if(isset($data[6]) && $data[6] !=''){
+                                                $objData->address=$data[6];
+                                            }
+                                            if(isset($data[7]) && $data[7] !=''){
+                                                $objData->category_id=Content::getId($data[7], 'categories');
+                                            }
+                                            if(isset($data[8]) && $data[8] !=''){
+                                                $objData->rank=$data[8];
+                                            }
+                                            if(isset($data[9]) && $data[9] !=''){
+                                                $myDateTime = DateTime::createFromFormat('m/d/Y', $data[9]);
+                                                $myDateTime = $myDateTime->format('Y-m-d');
+                                                $objData->active_date=$myDateTime;
+                                            }else {
+                                                exit();
+                                            }
+                                            if(isset($data[10]) && $data[10] !=''){
+                                                $myDateTime = DateTime::createFromFormat('m/d/Y', $data[9]);
+                                                $myDateTime = $myDateTime->format('Y-m-d');
+                                                $objData->expire_date=$myDateTime;
+                                            }else {
+                                                exit();
+                                            }
+                                            $objData->publisher=Session::GetUser()->id;
+                                            $objData->created = date( 'Y-m-d H:i:s' );
+                                            $objData->is_active = '1';
+                                            $DB->Save('coupons', $objData);
+                                            $row++;
+                                        }
+                                        fclose($handle);
+                                    }
+                                    
+                                    @unlink($target_path);
+                                    header('Location:'.Request::$BASE_PATH.'codes/');
+                                    }
+                            }else{
+                                $objPresenter->AddParameter ( 'msg', '<strong> Faild! </strong>      Please upload CSV format only    ' );
+                            }
+                        }
+                       $objPresenter->AddTemplate('import');
+                    }else{
+                       header('Location:' . Request::$BASE_PATH . 'access');
+                    }
+                    break;
                 default:
                     if(Session::isUserOnline()){
                         if (Content::validate('coupons','p_view')) {
@@ -1035,7 +1155,6 @@
                         $objPresenter->AddTemplate('login');
                     }
                     break;
-
             }
             
 	        if(Session::isUserOnline()){
