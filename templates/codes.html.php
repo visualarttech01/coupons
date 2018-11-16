@@ -23,6 +23,9 @@
 											<a href="<?php echo Request::$BASE_PATH.'codes/new_code';?>">
 												<button class="btn btn-success"><i class="ace-icon fa fa-plus"></i> Add Coupon</button>
 											</a>
+											<a href="<?php echo Request::$BASE_PATH.'import/';?>">
+												<button class="btn btn-purple"><i class="ace-icon fa fa-cloud-upload"></i>Upload</button>
+											</a>
 											<div class="pull-right tableTools-container"> </div>
 										</div>
 										<div class="table-header">
@@ -43,17 +46,18 @@
 <!-- 																<span class="lbl"></span> -->
 <!-- 															</label> -->
 <!-- 														</th> -->
-														<th class="hidden-480">ID's</th>
-														<th class="hidden-480">Name</th>
-                                                        <th class="hidden-480">Detail</th>
-                                                        <th class="hidden-480">Code</th>
-                                                        <th class="hidden-480">Coupon Types</th>
-                                                        <th class="hidden-480">Stores</th>
-                                                        <th class="hidden-480">URL'S</th>
-                                                        <th class="hidden-480">Categories</th>
-                                                        <th class="hidden-480">Rank</th>
-                                                        <th class="hidden-480">Active Dates</th>
-                                                        <th class="hidden-480">Expire Dates</th>
+														<th class="center">ID's</th>
+														<th class="center">Name</th>
+                                                        <th class="center">Detail</th>
+                                                        <th class="center">Code</th>
+                                                        <th class="center">Coupon Types</th>
+                                                        <th class="center">Stores</th>
+                                                        <th class="center">URL'S</th>
+                                                        <th class="center">Categories</th>
+                                                        <th class="center">Rank</th>
+                                                        <th class="center">Spam</th>
+                                                        <th class="center">Active Dates</th>
+                                                        <th class="center">Expire Dates</th>
                                                         <th>Actions</th>
 													</tr>
 												</thead>
@@ -73,35 +77,38 @@
 														<td class="center">
 															<?php echo $key->id ;?>
 														</td>
-														<td class="hidden-480">
+														<td class="center">
 															<?php echo $key->name ;?>
 														</td>
-                                                        <td class="hidden-480">
+                                                        <td class="center">
                                                             <?php echo substr($key->detail,0,30).'..' ;?>
                                                         </td>
-                                                        <td class="hidden-480">
+                                                        <td class="center">
                                                             <?php echo $key->code ;?>
                                                         </td>
-                                                        <td class="hidden-480">
+                                                        <td class="center">
                                                             <?php echo $key->type ;?>
                                                         </td>
-                                                        <td class="hidden-480">
+                                                        <td class="center">
                                                             <?php echo $key->store ;?>
                                                         </td>
-                                                        <td class="hidden-480">
+                                                        <td class="center">
                                                             <?php echo $key->address ;?>
                                                         </td>
-                                                        <td class="hidden-480">
+                                                        <td class="center">
                                                             <?php echo $key->category ;?>
                                                         </td>
 
-														<td class="hidden-480">
+														<td class="center">
                                                             <?php echo $key->rank ;?>
                                                         </td>
-                                                        <td class="hidden-480">
+                                                        <td class="center">
+                                                            <?php if($key->spam=='1'){echo 'Yes' ;}else{echo 'No';}?>
+                                                        </td>
+                                                        <td class="center">
                                                             <?php echo $key->active_date ;?>
                                                         </td>
-                                                        <td class="hidden-480">
+                                                        <td class="center">
                                                             <?php echo $key->expire_date ;?>
                                                         </td>
 

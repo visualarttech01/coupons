@@ -38,12 +38,12 @@
 												<thead>
 													<tr>
 														
-														<th class="hidden-480">ID's</th>
-														<th class="hidden-480">Names</th>
-                                                        <th class="hidden-480">Detail</th>
-                                                        <th class="hidden-480">Meta Title</th>
-                                                        <th class="hidden-480">Meta Detail</th>
-                                                        <th class="hidden-480">Is Active</th>
+														<th class="center">ID's</th>
+														<th class="center">Names</th>
+                                                        <th class="center">Detail</th>
+                                                        <th class="center">Meta Title</th>
+                                                        <th class="center">Meta Detail</th>
+                                                        <th class="center">Is Active</th>
                                                         <th>Actions</th>
 													</tr>
 												</thead>
@@ -58,16 +58,16 @@
 														<td class="center">
 															<?php echo $key->id ;?>
 														</td>
-														<td class="hidden-480">
+														<td class="center">
 															<?php echo $key->name ;?>
 														</td>
-                                                        <td class="hidden-480">
+                                                        <td class="center">
                                                             <?php echo substr($key->detail,0,60).'..' ;?>
                                                         </td>
-                                                        <td class="hidden-480">
+                                                        <td class="center">
                                                             <?php echo substr($key->meta_title,0,60).'..' ;?>
                                                         </td>
-                                                        <td class="hidden-480">
+                                                        <td class="center">
                                                             <?php echo substr($key->meta_detail,0,60).'..' ;?>
                                                         </td>
 														<td class="center">

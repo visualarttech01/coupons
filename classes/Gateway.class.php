@@ -5,7 +5,7 @@
             if(!isset($parameters[0]) || $parameters[0] == '') $parameters[0] = 'Home';
             $objPresenter = new Presenter();
             $objPresenter->AddParameter('parameters', $parameters);
-
+            
             if(Session::isUserOnline()){
 
                 $objPresenter->AddTemplate('header');
@@ -16,20 +16,21 @@
 
 			    case 'ranking':
 			        
-			        if (Content::validate('stores','p_view')){
+			        if (Content::validate('ranking','p_view')){
 			            if (!isset($parameters[1]) && $parameters[1]= ''){
 			                header('Location:'.Request::$BASE_PATH);
 			            }else {
 			                if(Request::hasPostVariables()){
-			                    $objData=Request::getPostVariables();
-			                    foreach($objData as $key => $value){
-			                        $sql="UPDATE coupons SET rank='".$value."' where id='".$key."'";
-			                        global $DB;
-			                        if($DB->Execute($sql)){
-			                           
-			                        }
-			                    }
-			                   
+			                    if (Content::validate('ranking','p_edit')){
+    			                    $objData=Request::getPostVariables();
+    			                    foreach($objData as $key => $value){
+    			                        $sql="UPDATE coupons SET rank='".$value."' where id='".$key."'";
+    			                        global $DB;
+    			                        if($DB->Execute($sql)){
+    			                           
+    			                        }
+    			                    }
+			                    }else{header('Location:'.Request::$BASE_PATH);}
 			                }
 			                $store_id=intval($parameters[1]);
 			                $objStore=Content::find_by_id($store_id, 'stores');
@@ -37,22 +38,19 @@
 			                $objData=Content::ranks($store_id);
 			                $objPresenter->AddParameter('objData', $objData);
 			                $objPresenter->AddTemplate('ranking');
-			                
 			            }
 			        }
-			       
-			        
-			        break;
+			       break;
 			   
 			    case 'reporting':
-                    if (Content::validate('stores','p_view')){
+                    if (Content::validate('reports','p_view')){
 
                         if (!isset($parameters[1]) && $parameters[1]= ''){
                             header('Location:'.Request::$BASE_PATH);
                         }else {
                             switch ($parameters[1]){
                                 case 'networks':
-                                    if(Content::validate('stores','p_add')) {
+                                    if(Content::validate('network report','p_view')) {
                                         if (isset($parameters[1]) && $parameters[1] != '') {
                                             $id=intval($parameters[2]);
                                             $objUser=Content::user($id);
@@ -60,11 +58,11 @@
                                             $objall=Content::reporting('networks',$id);
                                             $objPresenter->AddParameter('objall',$objall);
                                             $objPresenter->AddTemplate('network-report');
-                                        }
+                                        }else{ header ( "Location: " . Request::$BASE_PATH.'reporting' );}
                                     }
                                     break;
                                 case 'categories':
-                                    if(Content::validate('stores','p_add')) {
+                                    if(Content::validate('category report','p_view')) {
                                         if (isset($parameters[1]) && $parameters[1] != '') {
                                             $id=intval($parameters[2]);
                                             $objUser=Content::user($id);
@@ -76,7 +74,7 @@
                                     }
                                     break;
                                 case 'stores':
-                                    if(Content::validate('stores','p_add')) {
+                                    if(Content::validate('store report','p_view')) {
                                         if (isset($parameters[1]) && $parameters[1] != '') {
                                             $id=intval($parameters[2]);
                                             $objUser=Content::user($id);
@@ -88,7 +86,7 @@
                                     }
                                     break;
                                 case 'coupons':
-                                    if(Content::validate('stores','p_add')) {
+                                    if(Content::validate('coupon report','p_view')) {
                                         if (isset($parameters[1]) && $parameters[1] != '') {
                                             $id=intval($parameters[2]);
                                             $objUser=Content::user($id);
@@ -114,7 +112,7 @@
 
                 case 'stores':
                     if (Content::validate('stores','p_view')){
-                        $objall =Content::All('stores');
+                        $objall =Content::stores();
                         $objPresenter->AddParameter('objall', $objall);
                         if (!isset($parameters[1]) && $parameters[1]= ' '){
                             $objPresenter->AddTemplate('stores');
@@ -122,9 +120,9 @@
                             switch ($parameters[1]){
                                 case 'new_store':
                                     if(Content::validate('stores','p_add')){
-                                        $objcategories=Content::select('name','categories');
+                                        $objcategories=Content::select('*','categories');
                                         $objPresenter->AddParameter('objcategories',$objcategories);
-                                        $objnetworks=Content::select('name','networks');
+                                        $objnetworks=Content::select('*','networks');
                                         $objPresenter->AddParameter('objnetworks',$objnetworks);
                                         if(Request::hasPostVariables()){
                                             $objData = Request::getPostVariables();
@@ -143,6 +141,7 @@
                                                         $target_path = 'images/stores/';
                                                         $target_path = $target_path . $filename;
                                                         if (move_uploaded_file ( $_FILES ['image'] ['tmp_name'], $target_path )) {
+                                                            $objData->spam=Content::storeSpamCheck($objData->network_id,$objData->net_store_link);
                                                             $objData->name=Content::clean($objData->name);
                                                             $objData->logo = $filename;
                                                             $objData->publisher = Session::GetUser()->id;
@@ -175,9 +174,9 @@
                                 case 'edit_store':
 
                                     if(Content::validate('stores','p_edit')){
-                                        $objcategories=Content::select('name','categories');
+                                        $objcategories=Content::select('*','categories');
                                         $objPresenter->AddParameter('objcategories',$objcategories);
-                                        $objnetworks=Content::select('name','networks');
+                                        $objnetworks=Content::select('*','networks');
                                         $objPresenter->AddParameter('objnetworks',$objnetworks);
                                         if($parameters[2] !='' && isset($parameters[2])){
                                             if(Request::hasPostVariables()){
@@ -197,6 +196,7 @@
                                                             $target_path = 'images/stores/';
                                                             $target_path = $target_path . $filename;
                                                             if (move_uploaded_file ( $_FILES ['image'] ['tmp_name'], $target_path )) {
+                                                                $objData->spam=Content::storeSpamCheck($objData->network_id,$objData->net_store_link);
                                                                 $olddata = $objData->logo;
                                                                 $objData->name=Content::clean($objData->name);
                                                                 $objData->logo = $filename;
@@ -222,6 +222,7 @@
                                                     }else{
                                                         $id=intval($parameters[2]);
                                                         $objold=Content::publisher('stores',$id);
+                                                        $objData->spam=Content::storeSpamCheck($objData->network_id,$objData->net_store_link);
                                                         $objData->name=Content::clean($objData->name);
                                                         $objData->publisher= $objold->publisher;
                                                         $objData->edited_by=Session::GetUser()->id;
@@ -283,7 +284,7 @@
                                     exit;
                                     break;
                                 default:
-                                    header ( "Location: " . Request::$BASE_PATH );
+                                    header ( "Location: ".Request::$BASE_PATH );
                                     break;
                             }
                         }
@@ -321,6 +322,7 @@
                                                 }else{
                                                     $objData->type='deal';
                                                 }
+                                                $objData->spam=Content::couponSpamCheck($objData->store_id,$objData->address);
                                                 $objData->created = date ( 'Y-m-d' );
                                                 $objData->is_active = '1';
                                                 $objData->publisher = Session::GetUser()->id;
@@ -357,6 +359,7 @@
                                                     }
                                                     $id=intval($parameters[2]);
                                                     $objold=Content::publisher('coupons',$id);
+                                                    $objData->spam=Content::couponSpamCheck($objData->store_id,$objData->address);
                                                     $objData->publisher=$objold->publisher;
                                                     $objData->edited_by = Session::GetUser()->id;
                                                     $objData->updated = date ( 'Y-m-d' );
@@ -936,7 +939,7 @@
                     break;
 
                 case 'report-range':
-                    if(Content::validate('report range','p_view')){
+                    if(Content::validate('reports','p_view')){
                         if(Request::hasPostVariables()){
                             $objData= Request::getPostVariables();
 
@@ -1043,14 +1046,12 @@
 
                                 break;
                             default:
-
                                 break;
                         }
                     }
                     }else{
                         header ( "Location: " . Request::$BASE_PATH.'access' );
                     }
-
                     break;
 
                 case 'access':
@@ -1061,7 +1062,7 @@
                     }
                     break;
                 case 'import':
-                    if (Content::validate('coupons','p_add')) {
+                    if (Content::validate('upload','p_add')) {
                         if(isset($_FILES ['file']['name']) && $_FILES ['file']['name']!=''){
                             $file=$_FILES ['file']['name'];
                             $file_ext = pathinfo ( $_FILES ['file'] ['name'], PATHINFO_EXTENSION );
@@ -1123,6 +1124,20 @@
                                             }else {
                                                 exit();
                                             }
+                                            if ($objData->address==''){
+                                                $objDstore =Content::find_by_id($objData->store_id,'stores');
+                                                if ($objDstore->net_store_link!==''){
+                                                    $objData->address=$objDstore->net_store_link;
+                                                }else{
+                                                    $objData->address=$objDstore->address;
+                                                }
+                                            }
+                                            if ($objData->code!==''){
+                                                $objData->type='coupon';
+                                            }else{
+                                                $objData->type='deal';
+                                            }
+                                            $objData->spam=Content::couponSpamCheck($objData->store_id,$objData->address);
                                             $objData->publisher=Session::GetUser()->id;
                                             $objData->created = date( 'Y-m-d H:i:s' );
                                             $objData->is_active = '1';
@@ -1131,7 +1146,6 @@
                                         }
                                         fclose($handle);
                                     }
-                                    
                                     @unlink($target_path);
                                     header('Location:'.Request::$BASE_PATH.'codes/');
                                     }
@@ -1147,9 +1161,9 @@
                 default:
                     if(Session::isUserOnline()){
                         if (Content::validate('coupons','p_view')) {
-                            header('Location:' . Request::$BASE_PATH . 'codes');
+                            header('Location:' . Request::$BASE_PATH .'codes');
                         }else{
-                            header('Location:' . Request::$BASE_PATH . 'access');
+                            header('Location:' . Request::$BASE_PATH .'access');
                         }
                     }else {
                         $objPresenter->AddTemplate('login');

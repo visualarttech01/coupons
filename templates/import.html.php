@@ -43,8 +43,6 @@
 									</div>
                                     
                                     <div class="form-group">
-										
-
 										<div class="col-xs-12 col-sm-9">
 											<button  type="submit" class="btn btn-success">
 												Submit
@@ -65,11 +63,6 @@
                     <!-- PAGE CONTENT ENDS -->
                 </div><!-- /.col -->
             </div><!-- /.row -->
-
-
-
-
-
         </div><!-- /.page-content -->
     </div>
 </div><!-- /.main-content -->

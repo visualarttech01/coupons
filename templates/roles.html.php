@@ -43,10 +43,10 @@
 																<span class="lbl"></span>
 															</label>
 														</th>
-														<th class="hidden-480">Role</th>
+														<th class="center">Role</th>
 
 														
-														<th class="hidden-480">Is Active</th>
+														<th class="center">Is Active</th>
 
 														<th>Actions</th>
 													</tr>
@@ -64,10 +64,10 @@
 																<span class="lbl"></span>
 															</label>
 														</td>
-														<td class="hidden-480">
+														<td class="center">
 															<?php echo $key->role ;?>
 														</td>
-														<td class="hidden-480">
+														<td class="center">
 															<span class="label label-sm label-warning"><?php echo $key->is_active ;?></span>
 														</td>
 

@@ -41,11 +41,11 @@
                                                 <span class="lbl"></span>
                                             </label>
                                         </th>
-                                        <th class="hidden-480">Title</th>
-                                        <th class="hidden-480">Detail</th>
-                                        <th class="hidden-480">Meta Title</th>
-                                        <th class="hidden-480">Meta Detail</th>
-                                        <th class="hidden-480">Website Name</th>
+                                        <th class="center">Title</th>
+                                        <th class="center">Detail</th>
+                                        <th class="center">Meta Title</th>
+                                        <th class="center">Meta Detail</th>
+                                        <th class="center">Website Name</th>
                                         <th>Actions</th>
                                     </tr>
                                     </thead>
@@ -62,19 +62,19 @@
                                                         <span class="lbl"></span>
                                                     </label>
                                                 </td>
-                                                <td class="hidden-480">
+                                                <td class="center">
                                                     <?php echo $key->title ;?>
                                                 </td>
-                                                <td class="hidden-480">
+                                                <td class="center">
                                                     <?php echo $key->detail;?>
                                                 </td>
-                                                <td class="hidden-480">
+                                                <td class="center">
                                                     <?php echo $key->meta_title ;?>
                                                 </td>
-                                                <td class="hidden-480">
+                                                <td class="center">
                                                     <?php echo $key->meta_detail;?>
                                                 </td>
-                                                <td class="hidden-480">
+                                                <td class="center">
                                                     <?php echo $key->web_name;?>
                                                 </td>
 

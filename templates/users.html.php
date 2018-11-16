@@ -49,11 +49,11 @@
                                                         <th>Role</th>
 
 														<th>
-															<i class="ace-icon bigger-110 hidden-480"></i>
+															<i class="ace-icon bigger-110 center"></i>
 															Online
 														</th>
 														
-														<th class="hidden-480">Is Active</th>
+														<th class="center">Is Active</th>
 
 														<th>Action</th>
 													</tr>
@@ -83,7 +83,7 @@
 														
 														<td><?php if($key->is_online !='1'){echo '<span class="label label-sm label-warning">No';}else{echo '<span class="label label-sm label-success">Yes</span>';};?></td>
 
-														<td class="hidden-480">
+														<td class="center">
 															<span class="label label-sm label-warning"><?php echo $key->is_active ;?></span>
 														</td>
 

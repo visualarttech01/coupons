@@ -41,7 +41,7 @@
 																<span class="lbl"></span>
 															</label>
 														</th>
-														<th class="hidden-480">Names</th>
+														<th class="center">Names</th>
 
                                                         <th>Actions</th>
 													</tr>
@@ -59,7 +59,7 @@
 																<span class="lbl"></span>
 															</label>
 														</td>
-														<td class="hidden-480">
+														<td class="center">
 															<?php echo $key->name ;?>
 														</td>
                                                         <td>

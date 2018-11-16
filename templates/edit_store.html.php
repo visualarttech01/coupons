@@ -46,10 +46,10 @@
 
                             <div class="col-xs-12 col-sm-5">
                                 <span class="block input-icon input-icon-right">
-                                    <select name="category" class="form-control" required>
+                                    <select name="category_id" class="form-control" required>
                                 <?php if($objcategories)
                                     foreach ($objcategories as $key){?>
-                                        <option class="option" value="<?php echo $key->name ;?>" <?php if($key->name==$objData->category)echo 'selected';?>><?php echo $key->name?></option>
+                                        <option class="option" value="<?php echo $key->id ;?>" <?php if($key->id==$objData->category_id)echo 'selected';?>><?php echo $key->name?></option>
                                     <?php  }?>
                                     </select>
 
@@ -84,10 +84,10 @@
 
                             <div class="col-xs-12 col-sm-5">
                                 <span class="block input-icon input-icon-right">
-                                    <select name="network" class="form-control">
+                                    <select name="network_id" class="form-control">
                                 <?php if($objnetworks)
                                     foreach ($objnetworks as $key){?>
-                                        <option class="option" value="<?php echo $key->name ;?>" <?php if($key->name==$objData->network)echo 'selected';?>><?php echo $key->name?></option>
+                                        <option class="option" value="<?php echo $key->id ;?>" <?php if($key->id==$objData->network_id)echo 'selected';?>><?php echo $key->name?></option>
                                     <?php  }?>
                                     </select>
 
@@ -198,13 +198,28 @@
                         </div>
 
                         <div class="form-group has-info">
-                            <label for="inputInfo" class="col-xs-12 col-sm-3 control-label no-padding-right">Network:</label>
+                            <label for="inputInfo" class="col-xs-12 col-sm-3 control-label no-padding-right">Featured:</label>
 
                             <div class="col-xs-12 col-sm-5">
                                 <span class="block input-icon input-icon-right">
                                     <select name="featured" class="form-control" required>
                                         <option class="option" <?php if($objData->featured==1)echo 'selected';?> value="1">Yes</option>
                                         <option class="option" <?php if($objData->featured==0)echo 'selected';?> value="0">No</option>
+
+                                    </select>
+
+                                </span>
+                            </div>
+
+                        </div>
+                        <div class="form-group has-info">
+                            <label for="inputInfo" class="col-xs-12 col-sm-3 control-label no-padding-right">Active:</label>
+
+                            <div class="col-xs-12 col-sm-5">
+                                <span class="block input-icon input-icon-right">
+                                    <select name="is_active" class="form-control" required>
+                                        <option class="option" <?php if($objData->is_active==1)echo 'selected';?> value="1">Yes</option>
+                                        <option class="option" <?php if($objData->is_active==0)echo 'selected';?> value="0">No</option>
 
                                     </select>
 

@@ -1,4 +1,3 @@
-
 <?php
 	class Content {
 		//======================================================== All COMPANIES ============================================
@@ -7,7 +6,6 @@
 			
 			$sql="SELECT *
 					FROM ".$table."
-					WHERE is_active = 1
 					ORDER BY id DESC";
 			
 			$objData=$DB->Select($sql);
@@ -25,7 +23,6 @@
 			$sql="SELECT *
 					FROM ".$table."
 					WHERE id = '".$id."'
-					AND is_active = 1
 					ORDER BY id DESC";
 			
 			$objData=$DB->Select($sql);
@@ -193,6 +190,56 @@
 
                 }
 
+                return $objData;
+            }else{
+                return false;
+            }
+        }
+        //======================================================== coupons ============================================
+        static function stores(){
+            global $DB;
+            
+            $sql="SELECT *
+					FROM stores
+					ORDER BY id DESC";
+            
+            $objData=$DB->Select($sql);
+            if($objData){
+                foreach ($objData as $key){
+                    $sql="SELECT name
+                    FROM  categories
+					WHERE id ='".$key->category_id."'";
+                    $cat=$DB->Select($sql);
+              
+                    if($cat){
+                        $key->category=$cat[0]->name;
+                    }else{
+                        $key->category='Deleted';
+                    }
+                }
+                foreach ($objData as $key){
+                    $sql="SELECT name
+                    FROM  networks
+					WHERE id ='".$key->network_id."'";
+                    $cat=$DB->Select($sql);
+                    
+                    if($cat){
+                        $key->network=$cat[0]->name;
+                    }else{
+                        $key->network='Deleted';
+                    }
+                }
+                foreach ($objData as $key){
+                    $sql="SELECT count(*) as total
+					FROM  coupons
+					WHERE store_id ='".$key->id."'";
+                    $cnt=$DB->Select($sql);
+                    
+                    if($cnt){
+                        $key->coupon=$cnt[0]->total;
+                    }
+                }
+               
                 return $objData;
             }else{
                 return false;
@@ -425,6 +472,59 @@
             return $objData[0]->id;
             
             
+        }else{
+            return false;
+        }
+    }
+    //======================================================== COMPANY BY ID ============================================
+    static function storeSpamCheck($id,$link){
+        global $DB;
+        
+        $sql="SELECT network_id
+					FROM networks
+					WHERE id = '".$id."'
+					ORDER BY id DESC";
+        
+        $objData=$DB->Select($sql);
+        if($objData){
+            
+            if (strpos($link, $objData[0]->network_id) !== false) {
+                $data='0';
+            }else{
+                $data='1';
+            }
+            
+            return $data;
+        }else{
+            return false;
+        }
+    }
+    
+    //======================================================== COMPANY BY ID ============================================
+    static function couponSpamCheck($store_id,$link){
+        global $DB;
+        
+        $sql="SELECT network_id
+					FROM stores
+					WHERE id = '".$store_id."'
+					ORDER BY id DESC";
+        
+        $objData=$DB->Select($sql);
+        $sql="SELECT network_id
+					FROM networks
+					WHERE id = '".$objData[0]->network_id."'
+					ORDER BY id DESC";
+        
+        $objData=$DB->Select($sql);
+        if($objData){
+            
+            if (strpos($link, $objData[0]->network_id) !== false) {
+                $data='0';
+            }else{
+                $data='1';
+            }
+            
+            return $data;
         }else{
             return false;
         }

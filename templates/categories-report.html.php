@@ -41,11 +41,11 @@
                                                 <span class="lbl"></span>
                                             </label>
                                         </th>
-                                        <th class="hidden-480">Names</th>
-                                        <th class="hidden-480">Status</th>
-                                        <th class="hidden-480">Edited/Posted</th>
-                                        <th class="hidden-480">Created</th>
-                                        <th class="hidden-480">Edited</th>
+                                        <th class="center">Names</th>
+                                        <th class="center">Status</th>
+                                        <th class="center">Edited/Posted</th>
+                                        <th class="center">Created</th>
+                                        <th class="center">Edited</th>
 
                                     </tr>
                                     </thead>
@@ -62,22 +62,22 @@
                                                         <span class="lbl"></span>
                                                     </label>
                                                 </td>
-                                                <td class="hidden-480">
+                                                <td class="center">
                                                     <?php echo $key->name ;?>
                                                 </td>
                                                 
-                                                <td class="center hidden-480">
+                                                <td class="center center">
                                                     <span class="label label-sm label-<?php if($key->status=='Posted & Edited'){echo 'warning';}elseif ($key->status=='Edited'){echo 'danger';}else{echo 'success';}?>"><?php echo $key->status ;?></span>
                                                 </td>
-                                                <td class="hidden-480 center">
+                                                <td class="center center">
                                                 <?php if(isset($key->editor)){?>
                                                  <a href="<?php echo Request::$BASE_PATH.'reports/'.$key->edited_by ;?>" class="label label-sm label-purple"><?php echo $key->editor;?></a>
                                                     <?php }?>
                                                 </td>
-                                                <td class="hidden-480">
+                                                <td class="center">
                                                     <?php echo $key->created;?>
                                                 </td>
-                                                <td class="hidden-480">
+                                                <td class="center">
                                                     <?php echo $key->updated;?>
                                                 </td>
 

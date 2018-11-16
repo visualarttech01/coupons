@@ -44,18 +44,21 @@
                                                 <span class="lbl"></span>
                                             </label>
                                         </th>
-                                        <th class="hidden-480">ID's</th>
-                                        <th class="hidden-480">Names</th>
-                                        <th class="hidden-480">Detail</th>
-                                        <th class="hidden-480">Category</th>
-                                        <th class="hidden-480">URL</th>
-                                        <th class="hidden-480">Network</th>
-                                        <th class="hidden-480">Network Id</th>
-                                        <th class="hidden-480">Network Store Name</th>
-                                        <th class="hidden-480">Network Store Link</th>
-                                        <th class="hidden-480">Meta Title</th>
-                                        <th class="hidden-480">Meta Detail</th>
-                                        <th class="hidden-480">Is Featured</th>
+                                        <th class="center">ID's</th>
+                                        <th class="center">Names</th>
+                                        
+                                        <th class="center">Category</th>
+                                        <th class="center">URL</th>
+                                        <th class="center">Network</th>
+                                        <th class="center">Network Store Id</th>
+                                        <th class="center">Network Store Name</th>
+                                        <th class="center">Network Store Link</th>
+                                        <th class="center">Meta Title</th>
+                                        <th class="center">Meta Detail</th>
+                                        <th class="center">Coupons</th>
+                                        <th class="center">Spam</th>
+                                        <th class="center">Is Featured</th>
+                                        <th class="center">Is Active</th>
                                         <th>Actions</th>
                                     </tr>
                                     </thead>
@@ -75,40 +78,45 @@
                                                 <td class="center">
     												<?php echo $key->id ;?>
     											</td>
-                                                <td class="hidden-480">
+                                                <td class="center">
                                                     <?php echo $key->name ;?>
                                                 </td>
-                                                <td class="hidden-480">
+                                                <td class="center">
                                                     <?php echo $key->category ;?>
                                                 </td>
-                                                <td class="hidden-480">
+                                                <td class="center">
                                                     <?php echo $key->address ;?>
                                                 </td>
-                                                <td class="hidden-480">
+                                                <td class="center">
                                                     <?php echo $key->network ;?>
                                                 </td>
-                                                <td class="hidden-480">
+                                                <td class="center">
                                                     <?php echo $key->net_store_id ;?>
                                                 </td>
-                                                <td class="hidden-480">
+                                                <td class="center">
                                                     <?php echo $key->net_store_name ;?>
                                                 </td>
-                                                <td class="hidden-480">
+                                                <td class="center">
                                                     <?php echo $key->net_store_link ;?>
                                                 </td>
-                                                <td class="hidden-480">
-                                                    <?php echo substr($key->detail,0,60).'..' ;?>
-                                                </td>
-                                                <td class="hidden-480">
+                                                <td class="center">
                                                     <?php echo substr($key->meta_title,0,60).'..' ;?>
                                                 </td>
-                                                <td class="hidden-480">
+                                                <td class="center">
                                                     <?php echo substr($key->meta_detail,0,60).'..' ;?>
                                                 </td>
                                                 <td class="center">
-                                                    <span class="label label-sm label-warning"><?php echo $key->featured ;?></span>
+                                                    <?php echo $key->coupon;?>
                                                 </td>
-
+                                                <td class="center">
+                                                    <?php if($key->spam=='1'){echo 'Yes' ;}else{echo 'No';}?>
+                                                </td>
+                                                <td class="center">
+                                                    <span class="label label-sm label-<?php if($key->featured=='0'){echo 'warning';}else{echo 'success';}?>"><?php echo $key->featured ;?></span>
+                                                </td>
+                                                 <td class="center">
+                                                    <span class="label label-sm label-<?php if($key->is_active=='0'){echo 'warning';}else{echo 'success';}?>"><?php echo $key->is_active ;?></span>
+                                                </td>
                                                 <td>
                                                     <div class="action-buttons">
 														<i id="<?php echo $key->id; ?>"  class="ace-icon fa fa-trash-o bigger-130 bootbox-confirm"></i>
