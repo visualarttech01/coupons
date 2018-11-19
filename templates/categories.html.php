@@ -43,7 +43,7 @@
                                                         <th class="center">Detail</th>
                                                         <th class="center">Meta Title</th>
                                                         <th class="center">Meta Detail</th>
-                                                        <th class="center">Is Active</th>
+
                                                         <th>Actions</th>
 													</tr>
 												</thead>
@@ -70,9 +70,7 @@
                                                         <td class="center">
                                                             <?php echo substr($key->meta_detail,0,60).'..' ;?>
                                                         </td>
-														<td class="center">
-															<span class="label label-sm label-warning"><?php echo $key->is_active ;?></span>
-														</td>
+
 
 														<td>
 															<div class="action-buttons">
@@ -350,7 +348,7 @@
 			<script>
 					$(".bootbox-confirm").click(function() {
 						var Self = $(this);
-						bootbox.confirm("Are you sure! you wanted to delete this user?", function(result) {
+						bootbox.confirm("Are you sure! you wanted to delete this?", function(result) {
 							if(result) {
 								$.post("<?php echo Request::$BASE_PATH.'categories/delete_category/' ?>", {
 				 					id: Self.attr('id'),
@@ -366,26 +364,5 @@
 						});
 					});
 					
-				/**
-					$("#bootbox-confirm").on(ace.click_event, function() {
-						bootbox.confirm({
-							message: "Are you sure?",
-							buttons: {
-							  confirm: {
-								 label: "OK",
-								 className: "btn-primary btn-sm",
-							  },
-							  cancel: {
-								 label: "Cancel",
-								 className: "btn-sm",
-							  }
-							},
-							callback: function(result) {
-								if(result) alert(1)
-							}
-						  }
-						);
-					});
-				**/
 			</script>
 			

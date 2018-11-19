@@ -20,12 +20,23 @@
 
 
                         <div class="form-group has-info">
+                            <label for="inputInfo" class="col-xs-12 col-sm-3 control-label no-padding-right">Page:</label>
+
+                            <div class="col-xs-12 col-sm-5">
+                                <span class="block input-icon input-icon-right">
+                                    <input type="text" name="page" id="inputInfo" value="<?php echo $objData->page ;?>" class="width-100" required/>
+                                </span>
+                            </div>
+
+                        </div>
+                        
+                        <div class="form-group has-info">
                             <label for="inputInfo" class="col-xs-12 col-sm-3 control-label no-padding-right">Website Name:</label>
 
                             <div class="col-xs-12 col-sm-5">
                                 <span class="block input-icon input-icon-right">
                                     <input type="text" name="web_name" id="inputInfo" value="<?php echo $objData->web_name ;?>" class="width-100" required/>
-                                    <input type="hidden" name="id" value="<?php echo $objData->id ;?>" id="inputInfo" class="width-100" required/>
+                                    <input type="hidden" name="id" value="<?php echo $objData->id ;?>" id="inputInfo" class="width-100" />
                                 </span>
                             </div>
 
@@ -36,7 +47,7 @@
 
                             <div class="col-xs-12 col-sm-5">
 											<span class="block input-icon input-icon-right">
-												<input type="text" name="title" id="inputInfo" value="<?php  echo $objData->title ;?>" class="width-100" required/>
+												<input type="text" name="title" id="inputInfo" value="<?php  echo $objData->title ;?>" class="width-100" />
 
 											</span>
                             </div>
@@ -48,7 +59,7 @@
 
                             <div class="col-xs-12 col-sm-5">
                                 <span class="block input-icon input-icon-right">
-                                    <textarea rows="5" cols="20" name="detail" id="inputInfo" class="width-100" required/><?php echo $objData->detail ;?></textarea>
+                                    <textarea rows="5" cols="20" name="detail" id="inputInfo" class="width-100" /><?php echo $objData->detail ;?></textarea>
 
                                 </span>
                             </div>

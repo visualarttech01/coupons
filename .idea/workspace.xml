@@ -2,20 +2,61 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3e7448eb-a683-48c6-9ada-f0cd8899f474" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/templates/network-report.html.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/classes/Content.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/classes/Content.class.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/classes/Gateway.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/classes/Gateway.class.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data" beforeDir="false" afterPath="$PROJECT_DIR$/data" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/add_code.html.php" beforeDir="false" afterPath="$PROJECT_DIR$/templates/add_code.html.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/Request.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/classes/Request.class.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/Session.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/classes/Session.class.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/User.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/classes/User.class.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/._.DS_Store" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/._cnic.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/._logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/cnic.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/stores/ChallanPrintPreview_5bed60a5c367e.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/stores/ChallanPrintPreview_5bed67a2cffc7.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/stores/ChallanPrintPreview_5bed6baecac54.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/stores/Gamiss-Promo-Code-min_5be1358c904a4.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/stores/Screen Shot 2018-10-29 at 3.17.29 PM_5bed5ff74f917.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/stores/Screen Shot 2018-10-29 at 3.17.29 PM_5bed635514637.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/stores/Screen Shot 2018-10-29 at 3.17.29 PM_5bed636ff1e44.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/stores/Screen Shot 2018-10-29 at 3.17.29 PM_5bed638e94b05.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/stores/Screen Shot 2018-10-29 at 3.17.29 PM_5bed63cb29007.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/stores/Screen Shot 2018-10-29 at 3.17.29 PM_5bed63d5164db.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/stores/Screen Shot 2018-10-29 at 3.17.29 PM_5bed650099a35.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/stores/Screen Shot 2018-10-29 at 3.17.29 PM_5bed68aed6f06.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/stores/Screen Shot 2018-10-29 at 3.17.29 PM_5bed68d6bc3f7.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/stores/Screen Shot 2018-10-29 at 3.17.29 PM_5bed69d1e813c.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/stores/Screen Shot 2018-10-29 at 3.17.29 PM_5bed69f35eb66.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/stores/Screen Shot 2018-10-29 at 3.17.29 PM_5bed6a0479305.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/stores/Screen Shot 2018-10-29 at 3.17.29 PM_5bed6a0f08911.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/stores/Screen Shot 2018-10-29 at 3.17.29 PM_5bed6ad26615f.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/stores/Service-CTA-Blog_5bdb074ec9a5e.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/stores/Service-CTA-Blog_5bdb095901fcd.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/stores/Service-CTA-Blog_5be43544584c9.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/stores/Service-CTA-Blog_5be588de40fd0.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/stores/screencapture-deborahpagani-wp-admin-admin-php-2018-10-16-12_32_06_5bea8549e4224.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/stores/screencapture-deborahpagani-wp-admin-admin-php-2018-10-16-12_33_19_5beaaf546da90.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/stores/think-twice-code-once_5bdb028e7a4c8.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/stores/think-twice-code-once_5be1401552284.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/users/._.DS_Store" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/users/profiles/._.DS_Store" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/users/profiles/5aec4a9c3fc92_27.JPG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/users/profiles/5aec4b102dbdb_27.JPG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/users/profiles/5aec4b3810feb_27.JPG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/users/profiles/5aec4b6803944_27.JPG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/users/profiles/default.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/users/profiles/default_5acf9e96afa50.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/users/profiles/rqUKvamH_5ad481e5d622b.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/users/profiles/rqUKvamH_5addb55a794e2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/users/profiles/waqar_5ad5d66a9994a.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/add_store.html.php" beforeDir="false" afterPath="$PROJECT_DIR$/templates/add_store.html.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/codes.html.php" beforeDir="false" afterPath="$PROJECT_DIR$/templates/codes.html.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/edit_category.html.php" beforeDir="false" afterPath="$PROJECT_DIR$/templates/edit_category.html.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/edit_code.html.php" beforeDir="false" afterPath="$PROJECT_DIR$/templates/edit_code.html.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/edit_network.html.php" beforeDir="false" afterPath="$PROJECT_DIR$/templates/edit_network.html.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/categories.html.php" beforeDir="false" afterPath="$PROJECT_DIR$/templates/categories.html.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/data.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/edit_store.html.php" beforeDir="false" afterPath="$PROJECT_DIR$/templates/edit_store.html.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/header.html.php" beforeDir="false" afterPath="$PROJECT_DIR$/templates/header.html.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/reports.html.php" beforeDir="false" afterPath="$PROJECT_DIR$/templates/reports.html.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/permissions.html.php" beforeDir="false" afterPath="$PROJECT_DIR$/templates/permissions.html.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/profile.html.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/users.html.php" beforeDir="false" afterPath="$PROJECT_DIR$/templates/users.html.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -77,25 +118,27 @@
     <session id="-436506365">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="6" />
+          <entry key="project.closed" value="8" />
+          <entry key="project.open.time.11" value="1" />
           <entry key="project.open.time.21" value="1" />
           <entry key="project.open.time.25" value="1" />
           <entry key="project.open.time.30" value="1" />
           <entry key="project.open.time.31" value="1" />
           <entry key="project.open.time.36" value="1" />
+          <entry key="project.open.time.43" value="1" />
           <entry key="project.open.time.8" value="1" />
-          <entry key="project.opened" value="6" />
+          <entry key="project.opened" value="8" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="data" value="52" />
-          <entry key="php" value="6660" />
+          <entry key="php" value="6750" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="PHP" value="6658" />
+          <entry key="PHP" value="6748" />
           <entry key="PLAIN_TEXT" value="52" />
           <entry key="SQL" value="2" />
         </counts>
@@ -103,92 +146,19 @@
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="data" value="2" />
-          <entry key="php" value="55" />
+          <entry key="php" value="62" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="PHP" value="55" />
+          <entry key="PHP" value="62" />
           <entry key="PLAIN_TEXT" value="2" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/classes/Gateway.class.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="476">
-              <caret line="28" column="64" selection-start-line="28" selection-start-column="64" selection-end-line="28" selection-end-column="64" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/classes/Content.class.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
-              <caret line="277" column="30" selection-start-line="277" selection-start-column="30" selection-end-line="277" selection-end-column="30" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/network-report.html.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="476">
-              <caret line="28" column="47" selection-start-line="28" selection-start-column="47" selection-end-line="28" selection-end-column="47" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/data">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3723">
-              <caret line="219" selection-start-line="219" selection-end-line="279" selection-end-column="8" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/reports.html.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="884">
-              <caret line="52" column="44" selection-start-line="52" selection-start-column="44" selection-end-line="52" selection-end-column="44" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/roles.html.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="8" lean-forward="true" selection-end-line="387" selection-end-column="12" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/header.html.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1003">
-              <caret line="59" selection-start-line="59" selection-end-line="59" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/edit_network.html.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="18" column="134" selection-start-line="18" selection-start-column="134" selection-end-line="18" selection-end-column="134" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
@@ -218,7 +188,6 @@
         <option value="$PROJECT_DIR$/templates/add_network.html.php" />
         <option value="$PROJECT_DIR$/templates/add_section.html.php" />
         <option value="$PROJECT_DIR$/templates/edit_section.html.php" />
-        <option value="$PROJECT_DIR$/templates/categories.html.php" />
         <option value="$PROJECT_DIR$/templates/add_user.html.php" />
         <option value="$PROJECT_DIR$/templates/roles.html.php" />
         <option value="$PROJECT_DIR$/templates/edit_user.html.php" />
@@ -230,13 +199,10 @@
         <option value="$PROJECT_DIR$/templates/profile.html.php" />
         <option value="$PROJECT_DIR$/templates/sections.html.php" />
         <option value="$PROJECT_DIR$/templates/users.html.php" />
-        <option value="$PROJECT_DIR$/classes/User.class.php" />
         <option value="$PROJECT_DIR$/templates/login.html.php" />
         <option value="$PROJECT_DIR$/templates/access.html.php" />
         <option value="$PROJECT_DIR$/templates/stores.html.php" />
         <option value="$PROJECT_DIR$/templates/edit_settings.html.php" />
-        <option value="$PROJECT_DIR$/templates/add_store.html.php" />
-        <option value="$PROJECT_DIR$/templates/edit_store.html.php" />
         <option value="$PROJECT_DIR$/templates/codes.html.php" />
         <option value="$PROJECT_DIR$/templates/add_code.html.php" />
         <option value="$PROJECT_DIR$/templates/edit_code.html.php" />
@@ -244,10 +210,16 @@
         <option value="$PROJECT_DIR$/templates/reports.html.php" />
         <option value="$PROJECT_DIR$/templates/edit_network.html.php" />
         <option value="$PROJECT_DIR$/templates/edit_category.html.php" />
-        <option value="$PROJECT_DIR$/classes/Gateway.class.php" />
         <option value="$PROJECT_DIR$/data" />
         <option value="$PROJECT_DIR$/templates/network-report.html.php" />
+        <option value="$PROJECT_DIR$/classes/User.class.php" />
+        <option value="$PROJECT_DIR$/classes/Session.class.php" />
+        <option value="$PROJECT_DIR$/classes/Request.class.php" />
         <option value="$PROJECT_DIR$/classes/Content.class.php" />
+        <option value="$PROJECT_DIR$/classes/Gateway.class.php" />
+        <option value="$PROJECT_DIR$/templates/add_store.html.php" />
+        <option value="$PROJECT_DIR$/templates/edit_store.html.php" />
+        <option value="$PROJECT_DIR$/templates/categories.html.php" />
       </list>
     </option>
   </component>
@@ -257,7 +229,7 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="10" />
     <option name="y" value="20" />
     <option name="width" value="1260" />
@@ -269,7 +241,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -280,17 +251,13 @@
             <path>
               <item name="couponscode" type="b2602c69:ProjectViewProjectNode" />
               <item name="couponscode" type="462c0819:PsiDirectoryNode" />
-              <item name="classes" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="couponscode" type="b2602c69:ProjectViewProjectNode" />
-              <item name="couponscode" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -340,6 +307,8 @@
       <workItem from="1541669887985" duration="9402000" />
       <workItem from="1541743824821" duration="18913000" />
       <workItem from="1541831607100" duration="1400000" />
+      <workItem from="1542621734784" duration="1778000" />
+      <workItem from="1542625529424" duration="1110000" />
     </task>
     <task id="LOCAL-00001" summary="stores and seo">
       <created>1541081983906</created>
@@ -352,13 +321,12 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="146858000" />
+    <option name="totallyTimeSpent" value="149746000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1296" height="1000" extended-state="6" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1296" height="1000" extended-state="7" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1788026" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18365696" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -390,14 +358,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="stores and seo" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/classes/Presenter.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="16" selection-start-line="3" selection-start-column="16" selection-end-line="3" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/admin/app/config/routes.php" />
     <entry file="file://$PROJECT_DIR$/admin/index.php" />
     <entry file="file://$PROJECT_DIR$/index.php">
       <provider selected="true" editor-type-id="text-editor">
@@ -428,20 +388,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/classes/Session.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="731">
-          <caret line="43" column="24" selection-start-line="43" selection-start-column="24" selection-end-line="43" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../al-quresh/classes/Gateway.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="638" column="16" lean-forward="true" selection-start-line="580" selection-start-column="16" selection-end-line="638" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/../al-quresh/classes/Gateway.class.php" />
     <entry file="file://$PROJECT_DIR$/templates/add_role.html.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
@@ -527,13 +474,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/categories.html.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="102" column="52" lean-forward="true" selection-end-line="431" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://G:/xampp/htdocs/healthtv/classes/Gateway.class.php" />
     <entry file="file://$PROJECT_DIR$/templates/permissions.html.php">
       <provider selected="true" editor-type-id="text-editor">
@@ -549,13 +489,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/profile.html.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1093">
-          <caret line="145" column="39" lean-forward="true" selection-start-line="145" selection-start-column="39" selection-end-line="145" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/profile.html.php" />
     <entry file="file://$PROJECT_DIR$/templates/add_section.html.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="141">
@@ -580,13 +514,6 @@
     <entry file="file://$PROJECT_DIR$/templates/home.html.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1989" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/classes/User.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="143" column="8" selection-start-line="143" selection-start-column="8" selection-end-line="143" selection-end-column="8" />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/users.html.php">
@@ -614,20 +541,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="459">
           <caret line="27" column="97" selection-start-line="27" selection-start-column="97" selection-end-line="27" selection-end-column="97" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/edit_store.html.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="158" column="112" selection-start-line="158" selection-start-column="112" selection-end-line="158" selection-end-column="112" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/add_store.html.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="484">
-          <caret line="126" column="124" selection-start-line="126" selection-start-column="124" selection-end-line="126" selection-end-column="124" />
         </state>
       </provider>
     </entry>
@@ -659,23 +572,53 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/classes/Gateway.class.php">
+    <entry file="file://$PROJECT_DIR$/data" />
+    <entry file="file://$PROJECT_DIR$/classes/User.class.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="28" column="64" selection-start-line="28" selection-start-column="64" selection-end-line="28" selection-end-column="64" />
+        <state relative-caret-position="682">
+          <caret line="101" lean-forward="true" selection-start-line="101" selection-end-line="101" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/data">
+    <entry file="file://$PROJECT_DIR$/classes/Session.class.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3723">
-          <caret line="219" selection-start-line="219" selection-end-line="279" selection-end-column="8" />
+        <state relative-caret-position="527">
+          <caret line="31" lean-forward="true" selection-start-line="31" selection-end-line="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/classes/Request.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1309">
+          <caret line="77" lean-forward="true" selection-start-line="77" selection-end-line="77" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/classes/Presenter.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-204" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/classes/Content.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="502" column="70" selection-start-line="502" selection-start-column="70" selection-end-line="502" selection-end-column="70" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/classes/Gateway.class.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/network-report.html.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="26" column="47" selection-start-line="26" selection-start-column="47" selection-end-line="26" selection-end-column="47" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/reports.html.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="884">
+        <state relative-caret-position="784">
           <caret line="52" column="44" selection-start-line="52" selection-start-column="44" selection-end-line="52" selection-end-column="44" />
         </state>
       </provider>
@@ -683,14 +626,14 @@
     <entry file="file://$PROJECT_DIR$/templates/roles.html.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
-          <caret line="8" lean-forward="true" selection-end-line="387" selection-end-column="12" />
+          <caret line="8" selection-end-line="387" selection-end-column="12" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/header.html.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1003">
-          <caret line="59" selection-start-line="59" selection-end-line="59" />
+        <state relative-caret-position="663">
+          <caret line="39" selection-start-line="39" selection-end-line="39" />
         </state>
       </provider>
     </entry>
@@ -701,17 +644,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/network-report.html.php">
+    <entry file="file://$PROJECT_DIR$/templates/add_store.html.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="28" column="47" selection-start-line="28" selection-start-column="47" selection-end-line="28" selection-end-column="47" />
+        <state relative-caret-position="535">
+          <caret line="87" column="137" lean-forward="true" selection-start-line="87" selection-start-column="121" selection-end-line="87" selection-end-column="137" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/classes/Content.class.php">
+    <entry file="file://$PROJECT_DIR$/templates/edit_store.html.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="277" column="30" selection-start-line="277" selection-start-column="30" selection-end-line="277" selection-end-column="30" />
+        <state relative-caret-position="119">
+          <caret line="130" column="125" selection-start-line="130" selection-start-column="125" selection-end-line="130" selection-end-column="125" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/categories.html.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="45" column="55" selection-start-line="45" selection-start-column="55" selection-end-line="45" selection-end-column="55" />
         </state>
       </provider>
     </entry>

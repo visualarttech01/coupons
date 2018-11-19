@@ -1,4 +1,3 @@
-
 <?php
     class Gateway {
         static function Process($parameters = NULL){
@@ -6,17 +5,13 @@
             $objPresenter = new Presenter();
             $objPresenter->AddParameter('parameters', $parameters);
             
+
             if(Session::isUserOnline()){
-
                 $objPresenter->AddTemplate('header');
-		
             }
-
 			switch ($parameters[0]){
-
 			    case 'ranking':
-			        
-			        if (Content::validate('ranking','p_view')){
+			        if(Content::validate('ranking','p_view')){
 			            if (!isset($parameters[1]) && $parameters[1]= ''){
 			                header('Location:'.Request::$BASE_PATH);
 			            }else {
@@ -27,7 +22,6 @@
     			                        $sql="UPDATE coupons SET rank='".$value."' where id='".$key."'";
     			                        global $DB;
     			                        if($DB->Execute($sql)){
-    			                           
     			                        }
     			                    }
 			                    }else{header('Location:'.Request::$BASE_PATH);}
@@ -41,10 +35,8 @@
 			            }
 			        }
 			       break;
-			   
 			    case 'reporting':
                     if (Content::validate('reports','p_view')){
-
                         if (!isset($parameters[1]) && $parameters[1]= ''){
                             header('Location:'.Request::$BASE_PATH);
                         }else {
@@ -93,11 +85,11 @@
                                             $objPresenter->AddParameter('objUser',$objUser);
                                             $objall=Content::reporting('coupons',$id);
                                             $objPresenter->AddParameter('objall',$objall);
+                                            
                                             $objPresenter->AddTemplate('coupons-report');
                                         }
                                     }
                                     break;
-
                                 default:
                                     header ( "Location: " . Request::$BASE_PATH.'reporting' );
                                     break;
@@ -106,10 +98,7 @@
                     }else{
                         header ( "Location: " . Request::$BASE_PATH );
                     }
-
-
                     break;
-
                 case 'stores':
                     if (Content::validate('stores','p_view')){
                         $objall =Content::stores();
@@ -126,6 +115,17 @@
                                         $objPresenter->AddParameter('objnetworks',$objnetworks);
                                         if(Request::hasPostVariables()){
                                             $objData = Request::getPostVariables();
+                                            $setting=Content::select('*', 'global_settings');
+                                            $setting=$setting[3];
+                                            echo '<pre>';
+                                            print_r($setting);
+                                            exit;
+                                            if(isset($objData->meta_title) && $objData->meta_title==''){
+                                                $objData->meta_title=$objData->name.' '.$setting->meta_title;
+                                            }
+                                            if(isset($objData->meta_detail) && $objData->meta_detail==''){
+                                                $objData->meta_detail=$objData->name.' '.$setting->meta_detail;
+                                            }
                                             if(Content::validateStore($objData->name)){
                                                 if (isset ( $_FILES ['image'] ['name'] ) && $_FILES ['image'] ['name'] != '') {
                                                     // ===========================Get file information=======================
@@ -151,10 +151,8 @@
                                                             $DB->Save ( 'stores', $objData );
                                                             $objPresenter->AddParameter ( 'add_message', '<strong>Success</strong>Added' );
                                                             header ( "Location: " . Request::$BASE_PATH.'stores/' );
-                                                            
                                                         } else {
                                                             $objPresenter->AddParameter ( 'add_message', '<strong>Please upload Image png/jpg/jpeg/gif</strong>');
-                                                            
                                                         }
                                                     }
                                                 }else{
@@ -163,8 +161,6 @@
                                             }else{
                                                 $objPresenter->AddParameter ( 'add_message', '<strong>Store Already Exsist</strong>');
                                             }
-                                            
-
                                         }
                                     }else{
                                         header ( "Location: " . Request::$BASE_PATH );
@@ -172,7 +168,6 @@
                                     $objPresenter->AddTemplate('add_store');
                                     break;
                                 case 'edit_store':
-
                                     if(Content::validate('stores','p_edit')){
                                         $objcategories=Content::select('*','categories');
                                         $objPresenter->AddParameter('objcategories',$objcategories);
@@ -182,6 +177,15 @@
                                             if(Request::hasPostVariables()){
                                                 $objData = Request::getPostVariables();
                                                 if(Content::validateStoreEdit($objData->name,$objData->id)){
+                                                    $setting=Content::select('*', 'global_settings');
+                                                    $setting=$setting[0];
+                                                    
+                                                    if(isset($objData->meta_title) && $objData->meta_title==''){
+                                                        $objData->meta_title=$objData->name.' '.$setting->meta_title;
+                                                    }
+                                                    if(isset($objData->meta_detail) && $objData->meta_detail==''){
+                                                        $objData->meta_detail=$objData->name.' '.$setting->meta_detail;
+                                                    }
                                                     if (isset ( $_FILES ['image'] ['name'] ) && $_FILES ['image'] ['name'] != '') {
                                                         // ===========================Get file information=======================
                                                         $filename = pathinfo ( $_FILES ['image'] ['name'], PATHINFO_FILENAME );
@@ -210,14 +214,11 @@
                                                                 unlink ( 'images/stores/'.$olddata );
                                                                 $objPresenter->AddParameter ( 'add_message', '<strong>Success</strong> Updated' );
                                                                 header ( "Location: " . Request::$BASE_PATH.'stores/' );
-                                                                
                                                             } else {
                                                                 $objPresenter->AddParameter ( 'Message', '<strong>Error</strong> Uploading Image Try Again Later!' );
-                                                                
                                                             }
                                                         } else {
                                                             $objPresenter->AddParameter ( 'Message', '<strong>Error</strong>Please upload Image png/jpg/jpeg/gif!' );
-                                                            
                                                         }
                                                     }else{
                                                         $id=intval($parameters[2]);
@@ -233,7 +234,6 @@
                                                             header ( "Location: " . Request::$BASE_PATH.'stores/' );
                                                         }
                                                     }
-                                                
                                                 }else{
                                                     ?>
                                                     <script type="text/javascript">
@@ -241,12 +241,7 @@
                                                         window.location.href='<?php echo  Request::$BASE_PATH.'stores/edit_store/'.$objData->id ;?>';
                                                     </script>
                                                     <?php 
-                                                   
                                                 }
-                                                
-                                                
-                                                
-
                                             }else{
                                                 $id=intval($parameters[2]);
                                                 $objData =Content::find_by_id($id,'stores');
@@ -257,8 +252,6 @@
                                     }else{
                                         header ( "Location: " . Request::$BASE_PATH );
                                     }
-
-
                                     break;
                                 case 'delete_store':
                                     if(Content::validate('stores','p_delete')){
@@ -273,14 +266,12 @@
                                                 }
                                             }else{
                                                 echo "You are not Admin.";
-
                                             }
                                             exit;
                                         }
                                     }else{
                                         header ( "Location: " . Request::$BASE_PATH );
                                     }
-
                                     exit;
                                     break;
                                 default:
@@ -291,10 +282,7 @@
                     }else{
                         header ( "Location: " . Request::$BASE_PATH );
                     }
-
-
                     break;
-
                 case 'codes':
                     if(Content::validate('coupons','p_view')){
                         $objall =Content::coupons();
@@ -310,13 +298,13 @@
                                             if(Content::validateCoupon($objData->name, $objData->store_id)){
                                                 if ($objData->address==''){
                                                     $objDstore =Content::find_by_id($objData->store_id,'stores');
-                                                    
-                                                    if ($objDstore->net_store_link!=''){
+                                                    if ($objDstore->net_store_link!==''){
                                                         $objData->address=$objDstore->net_store_link;
                                                     }else{
                                                         $objData->address=$objDstore->address;
                                                     }
                                                 }
+                                                
                                                 if ($objData->code!=''){
                                                     $objData->type='coupon';
                                                 }else{
@@ -333,7 +321,6 @@
                                             }else{
                                                 $objPresenter->AddParameter ( 'add_message', '<strong>Coupon Already Exsist</strong>');
                                             }
-                                            
                                         }
                                         $objcategories=Content::select('*','categories');
                                         $objPresenter->AddParameter('objcategories',$objcategories);
@@ -343,15 +330,21 @@
                                     }else{
                                         header ( "Location: " . Request::$BASE_PATH );
                                     }
-
                                     break;
                                 case 'edit_code':
-
                                     if(Content::validate('coupons','p_edit')){
                                         if($parameters[2] !='' && isset($parameters[2])){
                                             if(Request::hasPostVariables()){
                                                 $objData = Request::getPostVariables();
                                                 if(Content::validateCouponedit($objData->name,$objData->store_id,$objData->id)){
+                                                    if ($objData->address==''){
+                                                        $objDstore =Content::find_by_id($objData->store_id,'stores');
+                                                        if ($objDstore->net_store_link!==''){
+                                                            $objData->address=$objDstore->net_store_link;
+                                                        }else{
+                                                            $objData->address=$objDstore->address;
+                                                        }
+                                                    }
                                                     if ($objData->code!=''){
                                                         $objData->type='coupon';
                                                     }else{
@@ -375,7 +368,6 @@
                                                     </script>
                                                     <?php 
                                                 }
-                                                
                                             }else{
                                                 $id=intval($parameters[2]);
                                                 $objData =Content::find_by_id($id,'coupons');
@@ -390,8 +382,6 @@
                                     }else{
                                         header ( "Location: " . Request::$BASE_PATH );
                                     }
-
-
                                     break;
                                 case 'delete_code':
                                     if(Content::validate('coupons','p_delete')){
@@ -406,14 +396,12 @@
                                                 }
                                             }else{
                                                 echo "You are not Admin.";
-
                                             }
                                             exit;
                                         }
                                     }else{
                                         header ( "Location: " . Request::$BASE_PATH );
                                     }
-
                                     exit;
                                     break;
                                 default:
@@ -424,9 +412,7 @@
                     }else{
                         header ( "Location: " . Request::$BASE_PATH.'access' );
                     }
-
                     break;
-
                 case 'roles':
                     if(Content::validate('roles','p_view')){
                         $objroles =Content::All('user_roles');
@@ -452,7 +438,6 @@
                                     $objPresenter->AddTemplate('add_role');
                                     break;
                                 case 'edit_role':
-
                                     if(Session::GetUser()->user_role_id == '1' && Session::isUserOnline()){
                                         if($parameters[2] !='' && isset($parameters[2])){
                                             if(Request::hasPostVariables()){
@@ -471,8 +456,6 @@
                                     }else{
                                         header ( "Location: " . Request::$BASE_PATH );
                                     }
-
-
                                     break;
                                 case 'delete_role':
                                     if(Session::isUserOnline()){
@@ -487,14 +470,12 @@
                                                 }
                                             }else{
                                                 echo "You are not Admin.";
-
                                             }
                                             exit;
                                         }
                                     }else{
                                         header ( "Location: " . Request::$BASE_PATH );
                                     }
-
                                     exit;
                                     break;
                                 default:
@@ -505,9 +486,7 @@
                     }else{
                         header ( "Location: " . Request::$BASE_PATH.'access' );
                     }
-
                     break;
-
                 case 'permissions':
                     if(Content::validate('permissions','p_view')){
                         $objall=Content::relation('*','role_permissions','user_roles','role','user_role_id');
@@ -537,7 +516,6 @@
                                     $objPresenter->AddTemplate('add_permission');
                                     break;
                                 case 'edit_permission':
-
                                     if(Content::validate('permissions','p_edit')){
                                         if($parameters[2] !='' && isset($parameters[2])){
                                             if(Request::hasPostVariables()){
@@ -560,8 +538,6 @@
                                     }else{
                                         header ( "Location: " . Request::$BASE_PATH );
                                     }
-
-
                                     break;
                                 case 'delete_permission':
                                     if(Content::validate('permissions','p_delete')){
@@ -576,14 +552,12 @@
                                                 }
                                             }else{
                                                 echo "You are not Admin.";
-
                                             }
                                             exit;
                                         }
                                     }else{
                                         header ( "Location: " . Request::$BASE_PATH );
                                     }
-
                                     exit;
                                     break;
                                 default:
@@ -594,10 +568,7 @@
                     }else{
                         header ( "Location: " . Request::$BASE_PATH.'access' );
                     }
-
-
                     break;
-
                 case 'global_settings':
                     if(Content::validate('global settings','p_view')){
                         $objall =Content::All('global_settings');
@@ -607,7 +578,6 @@
                         }else {
                             switch ($parameters[1]){
                                 case 'edit_settings':
-
                                     if(Content::validate('global settings','p_edit')){
                                         if($parameters[2] !=' ' && isset($parameters[2])){
                                             if(Request::hasPostVariables()){
@@ -626,10 +596,7 @@
                                     }else{
                                         header ( "Location: " . Request::$BASE_PATH );
                                     }
-
-
                                     break;
-
                                 default:
                                     header ( "Location: " . Request::$BASE_PATH.'global_settings' );
                                     break;
@@ -638,9 +605,7 @@
                     }else{
                         header ( "Location: " . Request::$BASE_PATH.'access' );
                     }
-
                 break;
-
                 case 'categories':
                     if(Content::validate('categories','p_view')){
                         $objall =Content::All('categories');
@@ -651,10 +616,18 @@
                             switch ($parameters[1]){
                                 case 'new_category':
                                     if(Content::validate('categories','p_add')){
-
                                         if(Request::hasPostVariables()){
                                             $objData = Request::getPostVariables();
                                             $objData->name=Content::clean($objData->name);
+                                            $setting=Content::select('*', 'global_settings');
+                                            $setting=$setting[1];
+                                           
+                                            if(isset($objData->meta_title) && $objData->meta_title==''){
+                                                $objData->meta_title=$objData->name.' '.$setting->meta_title;
+                                            }
+                                            if(isset($objData->meta_detail) && $objData->meta_detail==''){
+                                                $objData->meta_detail=$objData->name.' '.$setting->meta_detail;
+                                            }
                                             $objData->publisher = Session::GetUser()->id;
                                             $objData->created = date ( 'Y-m-d H:i:s' );
                                             $objData->is_active = '1';
@@ -669,14 +642,20 @@
                                     $objPresenter->AddTemplate('add_category');
                                     break;
                                 case 'edit_category':
-
                                     if(Content::validate('categories','p_edit')){
                                         if($parameters[2] !='' && isset($parameters[2])){
                                             if(Request::hasPostVariables()){
-
                                                 $objData =Request::getPostVariables();
                                                 $id=intval($parameters[2]);
                                                 $objData->name=Content::clean($objData->name);
+                                                $setting=Content::select('*', 'global_settings');
+                                                $setting=$setting[1];
+                                                if(isset($objData->meta_title) && $objData->meta_title==''){
+                                                    $objData->meta_title=$objData->name.' '.$setting->meta_title;
+                                                }
+                                                if(isset($objData->meta_detail) && $objData->meta_detail==''){
+                                                    $objData->meta_detail=$objData->name.' '.$setting->meta_detail;
+                                                }
                                                 $objold=Content::publisher('categories',$id);
                                                 $objData->publisher=$objold->publisher;
                                                 $objData->edited_by=Session::GetUser()->id;
@@ -695,8 +674,6 @@
                                     }else{
                                         header ( "Location: " . Request::$BASE_PATH );
                                     }
-
-
                                     break;
                                 case 'delete_category':
                                     if(Content::validate('categories','p_delete')){
@@ -711,14 +688,12 @@
                                                 }
                                             }else{
                                                 echo "You are not Admin.";
-
                                             }
                                             exit;
                                         }
                                     }else{
                                         header ( "Location: " . Request::$BASE_PATH );
                                     }
-
                                     exit;
                                     break;
                                 default:
@@ -730,7 +705,6 @@
                         header ( "Location: " . Request::$BASE_PATH.'access' );
                     }
                     break;
-
                 case 'networks':
                     if(Content::validate('networks','p_view')){
                         $objall =Content::All('networks');
@@ -741,7 +715,6 @@
                             switch ($parameters[1]){
                                 case 'new_network':
                                     if(Content::validate('networks','p_add')){
-
                                         if(Request::hasPostVariables()){
                                             $objData = Request::getPostVariables();
                                             $objData->publisher = Session::GetUser()->id;
@@ -758,7 +731,6 @@
                                     $objPresenter->AddTemplate('add_network');
                                     break;
                                 case 'edit_network':
-
                                     if(Content::validate('networks','p_edit')){
                                         if($parameters[2]!=' ' && isset($parameters[2])){
                                             if(Request::hasPostVariables()){
@@ -782,8 +754,6 @@
                                     }else{
                                         header ( "Location: " . Request::$BASE_PATH );
                                     }
-
-
                                     break;
                                 case 'delete_network':
                                     if(Content::validate('networks','p_delete')){
@@ -798,14 +768,12 @@
                                                 }
                                             }else{
                                                 echo "You are not Admin.";
-
                                             }
                                             exit;
                                         }
                                     }else{
                                         header ( "Location: " . Request::$BASE_PATH );
                                     }
-
                                     exit;
                                     break;
                                 default:
@@ -816,9 +784,7 @@
                     }else{
                         header ( "Location: " . Request::$BASE_PATH.'access' );
                     }
-
                     break;
-
                 case 'sections':
                     if(Content::validate('sections','p_view')){
                         $objall =Content::All('sections');
@@ -829,7 +795,6 @@
                             switch ($parameters[1]){
                                 case 'new_section':
                                     if(Content::validate('sections','p_add')){
-
                                         if(Request::hasPostVariables()){
                                             $objData = Request::getPostVariables();
                                             $objData->created = date ( 'Y-m-d H:i:s' );
@@ -845,7 +810,6 @@
                                     $objPresenter->AddTemplate('add_section');
                                     break;
                                 case 'edit_section':
-
                                     if(Content::validate('sections','p_edit')){
                                         if($parameters[2] !='' && isset($parameters[2])){
                                             if(Request::hasPostVariables()){
@@ -864,8 +828,6 @@
                                     }else{
                                         header ( "Location: " . Request::$BASE_PATH );
                                     }
-
-
                                     break;
                                 case 'delete_section':
                                     if(Content::validate('sections','p_delete')){
@@ -880,14 +842,12 @@
                                                 }
                                             }else{
                                                 echo "You are not Admin.";
-
                                             }
                                             exit;
                                         }
                                     }else{
                                         header ( "Location: " . Request::$BASE_PATH );
                                     }
-
                                     exit;
                                     break;
                                 default:
@@ -1056,7 +1016,7 @@
 
                 case 'access':
                     if(Session::isUserOnline()){
-                    $objPresenter->AddParameter('access');
+                    $objPresenter->AddTemplate('access');
                     }else {
                         $objPresenter->AddTemplate('login');
                     }

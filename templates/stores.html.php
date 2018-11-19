@@ -46,7 +46,6 @@
                                         </th>
                                         <th class="center">ID's</th>
                                         <th class="center">Names</th>
-                                        
                                         <th class="center">Category</th>
                                         <th class="center">URL</th>
                                         <th class="center">Network</th>
@@ -100,10 +99,10 @@
                                                     <?php echo $key->net_store_link ;?>
                                                 </td>
                                                 <td class="center">
-                                                    <?php echo substr($key->meta_title,0,60).'..' ;?>
+                                                    <?php echo substr($key->meta_title,0,25).'..' ;?>
                                                 </td>
                                                 <td class="center">
-                                                    <?php echo substr($key->meta_detail,0,60).'..' ;?>
+                                                    <?php echo substr($key->meta_detail,0,25).'..' ;?>
                                                 </td>
                                                 <td class="center">
                                                     <?php echo $key->coupon;?>

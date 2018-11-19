@@ -29,13 +29,7 @@
 			return $_SESSION[Session::SESSION_VARIABLE]['ID'];
 		}
 		
-		static function ChangeLanguage ($objLanguage) {
-			$_SESSION[Session::SESSION_VARIABLE]['Language'] = $objLanguage;
-		}
-		
-		static function Language () {
-			return $_SESSION[Session::SESSION_VARIABLE]['Language'];
-		}
+
 		
 		static function AddUser ($objUser) {
 			$_SESSION[Session::SESSION_VARIABLE]['User'] = $objUser;
@@ -70,28 +64,7 @@
 			return $_SESSION[Session::SESSION_VARIABLE][$key];
 		}
 		
-		static function RemoveParameter ($key) {
-			if(in_array($key, array("User", "FirstLogin", "LastUpdated"))) {
-				throw new Exception ("INVALID_KEY_PROVIDED", 1);
-			}
-			unset($_SESSION[Session::SESSION_VARIABLE][$key]);
-		}
-		
-		static function AddCaptcha ($captchaImage){
-			$_SESSION[Session::SESSION_VARIABLE]['CaptchaImage'] = $captchaImage;
-		}
-		
-		static function GetCaptcha () {
-			return $_SESSION[Session::SESSION_VARIABLE]['CaptchaImage'];
-		}
-		
-		static function LastUpdated () {
-			return $_SESSION[Session::SESSION_VARIABLE]['LastUpdated'];
-		}
-		
-		static function FirstLogin () {
-			return $_SESSION[Session::SESSION_VARIABLE]['FirstLogin'];
-		}
+
 		
 		static function Destroy () {
 			$_SESSION[Session::SESSION_VARIABLE]['User'] = NULL;

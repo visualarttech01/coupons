@@ -9,7 +9,6 @@
 		<link rel="shortcut png" type="image/png" href="<?php echo Request::$BASE_PATH.'images/logo.png';?>">
 		<meta name="description" content="overview &amp; stats" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
-		
 		<!-- bootstrap & fontawesome -->
 		<link rel="stylesheet" href="<?php echo Request::$BASE_PATH; ?>assets/css/bootstrap.min.css" />
 		<link rel="stylesheet" href="<?php echo Request::$BASE_PATH; ?>assets/font-awesome/4.5.0/css/font-awesome.min.css" />
@@ -38,9 +37,7 @@
 	</head>
 
 	<body class="no-skin">
-
-
-        <div id="navbar" class="navbar navbar-default          ace-save-state">
+		<div id="navbar" class="navbar navbar-default          ace-save-state">
 			<div class="navbar-container ace-save-state" id="navbar-container">
 				<button type="button" class="navbar-toggle menu-toggler pull-left" id="menu-toggler" data-target="#sidebar">
 					<span class="sr-only">Toggle sidebar</span>
@@ -67,7 +64,7 @@
 						<li class="light-blue dropdown-modal">
 							<a data-toggle="dropdown" href="<?php echo Request::$BASE_PATH; ?>" class="dropdown-toggle">
 								<span class="user-info">
-									<small>Welcome,</small>
+									<small>Welcome ! </small>
 									<?php echo Session::GetUser()->user_name; ?>
 								</span>
 
@@ -102,38 +99,6 @@
 				<script type="text/javascript">
 					try{ace.settings.loadState('sidebar')}catch(e){}
 				</script>
-
-<!-- 				<div class="sidebar-shortcuts" id="sidebar-shortcuts"> -->
-<!-- 					<div class="sidebar-shortcuts-large" id="sidebar-shortcuts-large"> -->
-<!-- 						<button class="btn btn-success"> -->
-<!-- 							<i class="ace-icon fa fa-signal"></i> -->
-<!-- 						</button> -->
-
-<!-- 						<button class="btn btn-info"> -->
-<!-- 							<i class="ace-icon fa fa-pencil"></i> -->
-<!-- 						</button> -->
-						
-						
-<!-- 						<button class="btn btn-warning"> -->
-<!-- 							<i class="ace-icon fa fa-users"></i> -->
-<!-- 						</button> -->
-
-<!-- 						<button class="btn btn-danger"> -->
-<!-- 							<i class="ace-icon fa fa-cogs"></i> -->
-<!-- 						</button> -->
-<!-- 					</div> -->
-
-<!-- 					<div class="sidebar-shortcuts-mini" id="sidebar-shortcuts-mini"> -->
-<!-- 						<span class="btn btn-success"></span> -->
-
-<!-- 						<span class="btn btn-info"></span> -->
-
-<!-- 						<span class="btn btn-warning"></span> -->
-
-<!-- 						<span class="btn btn-danger"></span> -->
-<!-- 					</div> -->
-				<!--</div> /.sidebar-shortcuts -->
-
 				<ul class="nav nav-list">
 					<li  class="<?php if($parameters[0]=='categories'){ echo 'active'; } ?>">
 						<a href="<?php echo Request::$BASE_PATH.'categories'; ?>">

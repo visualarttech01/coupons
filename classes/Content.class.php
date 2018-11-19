@@ -1,6 +1,6 @@
 <?php
 	class Content {
-		//======================================================== All COMPANIES ============================================
+		//======================================================== All Data ============================================
 		static function All($table){
 			global $DB;
 			
@@ -16,7 +16,7 @@
 				return false;
 			}
 		}
-		//======================================================== COMPANY BY ID ============================================
+		//======================================================== Find BY ID ============================================
 		static function find_by_id($id,$table){
 			global $DB;
 			
@@ -33,7 +33,7 @@
 				return false;
 			}
 		}
-        //======================================================== COMPANY BY ID ============================================
+        //======================================================== Count ============================================
         static function selectCount($table,$where,$id,$date,$name){
             global $DB;
 
@@ -51,7 +51,7 @@
             }
         }
 
-        //======================================================== COMPANY BY ID ============================================
+        //======================================================== Count Repoert BY ID ============================================
         static function reports($from,$to,$id){
             global $DB;
 
@@ -72,7 +72,7 @@
                 return false;
             }
         }
-        //======================================================== COMPANY BY ID ============================================
+        //======================================================== Select ============================================
         static function select($field,$table){
             global $DB;
 
@@ -89,7 +89,7 @@
                 return false;
             }
         }
-        //======================================================== COMPANY BY ID ============================================
+        //======================================================== validate User BY Section ============================================
         static function validate($section,$control){
             if (Session::isUserOnline()){
                 $role= Session::GetUser()->user_role_id;
@@ -195,7 +195,7 @@
                 return false;
             }
         }
-        //======================================================== coupons ============================================
+        //======================================================== Store ============================================
         static function stores(){
             global $DB;
             
@@ -299,15 +299,17 @@
 
                 if ($key->edited_by==$id && $key->publisher==$id){
                     $key->status='Posted & Edited';
-               }elseif($key->publisher==$id && $key->edited_by!=$id){
-                  
-                   $sql="SELECT user_name from users where id='".$key->edited_by."'";
+               }elseif($key->publisher==$id && $key->edited_by!==$id){
+                  $sql="SELECT user_name from users where id='".$key->edited_by."'";
                    $editor=$DB->Select($sql);
+                   
                    if($editor){
                        $key->status='Posted';
                        $key->editor='Edited by '.$editor[0]->user_name;
+                   }else{
+                       $key->status='Posted';
+                       $key->editor='Not Yet Edited';
                    }
-                    
                }elseif($key->publisher!=$id && $key->edited_by==$id ){
                   
                    $sql="SELECT user_name from users where id='".$key->publisher."'";
@@ -318,18 +320,15 @@
                         $key->status='Edited';
                         $key->editor='Posted by '.$editor[0]->user_name;
                     }
-                    
-
                 }
 
             }
-
           return $objData;
         }else{
             return false;
         }
     }
-    //======================================================== reporting ============================================
+    //======================================================== publisher ============================================
     static function publisher($table,$id){
         global $DB;
         $sql="SELECT publisher
@@ -347,7 +346,7 @@
         }
     }
     
-    //======================================================== reporting ============================================
+    //======================================================== ranks ============================================
     static function ranks($store_id){
         global $DB;
         $sql="SELECT name,id,rank
@@ -364,7 +363,7 @@
             return false;
         }
     }
-    //======================================================== COMPANY BY ID ============================================
+    //======================================================== validate Store Name ============================================
     static function validateStore($name){
         global $DB;
         
@@ -382,7 +381,7 @@
             return true;
         }
     }
-    //======================================================== COMPANY BY ID ============================================
+    //======================================================== validate Store Edit ============================================
     static function validateStoreEdit($name,$id){
         global $DB;
         
@@ -404,7 +403,7 @@
             return true;
         }
     }
-    //======================================================== COMPANY BY ID ============================================
+    //======================================================== validate Coupon ============================================
     static function validateCoupon($name,$store_id){
         global $DB;
         
@@ -425,7 +424,7 @@
         }
     }
     
-    //======================================================== COMPANY BY ID ============================================
+    //======================================================== validate Coupon edit ============================================
     static function validateCouponedit($name,$store_id,$id){
         global $DB;
         
@@ -448,7 +447,7 @@
             return true;
         }
     }
-    //======================================================== COMPANY BY ID ============================================
+    //======================================================== clean ============================================
     static function clean($string) {
         $string = str_replace(' ', '-', $string); // Replaces all spaces with hyphens.
         $string = preg_replace('/[^A-Za-z0-9\-]/', '', $string); // Removes special chars.
@@ -457,7 +456,7 @@
         return $string=str_replace('-', ' ', $string);
     }
     
-    //======================================================== COMPANY BY ID ============================================
+    //======================================================== getId ============================================
     static function getId($name,$table){
         global $DB;
         
@@ -476,7 +475,7 @@
             return false;
         }
     }
-    //======================================================== COMPANY BY ID ============================================
+    //======================================================== storeSpamCheck ============================================
     static function storeSpamCheck($id,$link){
         global $DB;
         
@@ -500,7 +499,7 @@
         }
     }
     
-    //======================================================== COMPANY BY ID ============================================
+    //======================================================== coupon Spam Check ============================================
     static function couponSpamCheck($store_id,$link){
         global $DB;
         
@@ -517,13 +516,11 @@
         
         $objData=$DB->Select($sql);
         if($objData){
-            
             if (strpos($link, $objData[0]->network_id) !== false) {
                 $data='0';
             }else{
                 $data='1';
             }
-            
             return $data;
         }else{
             return false;

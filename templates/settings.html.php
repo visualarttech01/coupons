@@ -41,6 +41,7 @@
                                                 <span class="lbl"></span>
                                             </label>
                                         </th>
+                                        <th class="center">Page</th>
                                         <th class="center">Title</th>
                                         <th class="center">Detail</th>
                                         <th class="center">Meta Title</th>
@@ -61,6 +62,9 @@
                                                         <input type="checkbox" class="ace" />
                                                         <span class="lbl"></span>
                                                     </label>
+                                                </td>
+                                                <td class="center">
+                                                    <?php echo $key->page ;?>
                                                 </td>
                                                 <td class="center">
                                                     <?php echo $key->title ;?>

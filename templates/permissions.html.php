@@ -49,7 +49,7 @@
                                                         <th class="center">Edit</th>
                                                         <th class="center">View</th>
                                                         <th class="center">Delete</th>
-														<th class="center">Is Active</th>
+														
                                                         <th>Actions</th>
 													</tr>
 												</thead>
@@ -89,9 +89,6 @@
                                                             <?php if($key->p_delete !='1'){echo '<span class="label label-sm label-warning">No';}else{echo '<span class="label label-sm label-success">Yes</span>';};?>
                                                         </td>
 
-                                                        <td class="center">
-															<span class="label label-sm label-warning"><?php echo $key->is_active ;?></span>
-														</td>
 
 
 														<td>

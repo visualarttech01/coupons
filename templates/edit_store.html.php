@@ -128,7 +128,7 @@
                         </div>
 
                         <div class="form-group has-info">
-                            <label for="inputInfo" class="col-xs-12 col-sm-3 control-label no-padding-right">Network Id:</label>
+                            <label for="inputInfo" class="col-xs-12 col-sm-3 control-label no-padding-right">Network Store Id:</label>
 
                             <div class="col-xs-12 col-sm-5">
                                 <span class="block input-icon input-icon-right">
@@ -179,7 +179,7 @@
 
                             <div class="col-xs-12 col-sm-5">
                                 <span class="block input-icon input-icon-right">
-                                    <input type="text" name="meta_title" value="<?php echo $objData->meta_title ;?>" id="inputInfo" class="width-100" required/>
+                                    <input type="text" name="meta_title" value="<?php echo $objData->meta_title ;?>" id="inputInfo" class="width-100" />
 
                                 </span>
                             </div>
@@ -190,7 +190,7 @@
 
                             <div class="col-xs-12 col-sm-5">
                                 <span class="block input-icon input-icon-right">
-                                    <textarea rows="5" cols="20" name="meta_detail" id="inputInfo" class="width-100" required/><?php echo $objData->meta_detail ;?>"</textarea>
+                                    <textarea rows="5" cols="20" name="meta_detail" id="inputInfo" class="width-100" /><?php echo $objData->meta_detail ;?>"</textarea>
 
                                 </span>
                             </div>

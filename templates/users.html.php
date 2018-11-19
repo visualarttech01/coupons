@@ -37,61 +37,32 @@
 											<table id="dynamic-table" class="table table-striped table-bordered table-hover">
 												<thead>
 													<tr>
-														<th class="center" hidden>
-															<label class="pos-rel">
-																<input type="checkbox" class="ace" />
-																<span class="lbl"></span>
-															</label>
-														</th>
-
 														<th>Name</th>
 														<th>Email</th>
                                                         <th>Role</th>
-
 														<th>
 															<i class="ace-icon bigger-110 center"></i>
 															Online
 														</th>
-														
-														<th class="center">Is Active</th>
-
 														<th>Action</th>
 													</tr>
 												</thead>
-
 												<tbody>
-													
-													<?php 
+												  <?php 
 													if($objall_users)
 														foreach($objall_users as $key){ ?>
 													<tr>
-														<td class="center" hidden>
-															<label class="pos-rel">
-																<input type="checkbox" class="ace" />
-																<span class="lbl"></span>
-															</label>
-														</td>
-
 														<td>
 															<?php echo $key->user_name ;?>
 														</td>
-
 														<td><?php echo $key->email ;?></td>
                                                         <td>
                                                             <?php  echo $key->role;?>
                                                         </td>
-														
 														<td><?php if($key->is_online !='1'){echo '<span class="label label-sm label-warning">No';}else{echo '<span class="label label-sm label-success">Yes</span>';};?></td>
-
-														<td class="center">
-															<span class="label label-sm label-warning"><?php echo $key->is_active ;?></span>
-														</td>
-
-                                                        <td>
+														<td>
                                                             <div class="action-buttons">
-
-                                                                <a class="red" href="#"></a>
-                                                                <i id="<?php echo $key->id; ?>"  class="ace-icon fa fa-trash-o bigger-130 bootbox-confirm"></i>
+																<i id="<?php echo $key->id; ?>"  class="ace-icon fa fa-trash-o bigger-130 bootbox-confirm"></i>
                                                                 <a href="<?php echo Request::$BASE_PATH.'users/edit_user/'.$key->id ?>">
                                                                     <i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
                                                                 </a>
@@ -117,11 +88,6 @@
 					</div><!-- /.page-content -->
 				</div>
 			</div><!-- /.main-content -->
-			
-			
-			
-			
-			
 			<script src="<?php echo Request::$BASE_PATH; ?>assets/js/jquery.dataTables.min.js"></script>
 			<script src="<?php echo Request::$BASE_PATH; ?>assets/js/jquery.dataTables.bootstrap.min.js"></script>
 			<script src="<?php echo Request::$BASE_PATH; ?>assets/js/dataTables.buttons.min.js"></script>
@@ -130,7 +96,6 @@
 			<script src="<?php echo Request::$BASE_PATH; ?>assets/js/buttons.print.min.js"></script>
 			<script src="<?php echo Request::$BASE_PATH; ?>assets/js/buttons.colVis.min.js"></script>
 			<script src="<?php echo Request::$BASE_PATH; ?>assets/js/dataTables.select.min.js"></script>
-			
 			<script type="text/javascript">
 			jQuery(function($) {
 				//initiate dataTables plugin

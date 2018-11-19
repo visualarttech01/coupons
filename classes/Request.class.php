@@ -75,34 +75,6 @@
 			return $returnObject;
 		}
 		
-		static function Link($request=''){
-			$strLink = self::$BASE_PATH;
-			
-			$parameters = self::Parameters();
-			foreach($parameters as $parameter){
-				$strLink .= $parameter.'/';
-			}
-			
-			if($request != ''){
-				$request = explode("=",$request);
-				$strLink .= (preg_match("/\?/",$strLink))?'&':'?';
-				$strLink .= $request[0].'='.$request[1];
-			}
-			
-			return $strLink;
-		}
-		
-		static function Curl($url){
-			$objCurl = curl_init();
-			curl_setopt($objCurl, CURLOPT_URL, $url);
-			curl_setopt($objCurl, CURLOPT_RETURNTRANSFER, 1);
-			curl_setopt($objCurl, CURLOPT_USERAGENT, 1);
-			curl_setopt($objCurl, CURLOPT_FOLLOWLOCATION, true);
-			curl_setopt($objCurl, CURLOPT_SSL_VERIFYPEER, false);
-			$strData = curl_exec($objCurl);
-			curl_close($objCurl);
-			
-			return $strData;
-		}
+
 		
 	}
