@@ -4,7 +4,7 @@
 					<div class="footer-content">
 						<span class="bigger-120">
 							
-							<img src="<?php echo Request::$BASE_PATH.''; ?>" alt="" style="width: 30px;"><a href="http://www.manssols.com" target="_blank"><span class="blue bolder">Argon Technologist</span></a> &copy; <?php echo date('Y'); ?>.
+							<img src="<?php echo Request::$BASE_PATH.''; ?>" alt="" style="width: 30px;"><a href="http://www.argonteq.com" target="_blank"><span class="blue bolder">Argon Technologist</span></a> &copy; <?php echo date('Y'); ?>.
 						</span>
 
 						&nbsp; &nbsp;

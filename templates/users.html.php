@@ -40,10 +40,7 @@
 														<th>Name</th>
 														<th>Email</th>
                                                         <th>Role</th>
-														<th>
-															<i class="ace-icon bigger-110 center"></i>
-															Online
-														</th>
+
 														<th>Action</th>
 													</tr>
 												</thead>
@@ -59,7 +56,6 @@
                                                         <td>
                                                             <?php  echo $key->role;?>
                                                         </td>
-														<td><?php if($key->is_online !='1'){echo '<span class="label label-sm label-warning">No';}else{echo '<span class="label label-sm label-success">Yes</span>';};?></td>
 														<td>
                                                             <div class="action-buttons">
 																<i id="<?php echo $key->id; ?>"  class="ace-icon fa fa-trash-o bigger-130 bootbox-confirm"></i>

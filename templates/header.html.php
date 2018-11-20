@@ -100,6 +100,7 @@
 					try{ace.settings.loadState('sidebar')}catch(e){}
 				</script>
 				<ul class="nav nav-list">
+					<?php if(Content::validate('categories','p_view')) {?>
 					<li  class="<?php if($parameters[0]=='categories'){ echo 'active'; } ?>">
 						<a href="<?php echo Request::$BASE_PATH.'categories'; ?>">
 							<i class="menu-icon fa fa-tachometer"></i>
@@ -108,7 +109,7 @@
 
 						<b class="arrow"></b>
 					</li>
-
+					<?php }if(Content::validate('networks','p_view')) {?>
                     <li  class="<?php if($parameters[0]=='networks'){ echo 'active'; } ?>">
                         <a href="<?php echo Request::$BASE_PATH.'networks'; ?>">
                             <i class="menu-icon fa fa-sitemap"></i>
@@ -117,7 +118,7 @@
 
                         <b class="arrow"></b>
                     </li>
-
+					<?php }if(Content::validate('stores','p_view')) {?>
                     <li  class="<?php if($parameters[0]=='stores'){ echo 'active'; } ?>">
                         <a href="<?php echo Request::$BASE_PATH.'stores'; ?>">
                             <i class="menu-icon glyphicon glyphicon-tags"></i>
@@ -126,6 +127,7 @@
 
                         <b class="arrow"></b>
                     </li>
+                    <?php }if(Content::validate('codes','p_view')) {?>
                     <li  class="<?php if($parameters[0]=='codes'){ echo 'active'; } ?>">
                         <a href="<?php echo Request::$BASE_PATH.'codes'; ?>">
                             <i class="menu-icon fa fa-qrcode"></i>
@@ -134,6 +136,7 @@
 
                         <b class="arrow"></b>
                     </li>
+                    <?php }if(Content::validate('global settings','p_view')) {?>
                     <li  class="<?php if($parameters[0]=='global_settings'){ echo 'active'; } ?>">
                         <a href="<?php echo Request::$BASE_PATH.'global_settings'; ?>">
                             <i class="menu-icon fa fa-cogs"></i>
@@ -142,7 +145,7 @@
 
                         <b class="arrow"></b>
                     </li>
-
+					 <?php }if(Content::validate('sections','p_view')) {?>
                     <li  class="<?php if($parameters[0]=='sections'){ echo 'active'; } ?>">
                         <a href="<?php echo Request::$BASE_PATH.'sections'; ?>">
                             <i class="menu-icon fa fa-puzzle-piece"></i>
@@ -151,7 +154,7 @@
 
                         <b class="arrow"></b>
                     </li>
-
+					<?php }if(Content::validate('roles','p_view')) {?>
                     <li  class="<?php if($parameters[0]=='roles'){ echo 'active'; } ?>">
                         <a href="<?php echo Request::$BASE_PATH.'roles'; ?>">
                             <i class="menu-icon fa fa-briefcase"></i>
@@ -160,7 +163,7 @@
 
                         <b class="arrow"></b>
                     </li>
-
+					<?php }if(Content::validate('permissions','p_view')) {?>
                     <li  class="<?php if($parameters[0]=='permissions'){ echo 'active'; } ?>">
                         <a href="<?php echo Request::$BASE_PATH.'permissions'; ?>">
                              <i class="menu-icon fa fa-unlock-alt"></i>
@@ -169,7 +172,7 @@
 
                         <b class="arrow"></b>
                     </li>
-
+					<?php }if(Content::validate('users','p_view')) {?>
                     <li  class="<?php if($parameters[0]=='users'){ echo 'active'; } ?>">
                         <a href="<?php echo Request::$BASE_PATH.'users'; ?>">
                             <i class="menu-icon fa fa-users"></i>
@@ -178,7 +181,7 @@
 
                         <b class="arrow"></b>
                     </li>
-
+					<?php }?>
                     
                 </ul><!-- /.nav-list -->
 

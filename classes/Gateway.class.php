@@ -40,60 +40,66 @@
                         if (!isset($parameters[1]) && $parameters[1]= ''){
                             header('Location:'.Request::$BASE_PATH);
                         }else {
-                            switch ($parameters[1]){
-                                case 'networks':
-                                    if(Content::validate('network report','p_view')) {
-                                        if (isset($parameters[1]) && $parameters[1] != '') {
-                                            $id=intval($parameters[2]);
-                                            $objUser=Content::user($id);
-                                            $objPresenter->AddParameter('objUser',$objUser);
-                                            $objall=Content::reporting('networks',$id);
-                                            $objPresenter->AddParameter('objall',$objall);
-                                            $objPresenter->AddTemplate('network-report');
-                                        }else{ header ( "Location: " . Request::$BASE_PATH.'reporting' );}
-                                    }
-                                    break;
-                                case 'categories':
-                                    if(Content::validate('category report','p_view')) {
-                                        if (isset($parameters[1]) && $parameters[1] != '') {
-                                            $id=intval($parameters[2]);
-                                            $objUser=Content::user($id);
-                                            $objPresenter->AddParameter('objUser',$objUser);
-                                            $objall=Content::reporting('categories',$id);
-                                            $objPresenter->AddParameter('objall',$objall);
-                                            $objPresenter->AddTemplate('categories-report');
+                            if(Content::validatelevel(intval($parameters[2]))){
+                                
+                                switch ($parameters[1]){
+                                    case 'networks':
+                                        if(Content::validate('network report','p_view')) {
+                                            if (isset($parameters[1]) && $parameters[1] != '') {
+                                                $id=intval($parameters[2]);
+                                                $objUser=Content::user($id);
+                                                $objPresenter->AddParameter('objUser',$objUser);
+                                                $objall=Content::reporting('networks',$id);
+                                                $objPresenter->AddParameter('objall',$objall);
+                                                $objPresenter->AddTemplate('network-report');
+                                            }else{ header ( "Location: " . Request::$BASE_PATH.'reporting' );}
                                         }
-                                    }
-                                    break;
-                                case 'stores':
-                                    if(Content::validate('store report','p_view')) {
-                                        if (isset($parameters[1]) && $parameters[1] != '') {
-                                            $id=intval($parameters[2]);
-                                            $objUser=Content::user($id);
-                                            $objPresenter->AddParameter('objUser',$objUser);
-                                            $objall=Content::reporting('stores',$id);
-                                            $objPresenter->AddParameter('objall',$objall);
-                                            $objPresenter->AddTemplate('stores-report');
+                                        break;
+                                    case 'categories':
+                                        if(Content::validate('category report','p_view')) {
+                                            if (isset($parameters[1]) && $parameters[1] != '') {
+                                                $id=intval($parameters[2]);
+                                                $objUser=Content::user($id);
+                                                $objPresenter->AddParameter('objUser',$objUser);
+                                                $objall=Content::reporting('categories',$id);
+                                                $objPresenter->AddParameter('objall',$objall);
+                                                $objPresenter->AddTemplate('categories-report');
+                                            }
                                         }
-                                    }
-                                    break;
-                                case 'coupons':
-                                    if(Content::validate('coupon report','p_view')) {
-                                        if (isset($parameters[1]) && $parameters[1] != '') {
-                                            $id=intval($parameters[2]);
-                                            $objUser=Content::user($id);
-                                            $objPresenter->AddParameter('objUser',$objUser);
-                                            $objall=Content::reporting('coupons',$id);
-                                            $objPresenter->AddParameter('objall',$objall);
-                                            
-                                            $objPresenter->AddTemplate('coupons-report');
+                                        break;
+                                    case 'stores':
+                                        if(Content::validate('store report','p_view')) {
+                                            if (isset($parameters[1]) && $parameters[1] != '') {
+                                                $id=intval($parameters[2]);
+                                                $objUser=Content::user($id);
+                                                $objPresenter->AddParameter('objUser',$objUser);
+                                                $objall=Content::reporting('stores',$id);
+                                                $objPresenter->AddParameter('objall',$objall);
+                                                $objPresenter->AddTemplate('stores-report');
+                                            }
                                         }
-                                    }
-                                    break;
-                                default:
-                                    header ( "Location: " . Request::$BASE_PATH.'reporting' );
-                                    break;
+                                        break;
+                                    case 'coupons':
+                                        if(Content::validate('coupon report','p_view')) {
+                                            if (isset($parameters[1]) && $parameters[1] != '') {
+                                                $id=intval($parameters[2]);
+                                                $objUser=Content::user($id);
+                                                $objPresenter->AddParameter('objUser',$objUser);
+                                                $objall=Content::reporting('coupons',$id);
+                                                $objPresenter->AddParameter('objall',$objall);
+                                                
+                                                $objPresenter->AddTemplate('coupons-report');
+                                            }
+                                        }
+                                        break;
+                                    default:
+                                        header ( "Location: " . Request::$BASE_PATH.'reporting' );
+                                        break;
+                                }
+                            }else{
+                                header ( "Location: " . Request::$BASE_PATH.'access');
                             }
+                            
                         }
                     }else{
                         header ( "Location: " . Request::$BASE_PATH );
@@ -876,43 +882,43 @@
 								header ( "Location: " . Request::$BASE_PATH );
 							}
 							break;
-
                 case 'reports':
                     if(Content::validate('reports','p_view')){
-                        $last_date= date('Y-m-d', strtotime(' -1 day'));
-                        $date=date('Y-m-d');
-                        if($parameters[1] !='' && isset($parameters[1])){
-                            $id=intval($parameters[1]);
-                            $objUser=Content::user($id);
-                            $objData=Content::selectCount('coupons','publisher',$id,$date,'today');
-                            $objUser->today=$objData->today;
-                            $objData=Content::selectCount('coupons','publisher',$id,$last_date,'last');
-                            $objUser->yesterday=$objData->last;
-                            $objPresenter->AddParameter('objUser',$objUser);
+                        if(Content::validatelevel(intval($parameters[1]))){
+                            $last_date= date('Y-m-d', strtotime(' -1 day'));
+                            $date=date('Y-m-d');
+                            if($parameters[1] !='' && isset($parameters[1])){
+                                $id=intval($parameters[1]);
+                                $objUser=Content::user($id);
+                                $objData=Content::selectCount('coupons','publisher',$id,$date,'today');
+                                $objUser->today=$objData->today;
+                                $objData=Content::selectCount('coupons','publisher',$id,$last_date,'last');
+                                $objUser->yesterday=$objData->last;
+                                $objPresenter->AddParameter('objUser',$objUser);
+                            }else{
+                                header ( "Location: " . Request::$BASE_PATH.'' );
+                            }
+                            $objPresenter->AddTemplate('reports');
                         }else{
-                            header ( "Location: " . Request::$BASE_PATH.'' );
+                            header ( "Location: " . Request::$BASE_PATH.'access' );
                         }
-                        $objPresenter->AddTemplate('reports');
+                        
                     }else{
-                        header ( "Location: " . Request::$BASE_PATH );
+                        header ( "Location: " . Request::$BASE_PATH.'access' );
                     }
                     break;
-
                 case 'report-range':
                     if(Content::validate('reports','p_view')){
                         if(Request::hasPostVariables()){
                             $objData= Request::getPostVariables();
-
                             $result= Content::reports($objData->start,$objData->end,$objData->id);
                             echo $result;
                             exit;
                         }
-
                     }else{
                         header ( "Location: " . Request::$BASE_PATH );
                     }
                     break;
-
 				case 'logout':
 							if (Session::isUserOnline()){
 								Session::Destroy();
@@ -921,18 +927,13 @@
 								header ( "Location: " . Request::$BASE_PATH );
 							}
 							break;
-
                 case 'users':
-
                     if(Content::validate('users','p_view')){
-
                     $objall_users =Content::relation('*','users','user_roles','role','user_role_id');
                     $objPresenter->AddParameter('objall_users', $objall_users);
                     if (!isset($parameters[1]) && $parameters[1]=' '){
-
                         $objPresenter->AddTemplate('users');
                     }else {
-
                         switch ($parameters[1]){
                             case 'new_user':
                                 if(Content::validate('users','p_add')){
@@ -940,7 +941,6 @@
                                     $objPresenter->AddParameter('objroles',$objroles);
                                     if(Request::hasPostVariables()){
                                         $objData = Request::getPostVariables();
-
                                         if(User::CheckEmail($objData->email)){
                                             $objData->created = date ( 'Y-m-d H:i:s' );
                                             $objData->is_active = '1';
@@ -988,6 +988,9 @@
 
                                         if(Request::hasPostVariables()){
                                             $objData = Request::getPostVariables();
+                                            if(isset($objData->n_password) && $objData->n_password!==''){
+                                                $objData->password=md5($objData->n_password);
+                                            }
                                             global $DB;
                                             $DB->Save ( 'users', $objData );
                                             $objPresenter->AddParameter ( 'add_message', '<div class="alert alert-success"><strong>Success</strong> Updated Record </div>' );

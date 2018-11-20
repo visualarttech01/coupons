@@ -46,7 +46,7 @@
 														<th class="center">Role</th>
 
 														
-														<th class="center">Is Active</th>
+														<th class="center">Level</th>
 
 														<th>Actions</th>
 													</tr>
@@ -68,7 +68,7 @@
 															<?php echo $key->role ;?>
 														</td>
 														<td class="center">
-															<span class="label label-sm label-warning"><?php echo $key->is_active ;?></span>
+															<span class="label label-sm label-warning"><?php echo $key->level ;?></span>
 														</td>
 
 														<td>

@@ -41,12 +41,12 @@
 										
 									</div>
 									<div class="form-group has-info">
-										<label for="inputInfo" class="col-xs-12 col-sm-3 control-label no-padding-right">Password:</label>
+										<label for="inputInfo" class="col-xs-12 col-sm-3 control-label no-padding-right">New Password:</label>
 
 										<div class="col-xs-12 col-sm-5">
 											<span class="block input-icon input-icon-right">
-												<input type="password" name="password" value="<?php echo $objData->password ;?>" id="inputInfo" class="width-100" required/>
-												
+												<input type="hidden" name="password" value="<?php echo $objData->password ;?>" id="inputInfo" class="width-100" required/>
+												<input type="password" name="n_password" id="inputInfo" class="width-100" />
 											</span>
 										</div>
 										

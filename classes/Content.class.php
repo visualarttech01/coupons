@@ -526,6 +526,42 @@
             return false;
         }
     }
+    //======================================================== getId ============================================
+    static function validatelevel($id){
+        global $DB;
+        
+        $sql="SELECT user_role_id
+					FROM users
+					WHERE id ='".$id."'
+					AND is_active = 1
+					ORDER BY id DESC";
+        
+        $objData=$DB->Select($sql);
+        
+        if($objData){
+            $sql="SELECT level
+					FROM user_roles
+					WHERE id ='".$objData[0]->user_role_id."'
+					ORDER BY id DESC";
+            $repuser=$DB->Select($sql);
+            if($repuser){
+                $sql="SELECT level
+					FROM user_roles
+					WHERE id ='".Session::GetUser()->user_role_id."'
+					ORDER BY id DESC";
+                $user=$DB->Select($sql);
+                if($repuser[0]->level>$user[0]->level){
+                   return false;
+                }else{
+                    return true;
+                }
+            }
+            
+            
+        }else{
+            return false;
+        }
+    }
 
 }
 
