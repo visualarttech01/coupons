@@ -122,10 +122,7 @@
                                         if(Request::hasPostVariables()){
                                             $objData = Request::getPostVariables();
                                             $setting=Content::select('*', 'global_settings');
-                                            $setting=$setting[3];
-                                            echo '<pre>';
-                                            print_r($setting);
-                                            exit;
+                                            $setting=$setting[0];
                                             if(isset($objData->meta_title) && $objData->meta_title==''){
                                                 $objData->meta_title=$objData->name.' '.$setting->meta_title;
                                             }
@@ -185,7 +182,6 @@
                                                 if(Content::validateStoreEdit($objData->name,$objData->id)){
                                                     $setting=Content::select('*', 'global_settings');
                                                     $setting=$setting[0];
-                                                    
                                                     if(isset($objData->meta_title) && $objData->meta_title==''){
                                                         $objData->meta_title=$objData->name.' '.$setting->meta_title;
                                                     }
@@ -627,7 +623,6 @@
                                             $objData->name=Content::clean($objData->name);
                                             $setting=Content::select('*', 'global_settings');
                                             $setting=$setting[1];
-                                           
                                             if(isset($objData->meta_title) && $objData->meta_title==''){
                                                 $objData->meta_title=$objData->name.' '.$setting->meta_title;
                                             }

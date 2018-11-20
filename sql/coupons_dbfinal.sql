@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 19, 2018 at 03:52 PM
+-- Generation Time: Nov 20, 2018 at 01:43 PM
 -- Server version: 10.1.36-MariaDB
 -- PHP Version: 5.6.38
 
@@ -186,8 +186,10 @@ INSERT INTO `role_permissions` (`id`, `user_role_id`, `section`, `p_add`, `p_edi
 (22, 1, 'category report', 1, 1, 1, 1, '2018-11-16 15:26:03', 1),
 (23, 1, 'upload', 1, 1, 1, 1, '2018-11-16 15:26:15', 1),
 (25, 1, 'ranking', 1, 1, 1, 1, '2018-11-16 15:37:37', 1),
-(26, 9, 'coupons', 0, 0, 0, 0, '2018-11-19 18:00:39', 1),
-(27, 7, 'categories', 1, 1, 1, 0, '2018-11-19 18:11:04', 1);
+(27, 7, 'categories', 1, 1, 1, 0, '2018-11-19 18:11:04', 1),
+(28, 7, 'reports', 1, 1, 1, 1, '2018-11-20 12:33:25', 1),
+(29, 7, 'network report', 1, 1, 1, 1, '2018-11-20 12:33:49', 1),
+(30, 7, 'users', 1, 1, 1, 1, '2018-11-20 12:34:44', 1);
 
 -- --------------------------------------------------------
 
@@ -285,8 +287,8 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `user_name`, `email`, `password`, `user_role_id`, `created`, `is_active`, `is_online`) VALUES
 (1, 'Awais Arif', 'admin@mail.com', '202cb962ac59075b964b07152d234b70', 1, '2018-10-15 06:29:18', 1, 0),
-(5, 'Hamza', 'hamza@mail.com', '12345', 1, '2018-10-30 18:48:24', 1, 0),
-(6, 'testing123', 'test@gmail.com', '827ccb0eea8a706c4c34a16891f84e7b', 7, '2018-11-19 18:08:29', 1, 0);
+(5, 'Hamza', 'hamza@mail.com', '202cb962ac59075b964b07152d234b70', 1, '2018-10-30 18:48:24', 1, 0),
+(6, 'test', 'test@mail.com', '202cb962ac59075b964b07152d234b70', 7, '2018-11-19 18:08:29', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -297,6 +299,7 @@ INSERT INTO `users` (`id`, `user_name`, `email`, `password`, `user_role_id`, `cr
 CREATE TABLE `user_roles` (
   `id` int(11) NOT NULL,
   `role` varchar(100) NOT NULL,
+  `level` int(20) NOT NULL,
   `created` datetime NOT NULL,
   `is_active` tinyint(1) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -305,13 +308,13 @@ CREATE TABLE `user_roles` (
 -- Dumping data for table `user_roles`
 --
 
-INSERT INTO `user_roles` (`id`, `role`, `created`, `is_active`) VALUES
-(1, 'Admin', '2018-11-14 01:09:30', 1),
-(2, 'Coupon Master', '2018-10-30 14:35:49', 1),
-(4, 'Sub-manager', '0000-00-00 00:00:00', 1),
-(7, 'Manager', '2018-11-01 14:42:28', 1),
-(8, 'store master', '2018-11-01 14:42:46', 1),
-(9, 'No Role', '2018-11-19 15:25:03', 1);
+INSERT INTO `user_roles` (`id`, `role`, `level`, `created`, `is_active`) VALUES
+(1, 'Admin', 10, '2018-11-14 01:09:30', 1),
+(2, 'Coupon Master', 5, '2018-10-30 14:35:49', 1),
+(4, 'Sub-manager', 8, '0000-00-00 00:00:00', 1),
+(7, 'Manager', 9, '2018-11-01 14:42:28', 1),
+(8, 'store master', 7, '2018-11-01 14:42:46', 1),
+(9, 'No Role', 1, '2018-11-19 15:25:03', 1);
 
 --
 -- Indexes for dumped tables
@@ -403,7 +406,7 @@ ALTER TABLE `networks`
 -- AUTO_INCREMENT for table `role_permissions`
 --
 ALTER TABLE `role_permissions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `sections`

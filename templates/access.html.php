@@ -24,7 +24,7 @@
                         <div class="space-6"></div>
                         <div class="alert alert-success" role="alert">
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                            <strong>ERROR!</strong> No Access
+                            <strong>Thank You!</strong>Your Activity has submitted to Admin
                         </div>
 
                         <div class="space-6"></div>

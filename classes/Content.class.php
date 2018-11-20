@@ -67,7 +67,6 @@
                     }else{
                        return $objData[0]->total;
                     }
-
             }else{
                 return false;
             }
@@ -239,7 +238,6 @@
                         $key->coupon=$cnt[0]->total;
                     }
                 }
-               
                 return $objData;
             }else{
                 return false;
@@ -423,7 +421,6 @@
             return true;
         }
     }
-    
     //======================================================== validate Coupon edit ============================================
     static function validateCouponedit($name,$store_id,$id){
         global $DB;
